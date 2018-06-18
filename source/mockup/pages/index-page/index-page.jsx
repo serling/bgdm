@@ -2,11 +2,11 @@
 import React from 'react';
 
 import Layout from '../../../components/layout';
-import FilteredGamesList from '../../../components/filtered-games-list';
+import Hero from '../../../components/hero';
+import AllGames from '../../../components/all-games';
 
 const oldGames = {
   heading: 'new category',
-  gridColumns: 4,
   games: [
     {
       title: 'new thing #1'
@@ -29,7 +29,6 @@ const oldGames = {
 
 const newGames = {
   heading: 'old category',
-  gridColumns: 3,
   games: [
     {
       title: 'old thing #1'
@@ -43,10 +42,19 @@ const newGames = {
   ]
 };
 
+const oneGame = {
+  heading: 'just the one',
+  games: [
+    {
+      title: 'one thing'
+    }
+  ]
+};
+
 const IndexPage = () => (
   <Layout>
-    <FilteredGamesList {...newGames} />
-    <FilteredGamesList showControls={true} {...oldGames} />
+    <Hero main={oneGame} highlights={newGames} />
+    <AllGames games={oldGames} />
   </Layout>
 );
 
