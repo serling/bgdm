@@ -1,0 +1,27 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    margin-top: $spacing-sm;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &--inline {
+    display: flex;
+    flex-wrap: wrap;
+
+    .list__item {
+      margin-top: 0;
+      margin-left: $spacing-sm;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}

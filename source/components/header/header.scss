@@ -1,0 +1,7 @@
+.header {
+  background-color: lightgray;
+  display: grid;
+  align-content: start;
+  grid-template-columns: repeat(2, auto);
+  grid-column-gap: $default-grid-gap;
+}

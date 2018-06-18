@@ -1,0 +1,25 @@
+.grid {
+  display: grid;
+  grid-column-gap: $default-grid-gap;
+  grid-row-gap: $default-grid-gap;
+
+  &--columns-1 {
+    grid-template-columns: auto;
+  }
+
+  &--columns-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &--columns-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &--columns-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__item {
+    background-color: lightgoldenrodyellow;
+  }
+}

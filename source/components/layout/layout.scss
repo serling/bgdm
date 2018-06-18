@@ -1,0 +1,7 @@
+.layout {
+  display: grid;
+  align-content: start;
+  grid-template-rows: repeat(3, auto);
+  grid-row-gap: $default-grid-gap;
+  align-content: space-between;
+}
