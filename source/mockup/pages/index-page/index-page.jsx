@@ -4,8 +4,9 @@ import React from 'react';
 import Layout from '../../../components/layout';
 import FilteredGamesList from '../../../components/filtered-games-list';
 
-const newGames = {
+const oldGames = {
   heading: 'new category',
+  gridColumns: 4,
   games: [
     {
       title: 'new thing #1'
@@ -14,7 +15,8 @@ const newGames = {
       title: 'new thing #2'
     },
     {
-      title: 'new thing #3'
+      title: 'new thing #3',
+      isLoading: true
     },
     {
       title: 'new thing #4'
@@ -25,8 +27,9 @@ const newGames = {
   ]
 };
 
-const oldGames = {
+const newGames = {
   heading: 'old category',
+  gridColumns: 3,
   games: [
     {
       title: 'old thing #1'

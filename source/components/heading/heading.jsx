@@ -15,7 +15,8 @@ const Heading = ({ children, className, level, theme }) =>
   );
 
 Heading.defaultProps = {
-  level: 2
+  level: 2,
+  theme: themes.default
 };
 
 Heading.propTypes = {

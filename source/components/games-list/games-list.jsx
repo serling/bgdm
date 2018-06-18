@@ -6,7 +6,8 @@ import Game from '../../components/game';
 
 class GamesList extends React.Component {
   static propTypes = {
-    games: PropTypes.array.isRequired
+    games: PropTypes.array.isRequired,
+    gridColumns: PropTypes.number
   };
 
   state = {
@@ -16,9 +17,9 @@ class GamesList extends React.Component {
   render() {
     return (
       <div className="games-list">
-        <Grid title="category #1" columns={3}>
+        <Grid columns={this.props.gridColumns}>
           {this.state.games.map((game, index) => (
-            <Game key={game.id || index} title={game.title} />
+            <Game key={game.id || index} {...game} />
           ))}
         </Grid>
       </div>

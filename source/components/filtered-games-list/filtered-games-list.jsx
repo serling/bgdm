@@ -9,7 +9,8 @@ class FilteredGamesList extends React.Component {
   static propTypes = {
     heading: PropTypes.string,
     games: PropTypes.array.isRequired,
-    showControls: PropTypes.bool
+    showControls: PropTypes.bool,
+    gridColumns: PropTypes.number
   };
 
   state = {
@@ -26,6 +27,7 @@ class FilteredGamesList extends React.Component {
         <GamesList
           heading={this.props.heading}
           games={this.state.filteredGames}
+          gridColumns={this.props.gridColumns}
         />
       </div>
     );

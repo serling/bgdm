@@ -2,6 +2,25 @@
   background-color: lightgray;
   display: grid;
   align-content: start;
-  grid-template-columns: repeat(2, auto);
+  align-items: center;
   grid-column-gap: $default-grid-gap;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "logo button"
+    "menu menu";
+
+  &__logo {
+    grid-area: "logo";
+  }
+
+  &__button {
+    grid-area: "button";
+    justify-self: end;
+  }
+
+  &__menu {
+    grid-area: menu;
+  }
 }

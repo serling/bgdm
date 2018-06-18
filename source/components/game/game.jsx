@@ -1,9 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Game = ({ title }) => <div className="game">{title}</div>;
+import Heading from '../../components/heading';
+
+const Game = ({ title, isLoading }) => (
+  <div className="game">
+    <Heading level={3}>{title}</Heading>
+    {isLoading && <p>fetching</p>}
+  </div>
+);
 
 Game.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
+  isLoading: PropTypes.bool
 };
 export default Game;
