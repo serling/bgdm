@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Header from '../../components/header';
 import Footer from '../../components/footer';
+import Row from '../../components/row';
 
 const linkSections = [
   {
@@ -61,9 +62,13 @@ const linkSections = [
 
 const Layout = ({ children }) => (
   <div className="layout">
-    <Header className="layout__header" linkSections={linkSections} />
-    <div className="layout__content">{children}</div>
-    <Footer className="layout__footer" />
+    <Row backgroundColor={Row.colors.primary}>
+      <Header className="layout__header" linkSections={linkSections} />
+    </Row>
+    {children}
+    <Row backgroundColor={Row.colors.primary}>
+      <Footer className="layout__footer" />
+    </Row>
   </div>
 );
 

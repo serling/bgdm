@@ -2,6 +2,7 @@
 import React from 'react';
 
 import Layout from '../../../components/layout';
+import Row from '../../../components/row';
 import Hero from '../../../components/hero';
 import AllGames from '../../../components/all-games';
 
@@ -71,8 +72,15 @@ const oneGame = {
 
 const IndexPage = () => (
   <Layout>
-    <Hero main={oneGame} highlights={newGames} />
-    <AllGames games={oldGames} />
+    <Row>
+      <Hero main={oneGame} highlights={newGames} />
+    </Row>
+    <Row backgroundColor={Row.colors.secondary} padding={Row.paddings.large}>
+      hello message
+    </Row>
+    <Row>
+      <AllGames games={oldGames} />
+    </Row>
   </Layout>
 );
 
