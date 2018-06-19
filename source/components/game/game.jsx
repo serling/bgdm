@@ -10,10 +10,16 @@ const themes = {
   default: 'default'
 };
 
+const staticHref = '../../mockup/assets/static.jpg';
+
 const Game = ({ title, href, imgSrc, isLoading, theme }) => (
   <div className={cn('game', `game--${theme}`)}>
     <Link routerHref={href}>
-      <Image src={imgSrc} altText={title} className="game__image" />
+      <Image
+        src={imgSrc ? imgSrc : staticHref}
+        altText={title}
+        className="game__image"
+      />
       <Heading level={3} className="game__title">
         {title}
       </Heading>
