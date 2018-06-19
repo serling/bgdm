@@ -1,2 +1,15 @@
 .footer {
+  display: grid;
+  align-items: center;
+  grid-column-gap: $default-grid-gap;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: "logo logo logo info";
+
+  &__logo {
+    grid-area: logo;
+  }
+
+  &__info {
+    grid-area: info;
+  }
 }

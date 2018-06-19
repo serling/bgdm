@@ -4,18 +4,18 @@
   align-items: center;
   grid-column-gap: $default-grid-gap;
 
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "logo button"
-    "menu menu";
+    "logo logo logo button"
+    "menu menu menu menu";
 
   &__logo {
-    grid-area: "logo";
+    grid-area: logo;
   }
 
   &__button {
-    grid-area: "button";
+    grid-area: button;
     justify-self: end;
   }
 
