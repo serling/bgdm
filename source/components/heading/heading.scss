@@ -1,6 +1,30 @@
 .heading {
   position: relative;
 
+  &--level-1 {
+    font-size: $text-size-hg;
+  }
+
+  &--level-2 {
+    font-size: $text-size-lg;
+  }
+
+  &--level-3 {
+    font-size: $text-size-lg;
+  }
+
+  &--level-4 {
+    font-size: $text-size-lg;
+  }
+
+  &--level-5 {
+    font-size: $text-size-lg;
+  }
+
+  &--level-6 {
+    font-size: $text-size-lg;
+  }
+
   &--linethrough {
     text-align: center;
 
@@ -15,7 +39,7 @@
       z-index: 1;
     }
 
-    .heading__inner {
+    .heading__text {
       background-color: $color-white;
       padding: 0 20px;
       position: relative;

@@ -10,12 +10,18 @@ const themes = {
 const Heading = ({ children, className, level, theme }) =>
   React.createElement(
     `h${level}`,
-    { className: cn('heading', [`heading--${theme}`], className) },
-    <span className="heading__inner">{children}</span>
+    {
+      className: cn(
+        'heading',
+        `heading--${theme}`,
+        `heading--level-${level}`,
+        className
+      )
+    },
+    <span className="heading__text">{children}</span>
   );
 
 Heading.defaultProps = {
-  level: 2,
   theme: themes.default
 };
 
@@ -25,7 +31,7 @@ Heading.propTypes = {
     PropTypes.arrayOf(PropTypes.node)
   ]),
   className: PropTypes.string,
-  level: PropTypes.number,
+  level: PropTypes.number.isRequired,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };
 

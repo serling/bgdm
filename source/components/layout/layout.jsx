@@ -62,11 +62,11 @@ const linkSections = [
 
 const Layout = ({ children }) => (
   <div className="layout">
-    <Row backgroundColor={Row.colors.primary}>
+    <Row backgroundColor={Row.colors.primary} padding={Row.paddings.medium}>
       <Header className="layout__header" linkSections={linkSections} />
     </Row>
     {children}
-    <Row backgroundColor={Row.colors.primary}>
+    <Row backgroundColor={Row.colors.primary} padding={Row.paddings.medium}>
       <Footer className="layout__footer" />
     </Row>
   </div>

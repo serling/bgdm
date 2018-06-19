@@ -1,1 +1,5 @@
-.filtered-games-list {}
+.filtered-games-list {
+  &__heading {
+    margin-bottom: $spacing-md;
+  }
+}

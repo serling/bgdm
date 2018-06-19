@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import Title from '../../components/title';
+import Heading from '../../components/heading';
 import MainMenu from '../../components/main-menu';
 import Button from '../../components/button';
 
@@ -25,7 +25,7 @@ class Header extends React.Component {
     return (
       <div className={cn('header', this.props.className)}>
         <div className="header__logo">
-          <Title>ABCD</Title>
+          <Heading level={1}>ABCD</Heading>
         </div>
         <div className="header__button">
           <Button onClick={() => this.handleMenuButtonClick()}>Menu</Button>

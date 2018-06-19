@@ -1,18 +1,15 @@
 .text {
-  margin: 0;
-  padding: 0;
-
   &--small {
-    font-size: 1rem;
+    font-size: $text-size-sm;
   }
 
   &--medium {
-    font-size: 1.2rem;
+    font-size: $text-size-md;
   }
   &--large {
-    font-size: 1.5rem;
+    font-size: $text-size-lg;
   }
   &--huge {
-    font-size: 2rem;
+    font-size: $text-size-hg;
   }
 }

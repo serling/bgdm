@@ -34,7 +34,11 @@ class FilteredGamesList extends React.Component {
   render() {
     return (
       <div className="filtered-games-list">
-        <Heading theme={Heading.themes.linethrough}>
+        <Heading
+          level={2}
+          theme={Heading.themes.linethrough}
+          className="filtered-games-list__heading"
+        >
           {this.props.heading}
         </Heading>
         {this.props.showControls && <FilterControls />}
