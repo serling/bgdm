@@ -1,24 +1,4 @@
 .row {
-  &--margins-none {
-    margin: 0 0;
-  }
-
-  &--margins-small {
-    margin: $spacing-sm 0;
-  }
-
-  &--margins-medium {
-    margin: $spacing-md 0;
-  }
-
-  &--margins-large {
-    margin: $spacing-lg 0;
-  }
-
-  &--margins-huge {
-    margin: $spacing-hg 0;
-  }
-
   &--padding-small {
     padding: $spacing-sm 0;
   }
