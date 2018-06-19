@@ -41,7 +41,9 @@ class FilteredGamesList extends React.Component {
         >
           {this.props.heading}
         </Heading>
-        {this.props.showControls && <FilterControls />}
+        {this.props.showControls && (
+          <FilterControls placement={FilterControls.placements.center} />
+        )}
         <GamesList
           heading={this.props.heading}
           games={this.state.filteredGames}

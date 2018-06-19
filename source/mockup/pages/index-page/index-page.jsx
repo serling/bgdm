@@ -76,11 +76,11 @@ const IndexPage = () => (
     <Row>
       <Hero main={oneGame} highlights={newGames} />
     </Row>
-    <Row backgroundColor={Row.colors.secondary} padding={Row.paddings.large}>
-      <Text size={Text.sizes.large}>message full of text</Text>
-    </Row>
     <Row>
       <AllGames games={oldGames} />
+    </Row>
+    <Row backgroundColor={Row.colors.secondary} padding={Row.paddings.large}>
+      <Text size={Text.sizes.large}>message full of text</Text>
     </Row>
     <Row>
       <AllGames games={oldGames} />
