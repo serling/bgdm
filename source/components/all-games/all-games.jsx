@@ -19,6 +19,7 @@ class AllGames extends React.Component {
       <div className="all-games">
         <FilteredGamesList
           showControls={true}
+          buttonPlacement={'center'}
           showLoadMoreButton={true}
           gridColumns={4}
           {...this.props.games}

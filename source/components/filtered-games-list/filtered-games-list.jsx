@@ -12,6 +12,7 @@ class FilteredGamesList extends React.Component {
     games: PropTypes.array.isRequired,
     showControls: PropTypes.bool,
     gridColumns: PropTypes.number,
+    buttonPlacement: PropTypes.string,
     // initialNumberOfItemsToLoad: PropTypes.number,
     // numberOfItemsToLoad: PropTypes.number,
     // loadMoreShouldReplaceItems: PropTypes.bool,
@@ -42,7 +43,7 @@ class FilteredGamesList extends React.Component {
           {this.props.heading}
         </Heading>
         {this.props.showControls && (
-          <FilterControls placement={FilterControls.placements.center} />
+          <FilterControls placement={this.props.buttonPlacement} />
         )}
         <GamesList
           heading={this.props.heading}

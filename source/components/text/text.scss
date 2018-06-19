@@ -1,15 +1,17 @@
 .text {
-  &--small {
+  &--size-small {
     font-size: $text-size-sm;
   }
-
-  &--medium {
+  &--size-medium {
     font-size: $text-size-md;
   }
-  &--large {
+  &--size-large {
     font-size: $text-size-lg;
   }
-  &--huge {
+  &--size-huge {
     font-size: $text-size-hg;
+  }
+  &--quote {
+    color: red;
   }
 }
