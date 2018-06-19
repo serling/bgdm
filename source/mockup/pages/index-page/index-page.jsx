@@ -4,6 +4,7 @@ import React from 'react';
 import Layout from '../../../components/layout';
 import Row from '../../../components/row';
 import Hero from '../../../components/hero';
+import Text from '../../../components/text';
 import AllGames from '../../../components/all-games';
 
 const oldGames = {
@@ -76,7 +77,7 @@ const IndexPage = () => (
       <Hero main={oneGame} highlights={newGames} />
     </Row>
     <Row backgroundColor={Row.colors.secondary} padding={Row.paddings.large}>
-      hello message
+      <Text size={Text.sizes.large}>message full of text</Text>
     </Row>
     <Row>
       <AllGames games={oldGames} />
