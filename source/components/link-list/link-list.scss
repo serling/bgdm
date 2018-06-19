@@ -1,1 +1,5 @@
-.link-list {}
+.link-list {
+  &__heading {
+    margin-bottom: $spacing-md;
+  }
+}

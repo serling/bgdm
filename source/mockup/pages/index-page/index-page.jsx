@@ -82,6 +82,9 @@ const IndexPage = () => (
     <Row>
       <AllGames games={oldGames} />
     </Row>
+    <Row>
+      <AllGames games={oldGames} />
+    </Row>
   </Layout>
 );
 

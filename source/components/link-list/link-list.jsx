@@ -7,7 +7,9 @@ import Link from '../../components/link';
 
 const LinkList = ({ heading, links }) => (
   <div className="link-list">
-    <Heading>{heading}</Heading>
+    <Heading level={3} className="link-list__heading">
+      {heading}
+    </Heading>
     <List>
       {links.map((link, index) => (
         <Link key={link.id || index} href={link.href}>
