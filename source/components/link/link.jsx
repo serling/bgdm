@@ -2,19 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import { Link as RouterLink } from 'react-router-dom';
+
 const themes = {
   default: 'default'
 };
 
-const Link = ({ text, href, children, theme }) => (
-  <a className={cn('link', `link--${theme}`)} href={href}>
-    {text || children}
-  </a>
-);
+const Link = ({ text, href, children, theme, routerHref, className }) =>
+  React.createElement(
+    routerHref ? RouterLink : 'a',
+    {
+      className: cn('link', `link--${theme}`, className),
+      to: routerHref,
+      href: routerHref ? undefined : href
+    },
+    <span className="link__inner">{text || children}</span>
+  );
 
 Link.propTypes = {
   text: PropTypes.string,
   href: PropTypes.string,
+  className: PropTypes.string,
+  routerHref: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)

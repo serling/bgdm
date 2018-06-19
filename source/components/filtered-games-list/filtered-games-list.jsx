@@ -12,28 +12,22 @@ class FilteredGamesList extends React.Component {
     games: PropTypes.array.isRequired,
     showControls: PropTypes.bool,
     gridColumns: PropTypes.number,
-    initialNumberOfItemsToLoad: PropTypes.number,
-    numberOfItemsToLoad: PropTypes.number,
+    // initialNumberOfItemsToLoad: PropTypes.number,
+    // numberOfItemsToLoad: PropTypes.number,
+    // loadMoreShouldReplaceItems: PropTypes.bool,
     showLoadMoreButton: PropTypes.bool
-    // replace or append to collection? Load-more button can be the random pick loader
   };
 
   static defaultProps = {
-    initialNumberOfItemsToLoad: 10,
-    numberOfItemsToLoad: 10
+    // initialNumberOfItemsToLoad: 10,
+    // numberOfItemsToLoad: 10
   };
 
   state = {
     filteredGames: this.props.games //fetch games from service, set filtered games: []
   };
 
-  handleButtonClick() {
-    console.log(
-      'populating list',
-      this.props.initialNumberOfItemsToLoad,
-      this.props.numberOfItemsToLoad
-    );
-  }
+  handleLoadMoreButtonClick() {}
 
   render() {
     return (
@@ -48,7 +42,7 @@ class FilteredGamesList extends React.Component {
           gridColumns={this.props.gridColumns}
         />
         {this.props.showLoadMoreButton && (
-          <Button onClick={() => this.handleButtonClick()}>More</Button>
+          <Button onClick={() => this.handleLoadMoreButtonClick()}>More</Button>
         )}
       </div>
     );

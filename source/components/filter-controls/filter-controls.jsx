@@ -1,21 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import List from '../../components/list';
-import FilterButton from '../../components/filter-button';
+import Button from '../../components/button';
 
 class FilterControls extends React.Component {
-  static propTypes = {};
+  static propTypes = {
+    className: PropTypes.string
+  };
 
   state = {};
 
   render() {
     return (
-      <div className="filter-controls">
+      <div className={cn('filter-controls', this.props.className)}>
         <List inline={true}>
-          <FilterButton text="func #1" icon="👍" />
-          <FilterButton text="func #2" />
-          <FilterButton text="func #3" />
+          <Button
+            theme={Button.themes.filter}
+            onClick={() => undefined}
+            text="rating"
+            icon="👍"
+          />
+          <Button
+            theme={Button.themes.filter}
+            onClick={() => undefined}
+            text="date"
+          />
+          <Button
+            theme={Button.themes.filter}
+            onClick={() => undefined}
+            text="sys"
+          />
         </List>
       </div>
     );

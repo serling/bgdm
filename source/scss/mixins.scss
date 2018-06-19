@@ -34,5 +34,8 @@
 @mixin remove-button-styles {
   padding: 0;
   background-color: transparent;
-  @content;
+}
+
+@mixin remove-link-styles {
+  color: inherit;
 }

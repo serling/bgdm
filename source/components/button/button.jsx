@@ -2,19 +2,49 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import VisuallyHidden from '../../components/visually-hidden';
+
 const themes = {
-  default: 'default'
+  default: 'default',
+  filter: 'filter'
 };
 
-const Button = ({ text, onClick, children, theme }) => (
-  <button className={cn('button', `link--${theme}`)} onClick={onClick}>
-    {text || children}
+const Button = ({
+  text,
+  onClick,
+  children,
+  theme,
+  className,
+  isActive,
+  icon
+}) => (
+  <button
+    className={cn(
+      'button',
+      `link--${theme}`,
+      {
+        'button--active': isActive,
+        'button--has-icon': icon
+      },
+      className
+    )}
+    onClick={onClick}
+  >
+    {icon ? (
+      <VisuallyHidden>{text || children}</VisuallyHidden>
+    ) : (
+      <span className="filter-button__text">{text || children}</span>
+    )}
+    <span className="filter-button__icon">{icon}</span>
   </button>
 );
 
 Button.propTypes = {
   text: PropTypes.string,
   onClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
+  isActive: PropTypes.bool,
+  icon: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
