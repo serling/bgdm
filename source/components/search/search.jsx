@@ -28,7 +28,7 @@ class Search extends React.Component {
             type="text"
             className="search__input"
             ref={ref => (this.input = ref)}
-            disabled={true}
+            // disabled={true}
             placeholder="search..."
           />
         </div>

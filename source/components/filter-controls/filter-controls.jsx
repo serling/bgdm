@@ -13,6 +13,7 @@ const placements = {
 
 class FilterControls extends React.Component {
   static propTypes = {
+    buttonsDisabled: PropTypes.bool,
     className: PropTypes.string,
     placement: PropTypes.oneOf(
       Object.keys(placements).map(key => placements[key])
@@ -42,6 +43,7 @@ class FilterControls extends React.Component {
             <Button
               theme={Button.themes.filter}
               onClick={this.props.onClickSortByScore}
+              disabled={this.props.buttonsDisabled}
               text="rating"
               icon="👍"
             />
@@ -50,6 +52,7 @@ class FilterControls extends React.Component {
             <Button
               theme={Button.themes.filter}
               onClick={this.props.onClickSortByDate}
+              disabled={this.props.buttonsDisabled}
               text="date"
             />
           )}
@@ -57,6 +60,7 @@ class FilterControls extends React.Component {
             <Button
               theme={Button.themes.filter}
               onClick={this.props.onClickSortByName}
+              disabled={this.props.buttonsDisabled}
               text="name"
             />
           )}

@@ -16,6 +16,7 @@ const Button = ({
   theme,
   className,
   isActive,
+  disabled,
   icon
 }) => (
   <button
@@ -29,6 +30,7 @@ const Button = ({
       className
     )}
     onClick={onClick}
+    disabled={disabled}
   >
     {icon ? (
       <VisuallyHidden>{text || children}</VisuallyHidden>
@@ -45,6 +47,7 @@ Button.propTypes = {
   className: PropTypes.string,
   isActive: PropTypes.bool,
   icon: PropTypes.string,
+  disabled: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)

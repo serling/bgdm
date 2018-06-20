@@ -168,11 +168,16 @@ class FilteredGamesList extends React.Component {
           {this.props.heading}
         </Heading>
         {this.state.isFetching && (
-          <div className="filtered-games-list__loading">loading...</div>
+          <div className="filtered-games-list__loading">
+            <div className="filtered-games-list__loading-spinner">
+              loading...
+            </div>
+          </div>
         )}
         {this.props.showControls && (
           <FilterControls
             placement={this.props.buttonPlacement}
+            buttonsDisabled={this.state.isFetching}
             onClickSortByDate={() => this.handleClickSortByDate()}
             onClickSortByName={() => this.handleClickSortByName()}
             onClickSortByScore={() => this.handleClickSortByScore()}
@@ -184,7 +189,12 @@ class FilteredGamesList extends React.Component {
           gridColumns={this.props.gridColumns}
         />
         {this.props.showLoadMoreButton && (
-          <Button onClick={() => this.handleLoadMoreButtonClick()}>More</Button>
+          <Button
+            disabled={this.state.isFetching}
+            onClick={() => this.handleLoadMoreButtonClick()}
+          >
+            More
+          </Button>
         )}
       </div>
     );
