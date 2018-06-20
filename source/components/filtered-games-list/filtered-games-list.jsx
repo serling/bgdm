@@ -25,10 +25,12 @@ class FilteredGamesList extends React.Component {
   };
 
   state = {
-    filteredGames: this.props.games //fetch games from service, set filtered games: []
+    filteredGames: this.props.games //set filtered games: []
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    //fetch games from service
+  }
 
   handleLoadMoreButtonClick() {}
 
