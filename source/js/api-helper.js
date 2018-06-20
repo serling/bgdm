@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import analytics from './analytics';
 import getData from '@creuna/utils/get-data';
 import messenger from './messenger';
@@ -6,8 +7,7 @@ const defaultFetchOptions = {
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'
-  },
-  credentials: 'include'
+  }
 };
 
 function parseResponse(response) {
@@ -87,7 +87,7 @@ function get(endpoint) {
 
 function execute(endpoint, data) {
   if (endpoint.indexOf('/mockup/api') !== -1) {
-    console.log('Requesting mock data from', endpoint, data); // eslint-disable-line no-console
+    console.log('Requesting mock data from', endpoint, data);
     return new Promise(resolve => {
       setTimeout(() => {
         resolve(request(endpoint, defaultFetchOptions));

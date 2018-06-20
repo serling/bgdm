@@ -10,16 +10,18 @@ class GamesList extends React.Component {
     gridColumns: PropTypes.number
   };
 
-  state = {
-    games: this.props.games
+  static defaultProps = {
+    games: []
   };
+
+  state = {};
 
   render() {
     return (
       <div className="games-list">
         <Grid columns={this.props.gridColumns}>
-          {this.state.games.map((game, index) => (
-            <Game key={game.id || index} {...game} />
+          {this.props.games.map((game, index) => (
+            <Game key={index} {...game} />
           ))}
         </Grid>
       </div>

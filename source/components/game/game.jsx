@@ -12,7 +12,7 @@ const themes = {
 
 const staticHref = '../../mockup/assets/static.jpg';
 
-const Game = ({ title, href, imgSrc, isLoading, theme }) => (
+const Game = ({ title, href, imgSrc, theme }) => (
   <div className={cn('game', `game--${theme}`)}>
     <Link routerHref={href}>
       <Image
@@ -23,14 +23,12 @@ const Game = ({ title, href, imgSrc, isLoading, theme }) => (
       <Heading level={3} className="game__title">
         {title}
       </Heading>
-      {isLoading && <p>fetching...</p>}
     </Link>
   </div>
 );
 
 Game.propTypes = {
   title: PropTypes.string,
-  isLoading: PropTypes.bool,
   href: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))

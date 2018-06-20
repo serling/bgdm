@@ -16,14 +16,17 @@ class FilterControls extends React.Component {
     className: PropTypes.string,
     placement: PropTypes.oneOf(
       Object.keys(placements).map(key => placements[key])
-    )
+    ),
+    onClickSortByName: PropTypes.func,
+    onClickSortByDate: PropTypes.func,
+    onClickSortByScore: PropTypes.func
   };
 
   static defaultProps = {
     placement: placements.left
   };
 
-  state = {};
+  state = { tmp: {} };
 
   render() {
     return (
@@ -35,22 +38,28 @@ class FilterControls extends React.Component {
         )}
       >
         <List inline={true}>
-          <Button
-            theme={Button.themes.filter}
-            onClick={() => undefined}
-            text="rating"
-            icon="👍"
-          />
-          <Button
-            theme={Button.themes.filter}
-            onClick={() => undefined}
-            text="date"
-          />
-          <Button
-            theme={Button.themes.filter}
-            onClick={() => undefined}
-            text="sys"
-          />
+          {this.props.onClickSortByScore && (
+            <Button
+              theme={Button.themes.filter}
+              onClick={this.props.onClickSortByScore}
+              text="rating"
+              icon="👍"
+            />
+          )}
+          {this.props.onClickSortByDate && (
+            <Button
+              theme={Button.themes.filter}
+              onClick={this.props.onClickSortByDate}
+              text="date"
+            />
+          )}
+          {this.props.onClickSortByName && (
+            <Button
+              theme={Button.themes.filter}
+              onClick={this.props.onClickSortByName}
+              text="name"
+            />
+          )}
         </List>
       </div>
     );

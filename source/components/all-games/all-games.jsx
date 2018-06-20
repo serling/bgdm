@@ -1,28 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import FilteredGamesList from '../../components/filtered-games-list';
 
 class AllGames extends React.Component {
-  static propTypes = {
-    games: PropTypes.object
-  };
+  // static propTypes = {};
 
   state = {};
 
-  componentDidMount() {
-    //TODO: fetch in filtered-games-list, remove games from props here
-  }
+  componentDidMount() {}
 
   render() {
     return (
       <div className="all-games">
         <FilteredGamesList
+          heading={'lots and lots'}
           showControls={true}
           buttonPlacement={'center'}
           showLoadMoreButton={true}
           gridColumns={4}
-          {...this.props.games}
+          initialNumberOfItemsToLoad={16}
+          apiUrl={'http://n.zawiarr.com/bgdm/api/games/'}
         />
       </div>
     );

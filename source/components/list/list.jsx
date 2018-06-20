@@ -8,7 +8,7 @@ const List = ({ inline, ordered, className, children }) =>
     ordered ? 'ol' : 'ul',
     { className: cn('list', { 'list--inline': inline }, className) },
     React.Children.map(children, (child, index) => (
-      <li key={child.id || index} className="list__item">
+      <li key={index} className="list__item">
         {child}
       </li>
     ))

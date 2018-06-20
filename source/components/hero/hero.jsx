@@ -1,13 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import FilteredGamesList from '../../components/filtered-games-list';
 
 class Hero extends React.Component {
-  static propTypes = {
-    main: PropTypes.object,
-    highlights: PropTypes.object
-  };
+  // static propTypes = {};
 
   state = {};
 
@@ -20,16 +17,18 @@ class Hero extends React.Component {
       <div className="hero">
         <div className="hero__main">
           <FilteredGamesList
-            {...this.props.main}
             gridColumns={1}
+            heading={'just the one'}
             initialNumberOfItemsToLoad={1}
+            apiUrl={'http://n.zawiarr.com/bgdm/api/games/'} //TODO: ?limit=
           />
         </div>
         <div className="hero__highlights">
           <FilteredGamesList
-            {...this.props.highlights}
             gridColumns={3}
+            heading={'highlights'}
             initialNumberOfItemsToLoad={3}
+            apiUrl={'http://n.zawiarr.com/bgdm/api/games/'}
           />
         </div>
       </div>
