@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import replaceQueryParameters from '@creuna/utils/replace-query-parameters';
+
 import api from '../../js/api-helper';
 
 class DataFetcher extends React.Component {
@@ -9,11 +11,11 @@ class DataFetcher extends React.Component {
   };
 
   sortParameters = {
-    name: { ascending: '?&ordering=name', descending: '?&ordering=-name' },
-    date: { ascending: '?&ordering=date', descending: '?&ordering=-date' },
+    name: { ascending: 'name', descending: '-name' },
+    date: { ascending: 'date', descending: '-date' },
     rating: {
-      ascending: '?&ordering=-autoscore',
-      descending: '?&ordering=autoscore'
+      ascending: '-autoscore',
+      descending: 'autoscore'
     }
   };
 
@@ -30,16 +32,22 @@ class DataFetcher extends React.Component {
 
   fetchData(url, shouldAppend = false) {
     this.setState({ isFetching: true }, () => {
-      api.get(url + this.state.activeSort).then(payload => {
-        this.setState(previousState => ({
-          nextPageUrl: payload.next,
-          previousPageUrl: payload.previous,
-          isFetching: false,
-          collection: shouldAppend
-            ? [...previousState.collection, ...payload.results]
-            : payload.results
-        }));
-      });
+      api
+        .get(
+          replaceQueryParameters(url, {
+            ordering: this.state.activeSort
+          })
+        )
+        .then(payload => {
+          this.setState(previousState => ({
+            nextPageUrl: payload.next,
+            previousPageUrl: payload.previous,
+            collection: shouldAppend
+              ? [...previousState.collection, ...payload.results]
+              : payload.results,
+            isFetching: false
+          }));
+        });
     });
   }
 
@@ -52,6 +60,7 @@ class DataFetcher extends React.Component {
   }
 
   handleClickSortBy(type) {
+    //TODO: fix this so it recieves parameters
     this.setState(
       {
         activeSort:
