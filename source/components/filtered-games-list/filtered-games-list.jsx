@@ -13,9 +13,10 @@ class FilteredGamesList extends React.Component {
     buttonPlacement: PropTypes.string,
     gridColumns: PropTypes.number,
     isFetching: PropTypes.bool,
-    collection: PropTypes.array.isRequired,
+    collection: PropTypes.array,
     onClickSortBy: PropTypes.func,
     onClickLoadMore: PropTypes.func
+    //TODO: another abstraction -> heading, controls, buttons, grid
   };
 
   static defaultProps = {
@@ -62,7 +63,7 @@ class FilteredGamesList extends React.Component {
   }
 
   // componentDidUpdate(prevProps, prevState) {
-  //   if (this.props.games.length === prevProps.games.length) return;
+  //   if (this.props.collection.length === prevProps.collection.length) return;
 
   //   //TODO: this logic won't work, needs to be revised
 

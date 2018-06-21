@@ -8,10 +8,19 @@ class DataFetcher extends React.Component {
     apiUrl: PropTypes.string.isRequired
   };
 
+  sortParameters = {
+    name: { ascending: '?&ordering=name', descending: '?&ordering=-name' },
+    date: { ascending: '?&ordering=date', descending: '?&ordering=-date' },
+    rating: {
+      ascending: '?&ordering=-autoscore',
+      descending: '?&ordering=autoscore'
+    }
+  };
+
   state = {
     isFetching: false,
     collection: [],
-    activeSort: '',
+    activeSort: this.sortParameters.date.descending,
     apiUrl: this.props.apiUrl,
     nextPageUrl: '',
     previousPageUrl: '',
@@ -42,25 +51,13 @@ class DataFetcher extends React.Component {
     this.fetchData(this.state.nextPageUrl, true);
   }
 
-  handleClickSortBy(ascending, descending) {
-    // let sort = {
-    //   ascending: '?&ordering=name',
-    //   descending: '?&ordering=-name'
-    // };
-
-    // let sort = {
-    //   ascending: '?&ordering=-autoscore',
-    //   descending: '?&ordering=autoscore'
-    // };
-
-    // let sort = {
-    //   ascending: '?&ordering=date',
-    //   descending: '?&ordering=-date'
-    // };
-
+  handleClickSortBy(type) {
     this.setState(
       {
-        activeSort: this.state.activeSort === ascending ? descending : ascending
+        activeSort:
+          this.state.activeSort === this.sortParameters[type].ascending
+            ? this.sortParameters[type].descending
+            : this.sortParameters[type].ascending
       },
       () => this.fetchData(this.state.apiUrl)
     );
@@ -71,7 +68,7 @@ class DataFetcher extends React.Component {
   }
 
   render() {
-    return !this.state.isFetching ? (
+    return !this.state.isFetching ? ( //TODO: componentDidUpdate?
       this.props.render(this.state)
     ) : (
       <div>NAFFIN</div>
