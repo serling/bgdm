@@ -1,10 +1,11 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import FilteredGamesList from '../../components/filtered-games-list';
+import DataFetcher from '../../components/data-fetcher';
 
 class AllGames extends React.Component {
-  // static propTypes = {};
+  static propTypes = { heading: PropTypes.string };
 
   state = {};
 
@@ -13,14 +14,17 @@ class AllGames extends React.Component {
   render() {
     return (
       <div className="all-games">
-        <FilteredGamesList
-          heading={'lots and lots'}
-          showControls={true}
-          buttonPlacement={'center'}
-          showLoadMoreButton={true}
-          gridColumns={4}
-          initialNumberOfItemsToLoad={16}
-          apiUrl={'http://n.zawiarr.com/bgdm/api/games/'}
+        <DataFetcher
+          apiUrl="http://n.zawiarr.com/bgdm/api/games/"
+          render={data => (
+            <FilteredGamesList
+              heading={this.props.heading}
+              showControls={true}
+              buttonPlacement={'center'}
+              gridColumns={4}
+              {...data}
+            />
+          )}
         />
       </div>
     );

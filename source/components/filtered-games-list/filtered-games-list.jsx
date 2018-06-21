@@ -1,56 +1,30 @@
-/* eslint-disable no-console */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import GamesList from '../../components/games-list';
 import Heading from '../../components/heading';
+import GamesList from '../../components/games-list';
 import Button from '../../components/button';
 import FilterControls from '../../components/filter-controls';
-import api from '../../js/api-helper';
 
 class FilteredGamesList extends React.Component {
   static propTypes = {
     heading: PropTypes.string,
     showControls: PropTypes.bool,
-    gridColumns: PropTypes.number,
     buttonPlacement: PropTypes.string,
-    apiUrl: PropTypes.string,
-    initialNumberOfItemsToLoad: PropTypes.number.isRequired,
-    numberOfItemsToLoad: PropTypes.number,
-    showLoadMoreButton: PropTypes.bool
+    gridColumns: PropTypes.number,
+    isFetching: PropTypes.bool,
+    collection: PropTypes.array.isRequired,
+    onClickSortBy: PropTypes.func,
+    onClickLoadMore: PropTypes.func
   };
 
   static defaultProps = {
-    numberOfItemsToLoad: 1
+    collection: []
   };
 
   state = {
-    initialNumberOfItemsToLoad: this.props.initialNumberOfItemsToLoad,
-    numberOfItemsToLoad: this.props.numberOfItemsToLoad,
-    apiUrl: this.props.apiUrl,
-    isFetching: false,
-    nextPageUrl: '',
-    previousPageUrl: '',
-    numberOfResults: 0,
-    filteredGames: [],
-    activeSort: ''
+    filteredCollection: []
   };
-
-  fetchGames() {
-    this.setState({ isFetching: true }, () => {
-      api.get(this.state.apiUrl + this.state.activeSort).then(payload => {
-        this.setState({
-          numberOfResults: payload.count,
-          nextPageUrl: payload.next,
-          previousPageUrl: payload.previous,
-          filteredGames: payload.results.map(game => {
-            return this.pickAttributes(game);
-          }),
-          isFetching: false
-        });
-      });
-    });
-  }
 
   getIndexImage(arrayOfImages) {
     return arrayOfImages.filter(image => image.index);
@@ -58,61 +32,6 @@ class FilteredGamesList extends React.Component {
 
   getTitleImage(arrayOfImages) {
     return arrayOfImages.filter(image => image.title);
-  }
-
-  getRandomGameId() {
-    return 4;
-  }
-
-  handleClickSortByDate() {
-    let sort = {
-      ascending: '?&ordering=date',
-      descending: '?&ordering=-date'
-    };
-
-    this.setState(
-      {
-        activeSort:
-          this.state.activeSort === sort.ascending
-            ? sort.descending
-            : sort.ascending
-      },
-      () => this.fetchGames()
-    );
-  }
-
-  handleClickSortByScore() {
-    let sort = {
-      ascending: '?&ordering=-autoscore',
-      descending: '?&ordering=autoscore'
-    };
-
-    this.setState(
-      {
-        activeSort:
-          this.state.activeSort === sort.ascending
-            ? sort.descending
-            : sort.ascending
-      },
-      () => this.fetchGames()
-    );
-  }
-
-  handleClickSortByName() {
-    let sort = {
-      ascending: '?&ordering=name',
-      descending: '?&ordering=-name'
-    };
-
-    this.setState(
-      {
-        activeSort:
-          this.state.activeSort === sort.ascending
-            ? sort.descending
-            : sort.ascending
-      },
-      () => this.fetchGames()
-    );
   }
 
   pickAttributes(game) {
@@ -130,32 +49,25 @@ class FilteredGamesList extends React.Component {
     );
   }
 
-  UNSAFE_componentWillReceiveProps() {
-    this.fetchGames();
+  filterCollection() {
+    this.setState({
+      filteredCollection: this.props.collection.map(game => {
+        return this.pickAttributes(game);
+      })
+    });
   }
 
   componentDidMount() {
-    this.fetchGames();
+    this.filterCollection();
   }
 
-  handleLoadMoreButtonClick() {
-    this.setState({ isFetching: true }, () => {
-      api.get(this.state.nextPageUrl).then(payload => {
-        this.setState(previousState => ({
-          numberOfResults: payload.count,
-          nextPageUrl: payload.next,
-          previousPageUrl: payload.previous,
-          filteredGames: [
-            ...previousState.filteredGames,
-            ...payload.results.map(game => {
-              return this.pickAttributes(game);
-            })
-          ],
-          isFetching: false
-        }));
-      });
-    });
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.props.games.length === prevProps.games.length) return;
+
+  //   //TODO: this logic won't work, needs to be revised
+
+  //   this.filterCollection();
+  // }
 
   render() {
     return (
@@ -167,31 +79,31 @@ class FilteredGamesList extends React.Component {
         >
           {this.props.heading}
         </Heading>
-        {this.state.isFetching && (
+        {this.props.isFetching && (
           <div className="filtered-games-list__loading">
             <div className="filtered-games-list__loading-spinner">
-              loading...
+              LOADING...
             </div>
           </div>
         )}
         {this.props.showControls && (
           <FilterControls
             placement={this.props.buttonPlacement}
-            buttonsDisabled={this.state.isFetching}
-            onClickSortByDate={() => this.handleClickSortByDate()}
-            onClickSortByName={() => this.handleClickSortByName()}
-            onClickSortByScore={() => this.handleClickSortByScore()}
+            buttonsDisabled={this.props.isFetching}
+            onClickSortByDate={this.props.onClickSortBy}
+            onClickSortByName={this.props.onClickSortBy}
+            onClickSortByScore={this.props.onClickSortBy}
           />
         )}
         <GamesList
           heading={this.props.heading}
-          games={this.state.filteredGames}
+          games={this.state.filteredCollection}
           gridColumns={this.props.gridColumns}
         />
-        {this.props.showLoadMoreButton && (
+        {this.props.onClickLoadMore && (
           <Button
-            disabled={this.state.isFetching}
-            onClick={() => this.handleLoadMoreButtonClick()}
+            disabled={this.props.isFetching}
+            onClick={this.props.onClickLoadMore}
           >
             More
           </Button>

@@ -27,7 +27,7 @@ const IndexPage = () => (
       />
     </Row>
     <Row>
-      <AllGames />
+      <AllGames heading={'lots and lots'} />
     </Row>
   </Layout>
 );

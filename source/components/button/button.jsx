@@ -47,7 +47,7 @@ Button.propTypes = {
   className: PropTypes.string,
   isActive: PropTypes.bool,
   icon: PropTypes.string,
-  disabled: PropTypes.string,
+  disabled: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
