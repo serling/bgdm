@@ -26,7 +26,7 @@ class FilterControls extends React.Component {
   render() {
     return (
       <div className={'filter-controls'}>
-        <List inline={true}>
+        <List inline={true} className="filter-controls__filters">
           {this.props.onClickFilterBySystem && (
             <Dropdown
               options={filters.systems}
@@ -70,6 +70,8 @@ class FilterControls extends React.Component {
             />
           )}
            */}
+        </List>
+        <List inline={true} className="filter-controls__sorting">
           {this.props.onClickOrderByScore && (
             <Button
               theme={Button.themes.filter}

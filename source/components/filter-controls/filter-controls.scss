@@ -1,5 +1,14 @@
 .filter-controls {
-  display: grid;
   margin-bottom: $spacing-lg;
-  justify-content: center;
+
+  &__filters {
+    margin-bottom: $spacing-md;
+    display: grid;
+    justify-content: center;
+  }
+
+  &__sorting {
+    display: grid;
+    justify-content: center;
+  }
 }
