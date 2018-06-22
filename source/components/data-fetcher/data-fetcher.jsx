@@ -10,7 +10,7 @@ class DataFetcher extends React.Component {
     apiUrl: PropTypes.string.isRequired
   };
 
-  sortParameters = {
+  orderBy = {
     name: { ascending: 'name', descending: '-name' },
     date: { ascending: 'date', descending: '-date' },
     rating: {
@@ -22,11 +22,11 @@ class DataFetcher extends React.Component {
   state = {
     isFetching: false,
     collection: [],
-    activeSort: this.sortParameters.date.descending,
+    activeOrder: this.orderBy.date.descending,
     apiUrl: this.props.apiUrl,
     nextPageUrl: '',
     previousPageUrl: '',
-    onClickSortBy: () => this.handleClickSortBy(),
+    onClickOrderBy: () => this.handleClickOrderBy(),
     onClickLoadMore: () => this.handleClickLoadMore()
   };
 
@@ -35,7 +35,7 @@ class DataFetcher extends React.Component {
       api
         .get(
           replaceQueryParameters(url, {
-            ordering: this.state.activeSort
+            ordering: this.state.activeOrder
           })
         )
         .then(payload => {
@@ -59,14 +59,14 @@ class DataFetcher extends React.Component {
     this.fetchData(this.state.nextPageUrl, true);
   }
 
-  handleClickSortBy(type) {
+  handleClickOrderBy(type) {
     //TODO: fix this so it recieves parameters
     this.setState(
       {
-        activeSort:
-          this.state.activeSort === this.sortParameters[type].ascending
-            ? this.sortParameters[type].descending
-            : this.sortParameters[type].ascending
+        activeOrder:
+          this.state.activeOrder === this.orderBy[type].ascending
+            ? this.orderBy[type].descending
+            : this.orderBy[type].ascending
       },
       () => this.fetchData(this.state.apiUrl)
     );

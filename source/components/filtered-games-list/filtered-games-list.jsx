@@ -14,7 +14,7 @@ class FilteredGamesList extends React.Component {
     gridColumns: PropTypes.number,
     isFetching: PropTypes.bool,
     collection: PropTypes.array,
-    onClickSortBy: PropTypes.func,
+    onClickOrderBy: PropTypes.func,
     onClickLoadMore: PropTypes.func
     //TODO: another abstraction -> heading, controls, buttons, grid
   };
@@ -35,7 +35,7 @@ class FilteredGamesList extends React.Component {
     return arrayOfImages.filter(image => image.title);
   }
 
-  pickAttributes(game) {
+  pickProperties(game) {
     return Object.assign(
       {},
       {
@@ -53,7 +53,7 @@ class FilteredGamesList extends React.Component {
   filterCollection() {
     this.setState({
       filteredCollection: this.props.collection.map(game => {
-        return this.pickAttributes(game);
+        return this.pickProperties(game);
       })
     });
   }
@@ -91,9 +91,9 @@ class FilteredGamesList extends React.Component {
           <FilterControls
             placement={this.props.buttonPlacement}
             buttonsDisabled={this.props.isFetching}
-            onClickSortByDate={this.props.onClickSortBy}
-            onClickSortByName={this.props.onClickSortBy}
-            onClickSortByScore={this.props.onClickSortBy}
+            onClickOrderByDate={this.props.onClickOrderBy}
+            onClickOrderByName={this.props.onClickOrderBy}
+            onClickOrderByScore={this.props.onClickOrderBy}
           />
         )}
         <GamesList

@@ -18,9 +18,9 @@ class FilterControls extends React.Component {
     placement: PropTypes.oneOf(
       Object.keys(placements).map(key => placements[key])
     ),
-    onClickSortByName: PropTypes.func,
-    onClickSortByDate: PropTypes.func,
-    onClickSortByScore: PropTypes.func
+    onClickOrderByName: PropTypes.func,
+    onClickOrderByDate: PropTypes.func,
+    onClickOrderByScore: PropTypes.func
   };
 
   static defaultProps = {
@@ -39,27 +39,27 @@ class FilterControls extends React.Component {
         )}
       >
         <List inline={true}>
-          {this.props.onClickSortByScore && (
+          {this.props.onClickOrderByScore && (
             <Button
               theme={Button.themes.filter}
-              onClick={this.props.onClickSortByScore}
+              onClick={this.props.onClickOrderByScore}
               disabled={this.props.buttonsDisabled}
               text="rating"
               icon="👍"
             />
           )}
-          {this.props.onClickSortByDate && (
+          {this.props.onClickOrderByDate && (
             <Button
               theme={Button.themes.filter}
-              onClick={this.props.onClickSortByDate}
+              onClick={this.props.onClickOrderByDate}
               disabled={this.props.buttonsDisabled}
               text="date"
             />
           )}
-          {this.props.onClickSortByName && (
+          {this.props.onClickOrderByName && (
             <Button
               theme={Button.themes.filter}
-              onClick={this.props.onClickSortByName}
+              onClick={this.props.onClickOrderByName}
               disabled={this.props.buttonsDisabled}
               text="name"
             />
