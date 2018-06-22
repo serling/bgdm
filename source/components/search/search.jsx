@@ -74,6 +74,7 @@ class Search extends React.Component {
                 render={data => (
                   <FilteredGamesList
                     heading={'search results'}
+                    showNumerOfResults={true}
                     gridColumns={4}
                     showControls={true}
                     buttonPlacement={'center'}

@@ -80,7 +80,7 @@ class DataFetcher extends React.Component {
   }
 
   handleSearchQuery() {
-    //TODO: implement
+    //TODO: implement?
   }
 
   setOrderByState(orderType) {
@@ -99,7 +99,7 @@ class DataFetcher extends React.Component {
     this.fetchData(this.state.apiUrl);
   }
 
-  //TODO: fix this
+  //TODO: fix this comparison logic, collection is big
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.apiUrl !== nextProps.apiUrl) {
       return {
@@ -110,7 +110,7 @@ class DataFetcher extends React.Component {
     return null;
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.apiUrl !== prevProps.apiUrl) {
       this.fetchData(this.state.apiUrl);
     }
@@ -119,10 +119,6 @@ class DataFetcher extends React.Component {
   render() {
     return this.props.render({
       collection: this.state.collection,
-      // collection: this.state.collection.slice(
-      //   0,
-      //   this.state.numberOfItemsToFetch //TODO: remove this slice, should be handled by LIMIT
-      // ),
       isFetching: this.state.isFetching,
       onClickOrderByName: this.state.onClickOrderByName,
       onClickOrderByScore: this.state.onClickOrderByScore,

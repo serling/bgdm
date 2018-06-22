@@ -13,6 +13,7 @@ class FilteredGamesList extends React.Component {
     showLoadMore: PropTypes.bool,
     buttonPlacement: PropTypes.string,
     gridColumns: PropTypes.number,
+    showNumerOfResults: PropTypes.bool,
     isFetching: PropTypes.bool,
     collection: PropTypes.array,
     onClickOrderByName: PropTypes.func,
@@ -82,8 +83,8 @@ class FilteredGamesList extends React.Component {
           className="filtered-games-list__heading"
         >
           {this.props.heading}
-          {this.props.numberOfResults > 0 && (
-            <span>({this.props.numberOfResults})</span>
+          {this.props.showNumerOfResults && (
+            <span> ({this.props.numberOfResults})</span>
           )}
         </Heading>
         {this.props.isFetching && (
