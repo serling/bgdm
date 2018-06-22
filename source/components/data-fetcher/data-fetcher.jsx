@@ -25,10 +25,11 @@ class DataFetcher extends React.Component {
     nextPageUrl: '',
     previousPageUrl: '',
     numberOfResults: 0,
+    onClickLoadMore: () => this.handleClickLoadMore(),
     onClickOrderByName: () => this.handleClickOrderByName(),
     onClickOrderByDate: () => this.handleClickOrderByDate(),
     onClickOrderByScore: () => this.handleClickOrderByScore(),
-    onClickLoadMore: () => this.handleClickLoadMore()
+    onClickFilterBySystem: () => this.handleClickFilterBySystem()
   };
 
   fetchData(url, shouldAppend = false) {
@@ -79,8 +80,12 @@ class DataFetcher extends React.Component {
     this.setOrderByState('score');
   }
 
-  handleSearchQuery() {
-    //TODO: implement?
+  HandleClickFilterBySystem() {
+    console.log('filter by system:');
+  }
+
+  handleSearchQuery(parameter) {
+    //TODO: implement
   }
 
   setOrderByState(orderType) {
@@ -99,7 +104,7 @@ class DataFetcher extends React.Component {
     this.fetchData(this.state.apiUrl);
   }
 
-  //TODO: fix this comparison logic, collection is big
+  //TODO: fix this
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.apiUrl !== nextProps.apiUrl) {
       return {
@@ -120,11 +125,12 @@ class DataFetcher extends React.Component {
     return this.props.render({
       collection: this.state.collection,
       isFetching: this.state.isFetching,
+      numberOfResults: this.state.numberOfResults,
       onClickOrderByName: this.state.onClickOrderByName,
       onClickOrderByScore: this.state.onClickOrderByScore,
       onClickOrderByDate: this.state.onClickOrderByDate,
       onClickLoadMore: this.state.onClickLoadMore,
-      numberOfResults: this.state.numberOfResults
+      onClickFilterBySystem: this.state.onClickFilterBySystem
     });
   }
 }

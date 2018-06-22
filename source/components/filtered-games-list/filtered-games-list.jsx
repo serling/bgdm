@@ -16,11 +16,12 @@ class FilteredGamesList extends React.Component {
     showNumerOfResults: PropTypes.bool,
     isFetching: PropTypes.bool,
     collection: PropTypes.array,
+    onClickLoadMore: PropTypes.func,
+    numberOfResults: PropTypes.number,
     onClickOrderByName: PropTypes.func,
     onClickOrderByDate: PropTypes.func,
     onClickOrderByScore: PropTypes.func,
-    onClickLoadMore: PropTypes.func,
-    numberOfResults: PropTypes.number
+    onClickFilterBySystem: PropTypes.func
     //TODO: another abstraction -> heading, controls, buttons, grid
   };
 
@@ -67,7 +68,7 @@ class FilteredGamesList extends React.Component {
     this.filterCollection();
   }
 
-  //TODO: this logic should be better
+  //TODO: fix comparison, collection is too big
   componentDidUpdate(prevProps) {
     if (this.props.collection !== prevProps.collection) {
       this.filterCollection();
@@ -105,6 +106,7 @@ class FilteredGamesList extends React.Component {
               onClickOrderByDate={this.props.onClickOrderByDate}
               onClickOrderByName={this.props.onClickOrderByName}
               onClickOrderByScore={this.props.onClickOrderByScore}
+              onClickFilterBySystem={this.props.onClickFilterBySystem}
             />
           )}
         <GamesList

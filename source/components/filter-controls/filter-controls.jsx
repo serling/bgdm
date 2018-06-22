@@ -4,6 +4,7 @@ import cn from 'classnames';
 
 import List from '../../components/list';
 import Button from '../../components/button';
+import Dropdown from '../../components/dropdown';
 
 //TODO: move this to games list?
 const placements = {
@@ -21,14 +22,30 @@ class FilterControls extends React.Component {
     ),
     onClickOrderByName: PropTypes.func,
     onClickOrderByDate: PropTypes.func,
-    onClickOrderByScore: PropTypes.func
+    onClickOrderByScore: PropTypes.func,
+    onClickFilterBySystem: PropTypes.func
   };
 
   static defaultProps = {
     placement: placements.left
   };
 
-  state = { tmp: {} };
+  alternatives = [
+    {
+      id: 'asdasd',
+      value: 'hello'
+    },
+    {
+      id: '4t34t',
+      value: 'option 2'
+    },
+    {
+      id: 'fsgh567',
+      value: 'longer text'
+    }
+  ];
+
+  state = {};
 
   render() {
     return (
@@ -40,6 +57,12 @@ class FilterControls extends React.Component {
         )}
       >
         <List inline={true}>
+          {this.props.onClickFilterBySystem && (
+            <Dropdown
+              options={this.alternatives}
+              onClickFilterBySystem={this.props.onClickFilterBySystem}
+            />
+          )}
           {this.props.onClickOrderByScore && (
             <Button
               theme={Button.themes.filter}

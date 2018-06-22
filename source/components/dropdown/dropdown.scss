@@ -1,0 +1,12 @@
+.dropdown {
+  position: relative;
+  &__list {
+    margin-top: $spacing-lg;
+    padding: $spacing-md;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    background-color: darkorchid;
+  }
+}

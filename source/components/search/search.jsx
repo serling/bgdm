@@ -62,12 +62,11 @@ class Search extends React.Component {
           this.state.showResults && (
             <div className="search__results">
               <Button
+                text="close"
                 icon="X"
                 onClick={() => this.handleClickCloseButton()}
                 className="search__close"
-              >
-                close
-              </Button>
+              />
               <DataFetcher
                 apiUrl={this.state.searchString}
                 numberOfItemsToFetch={10}
