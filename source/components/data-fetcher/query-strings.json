@@ -1,0 +1,10 @@
+{
+  "orderBy": {
+    "name": { "ascending": "name", "descending": "-name" },
+    "date": { "ascending": "date", "descending": "-date" },
+    "score": {
+      "ascending": "-autoscore",
+      "descending": "autoscore"
+    }
+  }
+}

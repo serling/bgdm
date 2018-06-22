@@ -14,7 +14,9 @@ class FilteredGamesList extends React.Component {
     gridColumns: PropTypes.number,
     isFetching: PropTypes.bool,
     collection: PropTypes.array,
-    onClickOrderBy: PropTypes.func,
+    onClickOrderByName: PropTypes.func,
+    onClickOrderByDate: PropTypes.func,
+    onClickOrderByScore: PropTypes.func,
     onClickLoadMore: PropTypes.func
     //TODO: another abstraction -> heading, controls, buttons, grid
   };
@@ -91,9 +93,9 @@ class FilteredGamesList extends React.Component {
           <FilterControls
             placement={this.props.buttonPlacement}
             buttonsDisabled={this.props.isFetching}
-            onClickOrderByDate={this.props.onClickOrderBy}
-            onClickOrderByName={this.props.onClickOrderBy}
-            onClickOrderByScore={this.props.onClickOrderBy}
+            onClickOrderByDate={this.props.onClickOrderByDate}
+            onClickOrderByName={this.props.onClickOrderByName}
+            onClickOrderByScore={this.props.onClickOrderByScore}
           />
         )}
         <GamesList

@@ -22,7 +22,7 @@ class AllGames extends React.Component {
               showControls={true}
               buttonPlacement={'center'}
               gridColumns={4}
-              {...data}
+              {...data} //TODO: limit what props are propagated from data fetcher
             />
           )}
         />

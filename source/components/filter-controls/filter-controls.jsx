@@ -5,6 +5,7 @@ import cn from 'classnames';
 import List from '../../components/list';
 import Button from '../../components/button';
 
+//TODO: move this to games list?
 const placements = {
   left: 'left',
   center: 'center',

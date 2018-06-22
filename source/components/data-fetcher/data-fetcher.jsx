@@ -2,31 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import replaceQueryParameters from '@creuna/utils/replace-query-parameters';
 
+import queryStrings from './query-strings.json';
 import api from '../../js/api-helper';
 
 class DataFetcher extends React.Component {
   static propTypes = {
     render: PropTypes.func.isRequired,
-    apiUrl: PropTypes.string.isRequired
+    apiUrl: PropTypes.string.isRequired,
+    numberOfItemsToFetch: PropTypes.number
   };
 
-  orderBy = {
-    name: { ascending: 'name', descending: '-name' },
-    date: { ascending: 'date', descending: '-date' },
-    rating: {
-      ascending: '-autoscore',
-      descending: 'autoscore'
-    }
+  static defaultProps = {
+    numberOfItemsToFetch: 10
   };
 
   state = {
     isFetching: false,
     collection: [],
-    activeOrder: this.orderBy.date.descending,
+    activeOrder: queryStrings.orderBy.score.descending,
     apiUrl: this.props.apiUrl,
     nextPageUrl: '',
     previousPageUrl: '',
-    onClickOrderBy: () => this.handleClickOrderBy(),
+    onClickOrderByName: () => this.handleClickOrderByName(),
+    onClickOrderByDate: () => this.handleClickOrderByDate(),
+    onClickOrderByScore: () => this.handleClickOrderByScore(),
     onClickLoadMore: () => this.handleClickLoadMore()
   };
 
@@ -59,14 +58,25 @@ class DataFetcher extends React.Component {
     this.fetchData(this.state.nextPageUrl, true);
   }
 
-  handleClickOrderBy(type) {
-    //TODO: fix this so it recieves parameters
+  handleClickOrderByName() {
+    this.setOrderByState('name');
+  }
+
+  handleClickOrderByDate() {
+    this.setOrderByState('date');
+  }
+
+  handleClickOrderByScore() {
+    this.setOrderByState('score');
+  }
+
+  setOrderByState(orderType) {
     this.setState(
       {
         activeOrder:
-          this.state.activeOrder === this.orderBy[type].ascending
-            ? this.orderBy[type].descending
-            : this.orderBy[type].ascending
+          this.state.activeOrder === queryStrings.orderBy[orderType].ascending
+            ? queryStrings.orderBy[orderType].descending
+            : queryStrings.orderBy[orderType].ascending
       },
       () => this.fetchData(this.state.apiUrl)
     );
