@@ -18,7 +18,8 @@ class FilteredGamesList extends React.Component {
     onClickOrderByName: PropTypes.func,
     onClickOrderByDate: PropTypes.func,
     onClickOrderByScore: PropTypes.func,
-    onClickLoadMore: PropTypes.func
+    onClickLoadMore: PropTypes.func,
+    numberOfResults: PropTypes.number
     //TODO: another abstraction -> heading, controls, buttons, grid
   };
 
@@ -66,7 +67,7 @@ class FilteredGamesList extends React.Component {
   }
 
   //TODO: this logic should be better
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.collection !== prevProps.collection) {
       this.filterCollection();
     }
@@ -81,6 +82,9 @@ class FilteredGamesList extends React.Component {
           className="filtered-games-list__heading"
         >
           {this.props.heading}
+          {this.props.numberOfResults > 0 && (
+            <span>({this.props.numberOfResults})</span>
+          )}
         </Heading>
         {this.props.isFetching && (
           <div className="filtered-games-list__loading">
@@ -89,15 +93,19 @@ class FilteredGamesList extends React.Component {
             </div>
           </div>
         )}
-        {this.props.showControls && (
-          <FilterControls
-            placement={this.props.buttonPlacement}
-            buttonsDisabled={this.props.isFetching}
-            onClickOrderByDate={this.props.onClickOrderByDate}
-            onClickOrderByName={this.props.onClickOrderByName}
-            onClickOrderByScore={this.props.onClickOrderByScore}
-          />
+        {this.props.numberOfResults === 0 && (
+          <div className="filtered-games-list__message">No matches found</div>
         )}
+        {this.props.showControls &&
+          this.props.numberOfResults > 0 && (
+            <FilterControls
+              placement={this.props.buttonPlacement}
+              buttonsDisabled={this.props.isFetching}
+              onClickOrderByDate={this.props.onClickOrderByDate}
+              onClickOrderByName={this.props.onClickOrderByName}
+              onClickOrderByScore={this.props.onClickOrderByScore}
+            />
+          )}
         <GamesList
           heading={this.props.heading}
           games={this.state.filteredCollection}

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import FilteredGamesList from '../../components/filtered-games-list';
 import DataFetcher from '../../components/data-fetcher';
+import Button from '../../components/button';
 
 class Search extends React.Component {
   static propTypes = {
@@ -19,13 +20,21 @@ class Search extends React.Component {
 
   state = {
     searchString: '',
-    searchQuery: ''
+    searchQuery: '',
+    showResults: true
   };
 
   inputRef = {};
 
+  handleClickCloseButton() {
+    this.setState({
+      showResults: false
+    });
+  }
+
   setSearchString() {
     this.setState({
+      showResults: true,
       searchQuery: this.inputRef.value,
       searchString:
         'http://n.zawiarr.com/bgdm/api/games/?search=' + this.inputRef.value
@@ -49,21 +58,31 @@ class Search extends React.Component {
             placeholder="search..."
           />
         </div>
-        {this.state.searchQuery.length > this.props.searchInputThreshold && (
-          <div className="search__results">
-            <DataFetcher
-              apiUrl={this.state.searchString}
-              numberOfItemsToFetch={10}
-              render={data => (
-                <FilteredGamesList
-                  heading={'search results'}
-                  gridColumns={4}
-                  {...data}
-                />
-              )}
-            />
-          </div>
-        )}
+        {this.state.searchQuery.length > this.props.searchInputThreshold &&
+          this.state.showResults && (
+            <div className="search__results">
+              <Button
+                icon="X"
+                onClick={() => this.handleClickCloseButton()}
+                className="search__close"
+              >
+                close
+              </Button>
+              <DataFetcher
+                apiUrl={this.state.searchString}
+                numberOfItemsToFetch={10}
+                render={data => (
+                  <FilteredGamesList
+                    heading={'search results'}
+                    gridColumns={4}
+                    showControls={true}
+                    buttonPlacement={'center'}
+                    {...data}
+                  />
+                )}
+              />
+            </div>
+          )}
       </div>
     );
   }

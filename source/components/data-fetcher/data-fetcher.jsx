@@ -24,6 +24,7 @@ class DataFetcher extends React.Component {
     apiUrl: this.props.apiUrl,
     nextPageUrl: '',
     previousPageUrl: '',
+    numberOfResults: 0,
     onClickOrderByName: () => this.handleClickOrderByName(),
     onClickOrderByDate: () => this.handleClickOrderByDate(),
     onClickOrderByScore: () => this.handleClickOrderByScore(),
@@ -43,6 +44,7 @@ class DataFetcher extends React.Component {
           this.setState(previousState => ({
             nextPageUrl: payload.next,
             previousPageUrl: payload.previous,
+            numberOfResults: payload.count,
             collection: shouldAppend
               ? [...previousState.collection, ...payload.results]
               : payload.results,
@@ -125,7 +127,8 @@ class DataFetcher extends React.Component {
       onClickOrderByName: this.state.onClickOrderByName,
       onClickOrderByScore: this.state.onClickOrderByScore,
       onClickOrderByDate: this.state.onClickOrderByDate,
-      onClickLoadMore: this.state.onClickLoadMore
+      onClickLoadMore: this.state.onClickLoadMore,
+      numberOfResults: this.state.numberOfResults
     });
   }
 }

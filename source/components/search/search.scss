@@ -20,5 +20,9 @@
     z-index: 1000;
     padding: $spacing-md;
     box-shadow: 12px 14px 26px -5px rgba(0, 0, 0, 0.75);
+    min-height: 200px;
+  }
+
+  &__close {
   }
 }
