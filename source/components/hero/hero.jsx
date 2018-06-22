@@ -16,33 +16,30 @@ class Hero extends React.Component {
   render() {
     return (
       <div className="hero">
-        {/* <DataFetcher
-          apiUrl="http://n.zawiarr.com/bgdm/api/games/"
-          render={data => (
-            <FilteredGamesList
-              heading={this.props.heading}
-              showControls={true}
-              buttonPlacement={'center'}
-              gridColumns={4}
-              {...data}
-            />
-          )}
-        /> */}
-
         <div className="hero__main">
-          <FilteredGamesList
-            gridColumns={1}
-            heading={'just the one'}
-            initialNumberOfItemsToLoad={1}
-            apiUrl={'http://n.zawiarr.com/bgdm/api/games/'} //TODO: ?limit=
+          <DataFetcher
+            apiUrl="http://n.zawiarr.com/bgdm/api/games/"
+            numberOfItemsToFetch={1}
+            render={data => (
+              <FilteredGamesList
+                heading={'just the one'}
+                gridColumns={1}
+                {...data}
+              />
+            )}
           />
         </div>
         <div className="hero__highlights">
-          <FilteredGamesList
-            gridColumns={3}
-            heading={'highlights'}
-            initialNumberOfItemsToLoad={3}
-            apiUrl={'http://n.zawiarr.com/bgdm/api/games/'}
+          <DataFetcher
+            apiUrl="http://n.zawiarr.com/bgdm/api/games/"
+            numberOfItemsToFetch={3}
+            render={data => (
+              <FilteredGamesList
+                heading={'highlights'}
+                gridColumns={3}
+                {...data}
+              />
+            )}
           />
         </div>
       </div>

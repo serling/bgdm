@@ -10,6 +10,7 @@ class FilteredGamesList extends React.Component {
   static propTypes = {
     heading: PropTypes.string,
     showControls: PropTypes.bool,
+    showLoadMore: PropTypes.bool,
     buttonPlacement: PropTypes.string,
     gridColumns: PropTypes.number,
     isFetching: PropTypes.bool,
@@ -101,7 +102,7 @@ class FilteredGamesList extends React.Component {
           games={this.state.filteredCollection}
           gridColumns={this.props.gridColumns}
         />
-        {this.props.onClickLoadMore && (
+        {this.props.showLoadMore && (
           <Button
             disabled={this.props.isFetching}
             onClick={this.props.onClickLoadMore}

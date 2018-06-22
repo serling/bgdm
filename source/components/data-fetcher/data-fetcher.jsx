@@ -19,6 +19,7 @@ class DataFetcher extends React.Component {
   state = {
     isFetching: false,
     collection: [],
+    numberOfItemsToFetch: this.props.numberOfItemsToFetch,
     activeOrder: queryStrings.orderBy.score.descending,
     apiUrl: this.props.apiUrl,
     nextPageUrl: '',
@@ -34,7 +35,8 @@ class DataFetcher extends React.Component {
       api
         .get(
           replaceQueryParameters(url, {
-            ordering: this.state.activeOrder
+            ordering: this.state.activeOrder,
+            limit: this.state.numberOfItemsToFetch //TODO: make LIMIT work in query
           })
         )
         .then(payload => {
@@ -46,6 +48,15 @@ class DataFetcher extends React.Component {
               : payload.results,
             isFetching: false
           }));
+        })
+        .then(() => {
+          console.log(
+            'fetching from:',
+            replaceQueryParameters(url, {
+              ordering: this.state.activeOrder,
+              limit: this.state.numberOfItemsToFetch
+            })
+          );
         });
     });
   }
@@ -84,7 +95,10 @@ class DataFetcher extends React.Component {
 
   render() {
     return this.props.render({
-      collection: this.state.collection,
+      collection: this.state.collection.slice(
+        0,
+        this.state.numberOfItemsToFetch //TODO: remove this slice, should be handled by LIMIT
+      ),
       isFetching: this.state.isFetching,
       onClickOrderByName: this.state.onClickOrderByName,
       onClickOrderByScore: this.state.onClickOrderByScore,

@@ -2,17 +2,18 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 import FilteredGamesList from '../../components/filtered-games-list';
+import DataFetcher from '../../components/data-fetcher';
 
 class Search extends React.Component {
   // static propTypes = {};
 
   state = {
-    searchQuery: ''
+    searchString: ''
   };
 
   handleOnTextInputChange() {
     this.setState({
-      searchQuery:
+      searchString:
         this.input.value.length > 2
           ? 'http://n.zawiarr.com/bgdm/api/games/?search=' + this.input.value
           : ''
@@ -28,17 +29,21 @@ class Search extends React.Component {
             type="text"
             className="search__input"
             ref={ref => (this.input = ref)}
-            // disabled={true}
             placeholder="search..."
           />
         </div>
-        {this.state.searchQuery.length > 2 && (
+        {this.state.searchString.length > 2 && (
           <div className="search__results">
-            <FilteredGamesList
-              gridColumns={4}
-              heading={'search results'}
-              initialNumberOfItemsToLoad={10}
-              apiUrl={this.state.searchQuery}
+            <DataFetcher
+              apiUrl={this.state.searchString}
+              numberOfItemsToFetch={10}
+              render={data => (
+                <FilteredGamesList
+                  heading={'search results'}
+                  gridColumns={4}
+                  {...data}
+                />
+              )}
             />
           </div>
         )}
