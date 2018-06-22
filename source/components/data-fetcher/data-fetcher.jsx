@@ -50,10 +50,6 @@ class DataFetcher extends React.Component {
     });
   }
 
-  // UNSAFE_componentWillReceiveProps() {
-  //   this.fetchGames();
-  // }
-
   handleClickLoadMore() {
     this.fetchData(this.state.nextPageUrl, true);
   }
@@ -87,18 +83,14 @@ class DataFetcher extends React.Component {
   }
 
   render() {
-    return !this.state.isFetching ? ( //TODO: componentDidUpdate?
-      this.props.render({
-        collection: this.state.collection,
-        isFetching: this.state.isFetching,
-        onClickOrderByName: this.state.onClickOrderByName,
-        onClickOrderByScore: this.state.onClickOrderByScore,
-        onClickOrderByDate: this.state.onClickOrderByDate,
-        onClickLoadMore: this.state.onClickLoadMore
-      })
-    ) : (
-      <div>NAFFIN</div>
-    );
+    return this.props.render({
+      collection: this.state.collection,
+      isFetching: this.state.isFetching,
+      onClickOrderByName: this.state.onClickOrderByName,
+      onClickOrderByScore: this.state.onClickOrderByScore,
+      onClickOrderByDate: this.state.onClickOrderByDate,
+      onClickLoadMore: this.state.onClickLoadMore
+    });
   }
 }
 

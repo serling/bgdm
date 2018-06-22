@@ -64,13 +64,11 @@ class FilteredGamesList extends React.Component {
     this.filterCollection();
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.props.collection.length === prevProps.collection.length) return;
-
-  //   //TODO: this logic won't work, needs to be revised
-
-  //   this.filterCollection();
-  // }
+  //TODO: this logic should be better
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.collection === prevProps.collection) return;
+    this.filterCollection();
+  }
 
   render() {
     return (
