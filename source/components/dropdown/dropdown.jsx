@@ -12,24 +12,35 @@ class Dropdown extends React.Component {
         value: PropTypes.string.isRequired
       }).isRequired
     ).isRequired,
-    activeOption: PropTypes.object,
-    onClickFilterBySystem: PropTypes.func.isRequired
+    disabled: PropTypes.bool,
+    onClickFilter: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    options: [],
-    activeOption: { id: 'none', value: '---select---' }
+    options: []
   };
 
   state = {
-    activeOption: this.props.activeOption,
+    activeOption: this.props.options[0],
     isOpen: false
   };
 
-  handleClickOpenMenu() {
+  toggleMenu() {
     this.setState(previousState => ({
       isOpen: !previousState.isOpen
     }));
+  }
+
+  handleClickOpenMenu() {
+    this.toggleMenu();
+  }
+
+  handleOnClickFilter(id, index) {
+    this.toggleMenu();
+    this.setState({
+      activeOption: this.props.options[index]
+    });
+    this.props.onClickFilter(id);
   }
 
   render() {
@@ -37,24 +48,28 @@ class Dropdown extends React.Component {
       <div className="dropdown">
         <div className="dropdown__selection">
           <Button
-            text={this.state.activeOption.value}
+            disabled={this.props.disabled}
+            text={this.state.activeOption.name.toString()}
             onClick={() => this.handleClickOpenMenu()}
           />
         </div>
-        {/* {this.state.isOpen && ( */}
-        <div className="dropdown__list">
-          <List>
-            {this.props.options.map((option, index) => (
-              <div key={index} className="dropdown__option">
-                <Button
-                  text={option.value}
-                  onClick={() => this.props.onClickFilterBySystem()}
-                />
-              </div>
-            ))}
-          </List>
-        </div>
-        {/* )} */}
+        {this.state.isOpen && (
+          <div className="dropdown__list">
+            <List>
+              {this.props.options.map((option, index) => (
+                <div key={index} className="dropdown__option">
+                  <Button
+                    disabled={
+                      this.props.disabled || option === this.state.activeOption
+                    }
+                    text={option.name.toString()}
+                    onClick={() => this.handleOnClickFilter(option.id, index)}
+                  />
+                </div>
+              ))}
+            </List>
+          </div>
+        )}
       </div>
     );
   }

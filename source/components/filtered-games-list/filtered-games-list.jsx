@@ -11,7 +11,6 @@ class FilteredGamesList extends React.Component {
     heading: PropTypes.string,
     showControls: PropTypes.bool,
     showLoadMore: PropTypes.bool,
-    buttonPlacement: PropTypes.string,
     gridColumns: PropTypes.number,
     showNumerOfResults: PropTypes.bool,
     isFetching: PropTypes.bool,
@@ -21,7 +20,12 @@ class FilteredGamesList extends React.Component {
     onClickOrderByName: PropTypes.func,
     onClickOrderByDate: PropTypes.func,
     onClickOrderByScore: PropTypes.func,
-    onClickFilterBySystem: PropTypes.func
+    onClickFilterBySystem: PropTypes.func,
+    onClickFilterByDeveloper: PropTypes.func,
+    onClickFilterByPublisher: PropTypes.func,
+    onClickFilterByGenre: PropTypes.func,
+    onClickFilterByUser: PropTypes.func,
+    onClickFilterByYear: PropTypes.func
     //TODO: another abstraction -> heading, controls, buttons, grid
   };
 
@@ -98,17 +102,20 @@ class FilteredGamesList extends React.Component {
         {this.props.numberOfResults === 0 && (
           <div className="filtered-games-list__message">No matches found</div>
         )}
-        {this.props.showControls &&
-          this.props.numberOfResults > 0 && (
-            <FilterControls
-              placement={this.props.buttonPlacement}
-              buttonsDisabled={this.props.isFetching}
-              onClickOrderByDate={this.props.onClickOrderByDate}
-              onClickOrderByName={this.props.onClickOrderByName}
-              onClickOrderByScore={this.props.onClickOrderByScore}
-              onClickFilterBySystem={this.props.onClickFilterBySystem}
-            />
-          )}
+        {this.props.showControls && (
+          <FilterControls
+            disableControls={this.props.isFetching}
+            onClickOrderByDate={this.props.onClickOrderByDate}
+            onClickOrderByName={this.props.onClickOrderByName}
+            onClickOrderByScore={this.props.onClickOrderByScore}
+            onClickFilterBySystem={this.props.onClickFilterBySystem}
+            onClickFilterByDeveloper={this.props.onClickFilterByDeveloper}
+            onClickFilterByPublisher={this.props.onClickFilterByPublisher}
+            onClickFilterByGenre={this.props.onClickFilterByGenre}
+            onClickFilterByUser={this.props.onClickFilterByUser}
+            onClickFilterByYear={this.props.onClickFilterByYear}
+          />
+        )}
         <GamesList
           heading={this.props.heading}
           games={this.state.filteredCollection}

@@ -17,14 +17,14 @@ class AllGames extends React.Component {
         <DataFetcher
           apiUrl="http://n.zawiarr.com/bgdm/api/games/"
           numberOfItemsToFetch={10}
-          render={data => (
+          render={state => (
             <FilteredGamesList
               heading={this.props.heading}
               showControls={true}
               showLoadMore={true}
               buttonPlacement={'center'}
               gridColumns={4}
-              {...data}
+              {...state}
             />
           )}
         />

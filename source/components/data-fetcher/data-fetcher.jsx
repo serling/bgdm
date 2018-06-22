@@ -21,6 +21,7 @@ class DataFetcher extends React.Component {
     collection: [],
     numberOfItemsToFetch: this.props.numberOfItemsToFetch,
     activeOrder: queryStrings.orderBy.score.descending,
+    activeFilters: {}, //TODO: list of filters, system, publisher, developer
     apiUrl: this.props.apiUrl,
     nextPageUrl: '',
     previousPageUrl: '',
@@ -29,7 +30,14 @@ class DataFetcher extends React.Component {
     onClickOrderByName: () => this.handleClickOrderByName(),
     onClickOrderByDate: () => this.handleClickOrderByDate(),
     onClickOrderByScore: () => this.handleClickOrderByScore(),
-    onClickFilterBySystem: () => this.handleClickFilterBySystem()
+    onClickFilterBySystem: system => this.handleClickFilterBySystem(system),
+    onClickFilterByUser: user => this.handleClickFilterByUser(user),
+    onClickFilterByGenre: genre => this.handleClickFilterByGenre(genre),
+    onClickFilterByPublisher: publisher =>
+      this.handleClickFilterByPublisher(publisher),
+    onClickFilterByDeveloper: developer =>
+      this.handleClickFilterByDeveloper(developer),
+    onClickFilterByYear: year => this.handleClickFilterByYear(year)
   };
 
   fetchData(url, shouldAppend = false) {
@@ -38,7 +46,8 @@ class DataFetcher extends React.Component {
         .get(
           replaceQueryParameters(url, {
             ordering: this.state.activeOrder,
-            limit: this.state.numberOfItemsToFetch //TODO: make LIMIT work in query
+            limit: this.state.numberOfItemsToFetch, //TODO: make LIMIT work in query
+            ...this.state.activeFilters
           })
         )
         .then(payload => {
@@ -57,7 +66,8 @@ class DataFetcher extends React.Component {
             'fetched from:',
             replaceQueryParameters(url, {
               ordering: this.state.activeOrder,
-              limit: this.state.numberOfItemsToFetch
+              limit: this.state.numberOfItemsToFetch,
+              ...this.state.activeFilters
             })
           );
         });
@@ -80,12 +90,44 @@ class DataFetcher extends React.Component {
     this.setOrderByState('score');
   }
 
-  HandleClickFilterBySystem() {
-    console.log('filter by system:');
+  handleClickFilterBySystem(value) {
+    this.setFilterByState('system', value);
+  }
+
+  handleClickFilterByUser(value) {
+    this.setFilterByState('score__reviewer', value);
+  }
+
+  handleClickFilterByGenre(value) {
+    this.setFilterByState('genre', value);
+  }
+
+  handleClickFilterByDeveloper(value) {
+    this.setFilterByState('developer', value);
+  }
+
+  handleClickFilterByPublisher(value) {
+    this.setFilterByState('publisher', value);
+  }
+
+  handleClickFilterByYear(value) {
+    this.setFilterByState('year', value);
   }
 
   handleSearchQuery(parameter) {
     //TODO: implement
+  }
+
+  setFilterByState(key, value) {
+    let filter = {};
+    filter[key] = value;
+
+    this.setState(
+      {
+        activeFilters: Object.assign({}, this.state.activeFilters, filter)
+      },
+      () => this.fetchData(this.state.apiUrl)
+    );
   }
 
   setOrderByState(orderType) {
@@ -130,7 +172,12 @@ class DataFetcher extends React.Component {
       onClickOrderByScore: this.state.onClickOrderByScore,
       onClickOrderByDate: this.state.onClickOrderByDate,
       onClickLoadMore: this.state.onClickLoadMore,
-      onClickFilterBySystem: this.state.onClickFilterBySystem
+      onClickFilterBySystem: this.state.onClickFilterBySystem,
+      onClickFilterByUser: this.state.onClickFilterByUser,
+      onClickFilterByGenre: this.state.onClickFilterByGenre,
+      onClickFilterByPublisher: this.state.onClickFilterByPublisher,
+      onClickFilterByDeveloper: this.state.onClickFilterByDeveloper,
+      onClickFilterByYear: this.state.onClickFilterByYear
     });
   }
 }
