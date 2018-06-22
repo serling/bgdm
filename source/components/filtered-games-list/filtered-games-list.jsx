@@ -67,8 +67,9 @@ class FilteredGamesList extends React.Component {
 
   //TODO: this logic should be better
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.collection === prevProps.collection) return;
-    this.filterCollection();
+    if (this.props.collection !== prevProps.collection) {
+      this.filterCollection();
+    }
   }
 
   render() {

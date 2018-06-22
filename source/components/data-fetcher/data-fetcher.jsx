@@ -51,7 +51,7 @@ class DataFetcher extends React.Component {
         })
         .then(() => {
           console.log(
-            'fetching from:',
+            'fetched from:',
             replaceQueryParameters(url, {
               ordering: this.state.activeOrder,
               limit: this.state.numberOfItemsToFetch
@@ -77,6 +77,10 @@ class DataFetcher extends React.Component {
     this.setOrderByState('score');
   }
 
+  handleSearchQuery() {
+    //TODO: implement
+  }
+
   setOrderByState(orderType) {
     this.setState(
       {
@@ -93,12 +97,30 @@ class DataFetcher extends React.Component {
     this.fetchData(this.state.apiUrl);
   }
 
+  //TODO: fix this
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.apiUrl !== nextProps.apiUrl) {
+      return {
+        apiUrl: nextProps.apiUrl
+      };
+    }
+
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.apiUrl !== prevProps.apiUrl) {
+      this.fetchData(this.state.apiUrl);
+    }
+  }
+
   render() {
     return this.props.render({
-      collection: this.state.collection.slice(
-        0,
-        this.state.numberOfItemsToFetch //TODO: remove this slice, should be handled by LIMIT
-      ),
+      collection: this.state.collection,
+      // collection: this.state.collection.slice(
+      //   0,
+      //   this.state.numberOfItemsToFetch //TODO: remove this slice, should be handled by LIMIT
+      // ),
       isFetching: this.state.isFetching,
       onClickOrderByName: this.state.onClickOrderByName,
       onClickOrderByScore: this.state.onClickOrderByScore,

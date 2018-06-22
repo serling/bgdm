@@ -1,4 +1,6 @@
 .search {
+  position: relative;
+
   &__bar {
   }
 
@@ -10,5 +12,13 @@
   }
 
   &__results {
+    width: 100%;
+    position: absolute;
+    top: $spacing-hg;
+    left: 0;
+    background-color: $color-grey;
+    z-index: 1000;
+    padding: $spacing-md;
+    box-shadow: 12px 14px 26px -5px rgba(0, 0, 0, 0.75);
   }
 }

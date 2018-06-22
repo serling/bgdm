@@ -1,38 +1,55 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import debounce from 'lodash/debounce';
+// import throttle from 'lodash/throttle';
+import PropTypes from 'prop-types';
 
 import FilteredGamesList from '../../components/filtered-games-list';
 import DataFetcher from '../../components/data-fetcher';
 
 class Search extends React.Component {
-  // static propTypes = {};
-
-  state = {
-    searchString: ''
+  static propTypes = {
+    searchCooldown: PropTypes.number,
+    searchInputThreshold: PropTypes.number
   };
 
-  handleOnTextInputChange() {
+  static defaultProps = {
+    searchCooldown: 300,
+    searchInputThreshold: 2
+  };
+
+  state = {
+    searchString: '',
+    searchQuery: ''
+  };
+
+  inputRef = {};
+
+  setSearchString() {
     this.setState({
+      searchQuery: this.inputRef.value,
       searchString:
-        this.input.value.length > 2
-          ? 'http://n.zawiarr.com/bgdm/api/games/?search=' + this.input.value
-          : ''
+        'http://n.zawiarr.com/bgdm/api/games/?search=' + this.inputRef.value
     });
   }
+
+  handleOnTextInputChange = debounce(
+    () => this.setSearchString(),
+    this.props.searchCooldown
+  );
 
   render() {
     return (
       <div className="search">
         <div className="search__bar">
           <input
-            onChange={() => this.handleOnTextInputChange()}
+            onChange={this.handleOnTextInputChange}
             type="text"
             className="search__input"
-            ref={ref => (this.input = ref)}
+            ref={ref => (this.inputRef = ref)}
             placeholder="search..."
           />
         </div>
-        {this.state.searchString.length > 2 && (
+        {this.state.searchQuery.length > this.props.searchInputThreshold && (
           <div className="search__results">
             <DataFetcher
               apiUrl={this.state.searchString}
