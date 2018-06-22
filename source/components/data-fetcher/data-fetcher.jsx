@@ -88,7 +88,14 @@ class DataFetcher extends React.Component {
 
   render() {
     return !this.state.isFetching ? ( //TODO: componentDidUpdate?
-      this.props.render(this.state)
+      this.props.render({
+        collection: this.state.collection,
+        isFetching: this.state.isFetching,
+        onClickOrderByName: this.state.onClickOrderByName,
+        onClickOrderByScore: this.state.onClickOrderByScore,
+        onClickOrderByDate: this.state.onClickOrderByDate,
+        onClickLoadMore: this.state.onClickLoadMore
+      })
     ) : (
       <div>NAFFIN</div>
     );
