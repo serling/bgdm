@@ -21,7 +21,7 @@ class Dropdown extends React.Component {
       }).isRequired
     ).isRequired,
     disabled: PropTypes.bool,
-    isOpen: PropTypes.bool, //TODO: remove
+    isOpen: PropTypes.bool,
     onClickFilter: PropTypes.func.isRequired,
     theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
   };
@@ -56,13 +56,12 @@ class Dropdown extends React.Component {
   render() {
     return (
       <div className={cn('dropdown', `dropdown--${this.props.theme}`)}>
-        <div className="dropdown__selection">
-          <Button
-            disabled={this.props.disabled}
-            text={this.state.activeOption.name}
-            onClick={() => this.handleClickOpenMenu()}
-          />
-        </div>
+        <Button
+          className="dropdown__selection"
+          disabled={this.props.disabled}
+          text={this.state.activeOption.name}
+          onClick={() => this.handleClickOpenMenu()}
+        />
         {this.state.isOpen && (
           <div className="dropdown__content">
             <List className="dropdown__list" inline={false}>

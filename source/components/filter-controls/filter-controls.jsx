@@ -34,7 +34,7 @@ class FilterControls extends React.Component {
               options={filters.systems}
               disabled={this.props.disableControls}
               onClickFilter={this.props.onClickFilterBySystem}
-              isOpen={true} //TODO: remove
+              isOpen={false}
               theme={Dropdown.themes.primary}
             />
           )}
@@ -44,6 +44,7 @@ class FilterControls extends React.Component {
               disabled={this.props.disableControls}
               onClickFilter={this.props.onClickFilterByGenre}
               theme={Dropdown.themes.secondary}
+              isOpen={false}
             />
           )}
           {this.props.onClickFilterByUser && (
@@ -52,6 +53,7 @@ class FilterControls extends React.Component {
               disabled={this.props.disableControls}
               onClickFilter={this.props.onClickFilterByUser}
               theme={Dropdown.themes.tertiary}
+              isOpen={false}
             />
           )}
           {this.props.onClickFilterByYear && (
@@ -60,6 +62,7 @@ class FilterControls extends React.Component {
               disabled={this.props.disableControls}
               onClickFilter={this.props.onClickFilterByYear}
               theme={Dropdown.themes.secondary}
+              isOpen={false}
             />
           )}
           {this.props.onClickFilterByDeveloper && (
@@ -68,6 +71,7 @@ class FilterControls extends React.Component {
               disabled={this.props.disableControls}
               onClickFilter={this.props.onClickFilterByDeveloper}
               theme={Dropdown.themes.primary}
+              isOpen={false}
             />
           )}
           {/* {this.props.onClickFilterByPublisher && (

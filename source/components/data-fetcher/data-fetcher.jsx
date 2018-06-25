@@ -42,6 +42,8 @@ class DataFetcher extends React.Component {
     onClickFilterByYear: year => this.handleClickFilterByYear(year)
   };
 
+  //TODO: remove LOAD MORE if there are no more pages left
+
   fetchData(url, shouldAppend = false) {
     this.setState({ isFetching: true }, () => {
       api

@@ -1,8 +1,8 @@
 .list {
   list-style: none;
 
-  &__item {
-    margin: 0;
+  > &__item {
+    margin-top: $spacing-sm;
 
     &:first-child {
       margin: 0;
@@ -13,9 +13,8 @@
     display: flex;
     flex-wrap: wrap;
 
-    .list__item {
-      margin-top: 0;
-      // margin-left: $spacing-sm;
+    > .list__item {
+      margin-left: $spacing-sm;
 
       &:first-child {
         margin-left: 0;
