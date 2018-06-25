@@ -1,11 +1,12 @@
 import React from 'react';
 import debounce from 'lodash/debounce';
-// import throttle from 'lodash/throttle';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import FilteredGamesList from '../../components/filtered-games-list';
 import DataFetcher from '../../components/data-fetcher';
 import Button from '../../components/button';
+import TextInput from '../../components/text-input';
 
 class Search extends React.Component {
   static propTypes = {
@@ -35,9 +36,7 @@ class Search extends React.Component {
   setSearchString() {
     this.setState({
       showResults: true,
-      searchQuery: this.inputRef.value,
-      searchString:
-        'http://n.zawiarr.com/bgdm/api/games/?search=' + this.inputRef.value
+      searchQuery: this.inputRef.value
     });
   }
 
@@ -50,17 +49,19 @@ class Search extends React.Component {
     return (
       <div className="search">
         <div className="search__bar">
-          <input
-            onChange={this.handleOnTextInputChange}
-            type="text"
-            className="search__input"
-            ref={ref => (this.inputRef = ref)}
-            placeholder="search..."
+          <TextInput
+            onKeyDown={this.handleOnTextInputChange}
+            onRef={ref => (this.inputRef = ref)}
+            placeholder="search"
           />
         </div>
         {this.state.searchQuery.length > this.props.searchInputThreshold &&
           this.state.showResults && (
-            <div className="search__results">
+            <div
+              className={cn('search__results', {
+                'search__results--in-focus': false
+              })}
+            >
               <Button
                 text="close"
                 icon="X"
@@ -68,7 +69,7 @@ class Search extends React.Component {
                 className="search__close"
               />
               <DataFetcher
-                apiUrl={this.state.searchString}
+                searchQuery={this.state.searchQuery}
                 numberOfItemsToFetch={10}
                 render={data => (
                   <FilteredGamesList

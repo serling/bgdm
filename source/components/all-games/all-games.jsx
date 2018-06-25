@@ -15,7 +15,6 @@ class AllGames extends React.Component {
     return (
       <div className="all-games">
         <DataFetcher
-          apiUrl="http://n.zawiarr.com/bgdm/api/games/"
           numberOfItemsToFetch={10}
           render={state => (
             <FilteredGamesList

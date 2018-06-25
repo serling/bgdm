@@ -18,7 +18,6 @@ class Hero extends React.Component {
       <div className="hero">
         <div className="hero__main">
           <DataFetcher
-            apiUrl="http://n.zawiarr.com/bgdm/api/games/"
             numberOfItemsToFetch={1}
             render={data => (
               <FilteredGamesList
@@ -31,7 +30,6 @@ class Hero extends React.Component {
         </div>
         <div className="hero__highlights">
           <DataFetcher
-            apiUrl="http://n.zawiarr.com/bgdm/api/games/"
             numberOfItemsToFetch={3}
             render={data => (
               <FilteredGamesList

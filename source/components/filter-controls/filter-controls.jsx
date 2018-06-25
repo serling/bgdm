@@ -15,7 +15,7 @@ class FilterControls extends React.Component {
     onClickOrderByScore: PropTypes.func,
     onClickFilterBySystem: PropTypes.func,
     onClickFilterByDeveloper: PropTypes.func,
-    onClickFilterByPublisher: PropTypes.func,
+    // onClickFilterByPublisher: PropTypes.func,
     onClickFilterByGenre: PropTypes.func,
     onClickFilterByUser: PropTypes.func,
     onClickFilterByYear: PropTypes.func

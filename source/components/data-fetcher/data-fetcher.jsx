@@ -9,11 +9,13 @@ class DataFetcher extends React.Component {
   static propTypes = {
     render: PropTypes.func.isRequired,
     apiUrl: PropTypes.string.isRequired,
+    searchQuery: PropTypes.string,
     numberOfItemsToFetch: PropTypes.number
   };
 
   static defaultProps = {
-    numberOfItemsToFetch: 10
+    numberOfItemsToFetch: 10,
+    apiUrl: 'http://n.zawiarr.com/bgdm/api/games/'
   };
 
   state = {
@@ -21,7 +23,7 @@ class DataFetcher extends React.Component {
     collection: [],
     numberOfItemsToFetch: this.props.numberOfItemsToFetch,
     activeOrder: queryStrings.orderBy.score.descending,
-    activeFilters: {}, //TODO: list of filters, system, publisher, developer
+    activeFilters: {},
     apiUrl: this.props.apiUrl,
     nextPageUrl: '',
     previousPageUrl: '',
@@ -47,6 +49,7 @@ class DataFetcher extends React.Component {
           replaceQueryParameters(url, {
             ordering: this.state.activeOrder,
             limit: this.state.numberOfItemsToFetch, //TODO: make LIMIT work in query
+            search: this.props.searchQuery,
             ...this.state.activeFilters
           })
         )
@@ -63,10 +66,12 @@ class DataFetcher extends React.Component {
         })
         .then(() => {
           console.log(
+            //TODO: remove
             'fetched from:',
             replaceQueryParameters(url, {
               ordering: this.state.activeOrder,
               limit: this.state.numberOfItemsToFetch,
+              search: this.props.searchQuery,
               ...this.state.activeFilters
             })
           );
@@ -114,10 +119,6 @@ class DataFetcher extends React.Component {
     this.setFilterByState('year', value);
   }
 
-  handleSearchQuery(parameter) {
-    //TODO: implement
-  }
-
   setFilterByState(key, value) {
     let filter = {};
     filter[key] = value;
@@ -159,6 +160,10 @@ class DataFetcher extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.apiUrl !== prevProps.apiUrl) {
+      this.fetchData(this.state.apiUrl);
+    }
+
+    if (this.props.searchQuery !== prevProps.searchQuery) {
       this.fetchData(this.state.apiUrl);
     }
   }
