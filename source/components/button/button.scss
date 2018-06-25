@@ -1,7 +1,4 @@
 .button {
-  @include remove-button-styles;
-  padding: 0.5rem;
-
   &--active {
     border: 1px solid red;
   }
@@ -12,6 +9,18 @@
   &--filter {
     width: 44px;
     height: 44px;
+    padding: 0.5rem;
+  }
+
+  &--dropdown {
+    @include remove-button-styles;
+    cursor: pointer;
+    padding: $spacing-md $spacing-sm;
+    width: 100%;
+
+    &:hover {
+      background-color: white;
+    }
   }
 
   &__text {

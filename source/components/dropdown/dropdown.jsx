@@ -1,8 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import List from '../../components/list';
 import Button from '../../components/button';
+
+const themes = {
+  default: 'default',
+  primary: 'primary',
+  secondary: 'secondary',
+  tertiary: 'tertiary'
+};
 
 class Dropdown extends React.Component {
   static propTypes = {
@@ -13,7 +21,9 @@ class Dropdown extends React.Component {
       }).isRequired
     ).isRequired,
     disabled: PropTypes.bool,
-    onClickFilter: PropTypes.func.isRequired
+    isOpen: PropTypes.bool, //TODO: remove
+    onClickFilter: PropTypes.func.isRequired,
+    theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
   };
 
   static defaultProps = {
@@ -22,7 +32,7 @@ class Dropdown extends React.Component {
 
   state = {
     activeOption: this.props.options[0],
-    isOpen: false
+    isOpen: this.props.isOpen
   };
 
   toggleMenu() {
@@ -45,24 +55,25 @@ class Dropdown extends React.Component {
 
   render() {
     return (
-      <div className="dropdown">
+      <div className={cn('dropdown', `dropdown--${this.props.theme}`)}>
         <div className="dropdown__selection">
           <Button
             disabled={this.props.disabled}
-            text={this.state.activeOption.name.toString()}
+            text={this.state.activeOption.name}
             onClick={() => this.handleClickOpenMenu()}
           />
         </div>
         {this.state.isOpen && (
-          <div className="dropdown__list">
-            <List>
+          <div className="dropdown__content">
+            <List className="dropdown__list" inline={false}>
               {this.props.options.map((option, index) => (
                 <div key={index} className="dropdown__option">
                   <Button
                     disabled={
                       this.props.disabled || option === this.state.activeOption
                     }
-                    text={option.name.toString()}
+                    theme={Button.themes.dropdown}
+                    text={option.name}
                     onClick={() => this.handleOnClickFilter(option.id, index)}
                   />
                 </div>
@@ -74,5 +85,11 @@ class Dropdown extends React.Component {
     );
   }
 }
+
+Dropdown.defaultProps = {
+  theme: themes.default
+};
+
+Dropdown.themes = themes;
 
 export default Dropdown;

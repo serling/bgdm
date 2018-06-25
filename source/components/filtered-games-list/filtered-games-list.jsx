@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Heading from '../../components/heading';
 import GamesList from '../../components/games-list';
 import Button from '../../components/button';
+import LoadingSpinner from '../../components/loading-spinner';
 import FilterControls from '../../components/filter-controls';
 
 class FilteredGamesList extends React.Component {
@@ -94,13 +95,8 @@ class FilteredGamesList extends React.Component {
         </Heading>
         {this.props.isFetching && (
           <div className="filtered-games-list__loading">
-            <div className="filtered-games-list__loading-spinner">
-              LOADING...
-            </div>
+            <LoadingSpinner />
           </div>
-        )}
-        {this.props.numberOfResults === 0 && (
-          <div className="filtered-games-list__message">No matches found</div>
         )}
         {this.props.showControls && (
           <FilterControls
@@ -115,6 +111,9 @@ class FilteredGamesList extends React.Component {
             onClickFilterByUser={this.props.onClickFilterByUser}
             onClickFilterByYear={this.props.onClickFilterByYear}
           />
+        )}
+        {this.props.numberOfResults === 0 && (
+          <div className="filtered-games-list__message">No matches found</div>
         )}
         <GamesList
           heading={this.props.heading}

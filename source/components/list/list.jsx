@@ -23,4 +23,5 @@ List.propTypes = {
     PropTypes.arrayOf(PropTypes.node)
   ]).isRequired
 };
+
 export default List;

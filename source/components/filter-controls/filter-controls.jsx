@@ -21,7 +21,9 @@ class FilterControls extends React.Component {
     onClickFilterByYear: PropTypes.func
   };
 
-  state = {};
+  state = {
+    activeDropdown: {} //TODO: only one open at a time
+  };
 
   render() {
     return (
@@ -32,6 +34,8 @@ class FilterControls extends React.Component {
               options={filters.systems}
               disabled={this.props.disableControls}
               onClickFilter={this.props.onClickFilterBySystem}
+              isOpen={true} //TODO: remove
+              theme={Dropdown.themes.primary}
             />
           )}
           {this.props.onClickFilterByGenre && (
@@ -39,6 +43,7 @@ class FilterControls extends React.Component {
               options={filters.genres}
               disabled={this.props.disableControls}
               onClickFilter={this.props.onClickFilterByGenre}
+              theme={Dropdown.themes.secondary}
             />
           )}
           {this.props.onClickFilterByUser && (
@@ -46,6 +51,7 @@ class FilterControls extends React.Component {
               options={filters.users}
               disabled={this.props.disableControls}
               onClickFilter={this.props.onClickFilterByUser}
+              theme={Dropdown.themes.tertiary}
             />
           )}
           {this.props.onClickFilterByYear && (
@@ -53,6 +59,7 @@ class FilterControls extends React.Component {
               options={filters.years}
               disabled={this.props.disableControls}
               onClickFilter={this.props.onClickFilterByYear}
+              theme={Dropdown.themes.secondary}
             />
           )}
           {this.props.onClickFilterByDeveloper && (
@@ -60,6 +67,7 @@ class FilterControls extends React.Component {
               options={filters.developers}
               disabled={this.props.disableControls}
               onClickFilter={this.props.onClickFilterByDeveloper}
+              theme={Dropdown.themes.primary}
             />
           )}
           {/* {this.props.onClickFilterByPublisher && (

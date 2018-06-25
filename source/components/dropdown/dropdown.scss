@@ -1,13 +1,45 @@
 .dropdown {
   position: relative;
-  &__list {
-    margin-top: $spacing-lg;
-    padding: $spacing-md;
+
+  &__selection {
+    @include remove-button-styles;
+  }
+
+  &--primary {
+    border-left: 2px solid green;
+    .dropdown__content {
+      border-left: 2px solid green;
+    }
+  }
+
+  &--secondary {
+    border-left: 2px solid red;
+    .dropdown__content {
+      border-left: 2px solid red;
+    }
+  }
+
+  &--tertiary {
+    border-left: 2px solid blue;
+    .dropdown__content {
+      border-left: 2px solid blue;
+    }
+  }
+
+  &__content {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
+    top: 1.3rem;
+    left: -2px;
     background-color: darkorchid;
     z-index: 100;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  &__option {
+    border-bottom: 1px solid grey;
   }
 }

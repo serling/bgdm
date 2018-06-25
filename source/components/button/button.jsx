@@ -6,7 +6,8 @@ import VisuallyHidden from '../../components/visually-hidden';
 
 const themes = {
   default: 'default',
-  filter: 'filter'
+  filter: 'filter',
+  dropdown: 'dropdown'
 };
 
 const Button = ({
@@ -22,7 +23,7 @@ const Button = ({
   <button
     className={cn(
       'button',
-      `link--${theme}`,
+      `button--${theme}`,
       {
         'button--active': isActive,
         'button--has-icon': icon
