@@ -13,12 +13,7 @@ class FilterControls extends React.Component {
     onClickOrderByName: PropTypes.func,
     onClickOrderByDate: PropTypes.func,
     onClickOrderByScore: PropTypes.func,
-    onClickFilterBySystem: PropTypes.func,
-    onClickFilterByDeveloper: PropTypes.func,
-    // onClickFilterByPublisher: PropTypes.func,
-    onClickFilterByGenre: PropTypes.func,
-    onClickFilterByUser: PropTypes.func,
-    onClickFilterByYear: PropTypes.func
+    onClickFilterBy: PropTypes.func
   };
 
   state = {
@@ -29,59 +24,16 @@ class FilterControls extends React.Component {
     return (
       <div className={'filter-controls'}>
         <List inline={true} className="filter-controls__filters">
-          {this.props.onClickFilterBySystem && (
+          {filters.filters.map(filter => (
             <Dropdown
-              options={filters.systems}
+              options={filter.options}
+              name={filter.id}
               disabled={this.props.disableControls}
-              onClickFilter={this.props.onClickFilterBySystem}
+              onClickFilterBy={this.props.onClickFilterBy}
               isOpen={false}
               theme={Dropdown.themes.primary}
             />
-          )}
-          {this.props.onClickFilterByGenre && (
-            <Dropdown
-              options={filters.genres}
-              disabled={this.props.disableControls}
-              onClickFilter={this.props.onClickFilterByGenre}
-              theme={Dropdown.themes.secondary}
-              isOpen={false}
-            />
-          )}
-          {this.props.onClickFilterByUser && (
-            <Dropdown
-              options={filters.users}
-              disabled={this.props.disableControls}
-              onClickFilter={this.props.onClickFilterByUser}
-              theme={Dropdown.themes.tertiary}
-              isOpen={false}
-            />
-          )}
-          {this.props.onClickFilterByYear && (
-            <Dropdown
-              options={filters.years}
-              disabled={this.props.disableControls}
-              onClickFilter={this.props.onClickFilterByYear}
-              theme={Dropdown.themes.secondary}
-              isOpen={false}
-            />
-          )}
-          {this.props.onClickFilterByDeveloper && (
-            <Dropdown
-              options={filters.developers}
-              disabled={this.props.disableControls}
-              onClickFilter={this.props.onClickFilterByDeveloper}
-              theme={Dropdown.themes.primary}
-              isOpen={false}
-            />
-          )}
-          {/* {this.props.onClickFilterByPublisher && (
-            <Dropdown
-              options={filters.publishers}
-              disabled={this.props.disableControls}
-              onClickFilterBySystem={this.props.onClickFilterByPublisher}
-            />
-          )}
-           */}
+          ))}
         </List>
         <List inline={true} className="filter-controls__sorting">
           {this.props.onClickOrderByScore && (

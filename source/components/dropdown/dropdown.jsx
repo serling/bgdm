@@ -17,12 +17,13 @@ class Dropdown extends React.Component {
     options: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
-        value: PropTypes.string.isRequired
+        name: PropTypes.string.isRequired
       }).isRequired
     ).isRequired,
+    name: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
     isOpen: PropTypes.bool,
-    onClickFilter: PropTypes.func.isRequired,
+    onClickFilterBy: PropTypes.func.isRequired,
     theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
   };
 
@@ -45,12 +46,12 @@ class Dropdown extends React.Component {
     this.toggleMenu();
   }
 
-  handleOnClickFilter(id, index) {
+  handleOnClickFilter(id) {
     this.toggleMenu();
     this.setState({
-      activeOption: this.props.options[index]
+      activeOption: this.props.options.filter(option => option.id === id)[0]
     });
-    this.props.onClickFilter(id);
+    this.props.onClickFilterBy(this.props.name, id);
   }
 
   render() {
@@ -65,15 +66,15 @@ class Dropdown extends React.Component {
         {this.state.isOpen && (
           <div className="dropdown__content">
             <List className="dropdown__list" inline={false}>
-              {this.props.options.map((option, index) => (
-                <div key={index} className="dropdown__option">
+              {this.props.options.map(option => (
+                <div key={option.id} className="dropdown__option">
                   <Button
                     disabled={
                       this.props.disabled || option === this.state.activeOption
                     }
                     theme={Button.themes.dropdown}
                     text={option.name}
-                    onClick={() => this.handleOnClickFilter(option.id, index)}
+                    onClick={() => this.handleOnClickFilter(option.id)}
                   />
                 </div>
               ))}
