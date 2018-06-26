@@ -5,6 +5,20 @@ import replaceQueryParameters from '@creuna/utils/replace-query-parameters';
 import queryStrings from './query-strings.json';
 import api from '../../js/api-helper';
 
+const filters = {
+  system: 'system',
+  genre: 'genre',
+  user: 'score__reviewer',
+  year: 'year',
+  developer: 'developer'
+};
+
+const sortings = {
+  name: 'name',
+  score: 'score',
+  date: 'date'
+};
+
 class DataFetcher extends React.Component {
   static propTypes = {
     render: PropTypes.func.isRequired,
@@ -42,8 +56,6 @@ class DataFetcher extends React.Component {
     onClickFilterByYear: year => this.handleClickFilterByYear(year)
   };
 
-  //TODO: remove LOAD MORE if there are no more pages left
-
   fetchData(url, shouldAppend = false) {
     this.setState({ isFetching: true }, () => {
       api
@@ -65,61 +77,64 @@ class DataFetcher extends React.Component {
               : payload.results,
             isFetching: false
           }));
-        })
-        .then(() => {
-          console.log(
-            //TODO: remove
-            'fetched from:',
-            replaceQueryParameters(url, {
-              ordering: this.state.activeOrder,
-              limit: this.state.numberOfItemsToFetch,
-              search: this.props.searchQuery,
-              ...this.state.activeFilters
-            })
-          );
         });
+      // .then(() => {
+      //   console.log(
+      //     //TODO: remove
+      //     'fetched from:',
+      //     replaceQueryParameters(url, {
+      //       ordering: this.state.activeOrder,
+      //       limit: this.state.numberOfItemsToFetch,
+      //       search: this.props.searchQuery,
+      //       ...this.state.activeFilters
+      //     })
+      //   );
+      // });
     });
   }
 
+  //TODO: remove LOAD MORE if there are no more pages left
   handleClickLoadMore() {
-    this.fetchData(this.state.nextPageUrl, true);
+    if (this.state.nextPageUrl) {
+      this.fetchData(this.state.nextPageUrl, true);
+    }
   }
 
   handleClickOrderByName() {
-    this.setOrderByState('name');
+    this.setOrderByState(sortings.name);
   }
 
   handleClickOrderByDate() {
-    this.setOrderByState('date');
+    this.setOrderByState(sortings.date);
   }
 
   handleClickOrderByScore() {
-    this.setOrderByState('score');
+    this.setOrderByState(sortings.date);
   }
 
   handleClickFilterBySystem(value) {
-    this.setFilterByState('system', value);
+    this.setFilterByState(filters.system, value);
   }
 
   handleClickFilterByUser(value) {
-    this.setFilterByState('score__reviewer', value);
+    this.setFilterByState(filters.user, value);
   }
 
   handleClickFilterByGenre(value) {
-    this.setFilterByState('genre', value);
+    this.setFilterByState(filters.genre, value);
   }
 
   handleClickFilterByDeveloper(value) {
-    this.setFilterByState('developer', value);
-  }
-
-  handleClickFilterByPublisher(value) {
-    this.setFilterByState('publisher', value);
+    this.setFilterByState(filters.developer, value);
   }
 
   handleClickFilterByYear(value) {
-    this.setFilterByState('year', value);
+    this.setFilterByState(filters.year, value);
   }
+
+  // handleClickFilterByPublisher(value) {
+  //   this.setFilterByState('publisher', value);
+  // }
 
   setFilterByState(key, value) {
     let filter = {};
@@ -174,6 +189,7 @@ class DataFetcher extends React.Component {
     return this.props.render({
       collection: this.state.collection,
       isFetching: this.state.isFetching,
+      showLoadMore: this.state.nextPageUrl ? true : false,
       numberOfResults: this.state.numberOfResults,
       onClickOrderByName: this.state.onClickOrderByName,
       onClickOrderByScore: this.state.onClickOrderByScore,

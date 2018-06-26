@@ -106,7 +106,7 @@ class FilteredGamesList extends React.Component {
             onClickOrderByScore={this.props.onClickOrderByScore}
             onClickFilterBySystem={this.props.onClickFilterBySystem}
             onClickFilterByDeveloper={this.props.onClickFilterByDeveloper}
-            onClickFilterByPublisher={this.props.onClickFilterByPublisher}
+            // onClickFilterByPublisher={this.props.onClickFilterByPublisher}
             onClickFilterByGenre={this.props.onClickFilterByGenre}
             onClickFilterByUser={this.props.onClickFilterByUser}
             onClickFilterByYear={this.props.onClickFilterByYear}
