@@ -5,12 +5,6 @@ import replaceQueryParameters from '@creuna/utils/replace-query-parameters';
 import queryStrings from './query-strings.json';
 import api from '../../js/api-helper';
 
-const sortings = {
-  name: 'name',
-  score: 'score',
-  date: 'date'
-};
-
 class DataFetcher extends React.Component {
   static propTypes = {
     render: PropTypes.func.isRequired,
@@ -28,17 +22,15 @@ class DataFetcher extends React.Component {
     isFetching: false,
     collection: [],
     numberOfItemsToFetch: this.props.numberOfItemsToFetch,
-    activeOrder: queryStrings.orderBy.score.descending,
+    activeOrder: queryStrings.orderBy.date.descending,
     activeFilters: {},
     apiUrl: this.props.apiUrl,
     nextPageUrl: '',
     previousPageUrl: '',
     numberOfResults: 0,
     onClickLoadMore: () => this.handleClickLoadMore(),
-    onClickOrderByName: () => this.handleClickOrderByName(),
-    onClickOrderByDate: () => this.handleClickOrderByDate(),
-    onClickOrderByScore: () => this.handleClickOrderByScore(),
-    onClickFilterBy: (key, value) => this.handleClickFilterBy(key, value)
+    onClickFilterBy: (key, value) => this.handleClickFilterBy(key, value),
+    onClickOrderBy: sorting => this.handleClickOrderBy(sorting)
   };
 
   fetchData(url, shouldAppend = false) {
@@ -62,18 +54,6 @@ class DataFetcher extends React.Component {
               : payload.results,
             isFetching: false
           }));
-        })
-        .then(() => {
-          console.log(
-            //TODO: remove
-            'fetched from:',
-            replaceQueryParameters(url, {
-              ordering: this.state.activeOrder,
-              limit: this.state.numberOfItemsToFetch,
-              search: this.props.searchQuery,
-              ...this.state.activeFilters
-            })
-          );
         });
     });
   }
@@ -85,16 +65,17 @@ class DataFetcher extends React.Component {
     }
   }
 
-  handleClickOrderByName() {
-    this.setOrderByState(sortings.name);
-  }
-
-  handleClickOrderByDate() {
-    this.setOrderByState(sortings.date);
-  }
-
-  handleClickOrderByScore() {
-    this.setOrderByState(sortings.date);
+  handleClickOrderBy(sorting) {
+    console.log('ordering by', sorting);
+    this.setState(
+      previousState => ({
+        activeOrder:
+          this.state.activeOrder === queryStrings.orderBy[sorting].ascending
+            ? queryStrings.orderBy[sorting].descending
+            : queryStrings.orderBy[sorting].ascending
+      }),
+      () => this.fetchData(this.state.apiUrl)
+    );
   }
 
   handleClickFilterBy(key, value) {
@@ -152,11 +133,9 @@ class DataFetcher extends React.Component {
       isFetching: this.state.isFetching,
       showLoadMore: this.state.nextPageUrl ? true : false,
       numberOfResults: this.state.numberOfResults,
-      onClickOrderByName: this.state.onClickOrderByName,
-      onClickOrderByScore: this.state.onClickOrderByScore,
-      onClickOrderByDate: this.state.onClickOrderByDate,
       onClickLoadMore: this.state.onClickLoadMore,
-      onClickFilterBy: this.state.onClickFilterBy
+      onClickFilterBy: this.state.onClickFilterBy,
+      onClickOrderBy: this.state.onClickOrderBy
     });
   }
 }

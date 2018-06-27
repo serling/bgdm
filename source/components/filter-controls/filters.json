@@ -2,11 +2,11 @@
   "filters": [
     {
       "id": "system",
-      "name": "system",
+      "name": "System",
       "options": [
         {
           "id": "",
-          "name": "--- select system ---"
+          "name": "--- Unspecified ---"
         },
         {
           "id": 4,
@@ -52,11 +52,11 @@
     },
     {
       "id": "score__reviewer",
-      "name": "user",
+      "name": "User",
       "options": [
         {
           "id": "",
-          "name": "--- select user ---"
+          "name": "--- Unspecified ---"
         },
         {
           "id": 3,
@@ -110,11 +110,11 @@
     },
     {
       "id": "genre",
-      "name": "genre",
+      "name": "Genre",
       "options": [
         {
           "id": "",
-          "name": "--- select genre ---"
+          "name": "--- Unspecified ---"
         },
         {
           "id": 25,
@@ -236,11 +236,11 @@
     },
     {
       "id": "year",
-      "name": "year",
+      "name": "Release year",
       "options": [
         {
           "id": "",
-          "name": "--- select year ---"
+          "name": "--- Unspecified ---"
         },
         {
           "id": 1981,
@@ -278,11 +278,11 @@
     },
     {
       "id": "developer",
-      "name": "developer",
+      "name": "Developer",
       "options": [
         {
           "id": "",
-          "name": "--- select developer ---"
+          "name": "--- Unspecified ---"
         },
         {
           "id": "Sega",

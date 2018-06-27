@@ -21,6 +21,7 @@ class Dropdown extends React.Component {
       }).isRequired
     ).isRequired,
     name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
     isOpen: PropTypes.bool,
     onClickFilterBy: PropTypes.func.isRequired,
@@ -51,12 +52,13 @@ class Dropdown extends React.Component {
     this.setState({
       activeOption: this.props.options.filter(option => option.id === id)[0]
     });
-    this.props.onClickFilterBy(this.props.name, id);
+    this.props.onClickFilterBy(this.props.id, id);
   }
 
   render() {
     return (
       <div className={cn('dropdown', `dropdown--${this.props.theme}`)}>
+        <div className="dropdown__header">{this.props.name}</div>
         <Button
           className="dropdown__selection"
           disabled={this.props.disabled}
@@ -64,7 +66,11 @@ class Dropdown extends React.Component {
           onClick={() => this.handleClickOpenMenu()}
         />
         {this.state.isOpen && (
-          <div className="dropdown__content">
+          <div
+            className={cn('dropdown__content', {
+              'dropdown__content--has-focus': this.state.isOpen
+            })}
+          >
             <List className="dropdown__list" inline={false}>
               {this.props.options.map(option => (
                 <div key={option.id} className="dropdown__option">

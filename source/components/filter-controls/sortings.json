@@ -1,0 +1,28 @@
+{
+  "sortings": [
+    {
+      "id": "name",
+      "name": "Alphabetically",
+      "options": {
+        "ascending": "-name",
+        "descending": "name"
+      }
+    },
+    {
+      "id": "autoscore",
+      "name": "By score",
+      "options": {
+        "ascending": "-autoscore",
+        "descending": "autoscore"
+      }
+    },
+    {
+      "id": "date",
+      "name": "Date played",
+      "options": {
+        "ascending": "-date",
+        "descending": "date"
+      }
+    }
+  ]
+}

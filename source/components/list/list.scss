@@ -1,24 +1,9 @@
 .list {
   list-style: none;
 
-  > &__item {
-    margin-top: $spacing-sm;
-
-    &:first-child {
-      margin: 0;
-    }
-  }
-
   &--inline {
-    display: flex;
-    flex-wrap: wrap;
-
-    > .list__item {
-      margin-left: $spacing-sm;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
+    display: grid;
+    grid-gap: $spacing-sm;
+    grid-auto-flow: column;
   }
 }

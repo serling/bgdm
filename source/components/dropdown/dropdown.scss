@@ -8,31 +8,19 @@
   }
 
   &--primary {
-    border-left: 2px solid green;
-    .dropdown__content {
+    .dropdown__selection {
       border-left: 2px solid green;
     }
-  }
-
-  &--secondary {
-    border-left: 2px solid red;
     .dropdown__content {
-      border-left: 2px solid red;
-    }
-  }
-
-  &--tertiary {
-    border-left: 2px solid blue;
-    .dropdown__content {
-      border-left: 2px solid blue;
+      border-left: 2px solid green;
     }
   }
 
   &__content {
     width: 100%;
     position: absolute;
-    top: 2.2rem;
-    left: -2px;
+    top: 3.4rem;
+    left: 0;
     background-color: white;
     border-right: 1px solid black;
     z-index: 100;

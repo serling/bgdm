@@ -2,15 +2,9 @@
   "orderBy": {
     "name": { "ascending": "name", "descending": "-name" },
     "date": { "ascending": "date", "descending": "-date" },
-    "score": {
+    "autoscore": {
       "ascending": "-autoscore",
       "descending": "autoscore"
     }
-  },
-  "developer": "developer",
-  "publisher": "publisher",
-  "year": "year",
-  "system": "system",
-  "genre": "genre",
-  "reviwer": "score__reviewer"
+  }
 }

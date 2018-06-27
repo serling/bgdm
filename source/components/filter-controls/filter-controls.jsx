@@ -5,15 +5,14 @@ import List from '../../components/list';
 import Button from '../../components/button';
 import Dropdown from '../../components/dropdown';
 
-import filters from './filters.json';
+import apiFilters from './filters.json';
+import apiSorting from './sortings.json';
 
 class FilterControls extends React.Component {
   static propTypes = {
     disableControls: PropTypes.bool,
-    onClickOrderByName: PropTypes.func,
-    onClickOrderByDate: PropTypes.func,
-    onClickOrderByScore: PropTypes.func,
-    onClickFilterBy: PropTypes.func
+    onClickFilterBy: PropTypes.func,
+    onClickOrderBy: PropTypes.func
   };
 
   state = {
@@ -24,10 +23,11 @@ class FilterControls extends React.Component {
     return (
       <div className={'filter-controls'}>
         <List inline={true} className="filter-controls__filters">
-          {filters.filters.map(filter => (
+          {apiFilters.filters.map(filter => (
             <Dropdown
               options={filter.options}
-              name={filter.id}
+              id={filter.id}
+              name={filter.name}
               disabled={this.props.disableControls}
               onClickFilterBy={this.props.onClickFilterBy}
               isOpen={false}
@@ -36,31 +36,15 @@ class FilterControls extends React.Component {
           ))}
         </List>
         <List inline={true} className="filter-controls__sorting">
-          {this.props.onClickOrderByScore && (
+          {apiSorting.sortings.map(sorting => (
             <Button
               theme={Button.themes.filter}
-              onClick={this.props.onClickOrderByScore}
+              onClick={() => this.props.onClickOrderBy(sorting.id)}
               disabled={this.props.disableControls}
-              text="rating"
-              icon="👍"
+              text={sorting.name}
+              // icon="👍"
             />
-          )}
-          {this.props.onClickOrderByDate && (
-            <Button
-              theme={Button.themes.filter}
-              onClick={this.props.onClickOrderByDate}
-              disabled={this.props.disableControls}
-              text="date"
-            />
-          )}
-          {this.props.onClickOrderByName && (
-            <Button
-              theme={Button.themes.filter}
-              onClick={this.props.onClickOrderByName}
-              disabled={this.props.disableControls}
-              text="name"
-            />
-          )}
+          ))}
         </List>
       </div>
     );

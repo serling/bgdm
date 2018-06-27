@@ -82,6 +82,7 @@ function post(endpoint, data) {
 }
 
 function get(endpoint) {
+  console.log('endpoint:', endpoint);
   return request(endpoint, defaultFetchOptions);
 }
 
