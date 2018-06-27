@@ -16,8 +16,8 @@ class FilteredGamesList extends React.Component {
     showNumerOfResults: PropTypes.bool,
     isFetching: PropTypes.bool,
     collection: PropTypes.array,
-    onClickLoadMore: PropTypes.func,
     numberOfResults: PropTypes.number,
+    onClickLoadMore: PropTypes.func,
     onClickFilterBy: PropTypes.func,
     onClickOrderBy: PropTypes.func
     //TODO: another abstraction -> heading, controls, buttons, grid

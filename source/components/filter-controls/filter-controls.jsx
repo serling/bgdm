@@ -15,9 +15,7 @@ class FilterControls extends React.Component {
     onClickOrderBy: PropTypes.func
   };
 
-  state = {
-    activeDropdown: {} //TODO: only one open at a time
-  };
+  state = {};
 
   render() {
     return (

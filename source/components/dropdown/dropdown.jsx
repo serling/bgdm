@@ -73,7 +73,13 @@ class Dropdown extends React.Component {
           >
             <List className="dropdown__list" inline={false}>
               {this.props.options.map(option => (
-                <div key={option.id} className="dropdown__option">
+                <div
+                  key={option.id}
+                  className={cn('dropdown__option', {
+                    'dropdown__option--active':
+                      option === this.state.activeOption
+                  })}
+                >
                   <Button
                     disabled={
                       this.props.disabled || option === this.state.activeOption

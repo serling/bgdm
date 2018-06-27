@@ -7,8 +7,6 @@
   }
 
   &--filter {
-    // width: 44px;
-    // height: 44px;
     padding: 0.5rem;
   }
 
@@ -20,7 +18,12 @@
     width: 100%;
 
     &:hover {
-      background-color: white;
+      background-color: #f9f9f9;
+    }
+
+    &[disabled] {
+      background-color: #f9f9f9;
+      cursor: default;
     }
   }
 
