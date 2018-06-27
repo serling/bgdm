@@ -39,25 +39,21 @@ class FilteredGamesList extends React.Component {
     return arrayOfImages.filter(image => image.title);
   }
 
-  pickProperties(game) {
-    return Object.assign(
-      {},
-      {
-        id: game.id,
-        href: `/games/${game.id}`,
-        score: game.autoscore,
-        title: game.name,
-        system: game.system.name,
-        tagline: game.tagline,
-        imgSrc: this.getIndexImage(game.images)[0].image
-      }
-    );
-  }
-
   filterCollection() {
     this.setState({
       filteredCollection: this.props.collection.map(game => {
-        return this.pickProperties(game);
+        return Object.assign(
+          {},
+          {
+            id: game.id,
+            href: `/games/${game.id}`,
+            score: game.autoscore,
+            title: game.name,
+            system: game.system.name,
+            tagline: game.tagline,
+            imgSrc: this.getIndexImage(game.images)[0].image
+          }
+        );
       })
     });
   }
@@ -66,7 +62,7 @@ class FilteredGamesList extends React.Component {
     this.filterCollection();
   }
 
-  //TODO: fix comparison, collection is too big
+  //TODO: smarter comparison?
   componentDidUpdate(prevProps) {
     if (this.props.collection !== prevProps.collection) {
       this.filterCollection();

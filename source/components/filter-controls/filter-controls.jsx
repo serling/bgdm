@@ -42,7 +42,6 @@ class FilterControls extends React.Component {
               onClick={() => this.props.onClickOrderBy(sorting)}
               disabled={this.props.disableControls}
               text={sorting.name}
-              // icon="👍"
             />
           ))}
         </List>

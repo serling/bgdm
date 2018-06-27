@@ -57,7 +57,6 @@ class DataFetcher extends React.Component {
     });
   }
 
-  //TODO: remove LOAD MORE if there are no more pages left
   handleClickLoadMore() {
     if (this.state.nextPageUrl) {
       this.fetchData(this.state.nextPageUrl, true);
@@ -90,17 +89,6 @@ class DataFetcher extends React.Component {
 
   componentDidMount() {
     this.fetchData(this.state.apiUrl);
-  }
-
-  //TODO: fix this
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.apiUrl !== nextProps.apiUrl) {
-      return {
-        apiUrl: nextProps.apiUrl
-      };
-    }
-
-    return null;
   }
 
   componentDidUpdate(prevProps) {
