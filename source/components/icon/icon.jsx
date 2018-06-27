@@ -20,6 +20,10 @@ Icon.propTypes = {
   size: PropTypes.oneOf(Object.keys(sizes).map(key => sizes[key]))
 };
 
+Icon.defaultProps = {
+  size: sizes.small
+};
+
 Icon.sizes = sizes;
 
 export default Icon;

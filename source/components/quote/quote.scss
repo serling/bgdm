@@ -1,2 +1,23 @@
 .quote {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-gap: $medium-grid-gap;
+  grid-template-areas:
+    "icon text text"
+    "source source source";
+
+  &__icon {
+    grid-area: icon;
+  }
+
+  &__text {
+    grid-area: text;
+  }
+
+  &__source {
+    grid-area: source;
+    justify-self: end;
+    font-size: $text-size-md;
+  }
 }
