@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import VisuallyHidden from '../../components/visually-hidden';
+import Icon from '../../components/icon';
 
 const themes = {
   default: 'default',
@@ -16,9 +17,10 @@ const Button = ({
   children,
   theme,
   className,
-  isActive,
   disabled,
-  icon
+  isActive,
+  iconName,
+  iconNameActive
 }) => (
   <button
     className={cn(
@@ -26,19 +28,23 @@ const Button = ({
       `button--${theme}`,
       {
         'button--active': isActive,
-        'button--has-icon': icon
+        'button--has-icon': iconName
       },
       className
     )}
     onClick={onClick}
     disabled={disabled}
   >
-    {icon ? (
+    {iconName ? (
       <VisuallyHidden>{text || children}</VisuallyHidden>
     ) : (
       <span className="filter-button__text">{text || children}</span>
     )}
-    <span className="filter-button__icon">{icon}</span>
+    {iconNameActive &&
+      isActive && (
+        <Icon className="filter-button__icon--active" name={iconNameActive} />
+      )}
+    {!isActive && <Icon className="filter-button__icon" name={iconName} />}
   </button>
 );
 
@@ -47,7 +53,8 @@ Button.propTypes = {
   onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
   isActive: PropTypes.bool,
-  icon: PropTypes.string,
+  iconName: PropTypes.string,
+  iconNameActive: PropTypes.string,
   disabled: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.node,

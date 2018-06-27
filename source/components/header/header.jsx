@@ -28,7 +28,15 @@ class Header extends React.Component {
           <Heading level={1}>ABCD</Heading>
         </div>
         <div className="header__button">
-          <Button onClick={() => this.handleMenuButtonClick()}>Menu</Button>
+          <Button
+            text="toggle menu"
+            onClick={() => this.handleMenuButtonClick()}
+            isActive={this.state.isMenuOpen}
+            iconName="hamburger"
+            iconNameActive="close"
+          >
+            Menu
+          </Button>
         </div>
         {this.state.isMenuOpen && (
           <MainMenu

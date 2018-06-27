@@ -38,6 +38,8 @@ class FilterControls extends React.Component {
           {apiSorting.sortings.map(sorting => (
             <Button
               key={sorting.id}
+              iconName={sorting.iconName}
+              iconNameActive={sorting.iconNameActive}
               theme={Button.themes.filter}
               onClick={() => this.props.onClickOrderBy(sorting)}
               disabled={this.props.disableControls}

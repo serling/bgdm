@@ -65,7 +65,7 @@ class Search extends React.Component {
               <div className="search__toolbar">
                 <Button
                   text="close"
-                  icon="X"
+                  iconName="close"
                   onClick={() => this.handleClickCloseButton()}
                   className="search__close"
                 />

@@ -3,6 +3,8 @@
     {
       "id": "name",
       "name": "Alphabetically",
+      "iconName": "",
+      "iconNameActive": "",
       "options": {
         "ascending": "-name",
         "descending": "name"
@@ -11,6 +13,8 @@
     {
       "id": "autoscore",
       "name": "By score",
+      "iconName": "thumbs-up",
+      "iconNameActive": "thumbs-down",
       "options": {
         "ascending": "-autoscore",
         "descending": "autoscore"
@@ -19,6 +23,8 @@
     {
       "id": "date",
       "name": "Date played",
+      "iconName": "calendar",
+      "iconNameActive": "calendar--active",
       "options": {
         "ascending": "-date",
         "descending": "date"
