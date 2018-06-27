@@ -30,7 +30,7 @@ class FilterControls extends React.Component {
               disabled={this.props.disableControls}
               onClickFilterBy={this.props.onClickFilterBy}
               isOpen={false}
-              theme={Dropdown.themes.primary}
+              theme={Dropdown.themes[filter.theme]}
             />
           ))}
         </List>

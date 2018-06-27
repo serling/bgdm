@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import replaceQueryParameters from '@creuna/utils/replace-query-parameters';
 
-import queryStrings from './query-strings.json';
 import api from '../../js/api-helper';
 
 class DataFetcher extends React.Component {

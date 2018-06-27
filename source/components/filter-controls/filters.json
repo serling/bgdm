@@ -3,6 +3,7 @@
     {
       "id": "system",
       "name": "System",
+      "theme": "system",
       "options": [
         {
           "id": "",
@@ -53,6 +54,7 @@
     {
       "id": "score__reviewer",
       "name": "User",
+      "theme": "user",
       "options": [
         {
           "id": "",
@@ -111,6 +113,7 @@
     {
       "id": "genre",
       "name": "Genre",
+      "theme": "genre",
       "options": [
         {
           "id": "",
@@ -237,6 +240,7 @@
     {
       "id": "year",
       "name": "Release year",
+      "theme": "year",
       "options": [
         {
           "id": "",
@@ -279,6 +283,7 @@
     {
       "id": "developer",
       "name": "Developer",
+      "theme": "developer",
       "options": [
         {
           "id": "",

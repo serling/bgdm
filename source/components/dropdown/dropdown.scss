@@ -7,12 +7,48 @@
     padding: $spacing-sm;
   }
 
-  &--primary {
+  &--system {
     .dropdown__selection {
-      border-left: 2px solid green;
+      border-left: 2px solid $color-system;
     }
     .dropdown__content {
-      border-left: 2px solid green;
+      border-left: 2px solid $color-system;
+    }
+  }
+
+  &--genre {
+    .dropdown__selection {
+      border-left: 2px solid $color-genre;
+    }
+    .dropdown__content {
+      border-left: 2px solid $color-genre;
+    }
+  }
+
+  &--developer {
+    .dropdown__selection {
+      border-left: 2px solid $color-developer;
+    }
+    .dropdown__content {
+      border-left: 2px solid $color-developer;
+    }
+  }
+
+  &--year {
+    .dropdown__selection {
+      border-left: 2px solid $color-year;
+    }
+    .dropdown__content {
+      border-left: 2px solid $color-year;
+    }
+  }
+
+  &--user {
+    .dropdown__selection {
+      border-left: 2px solid $color-user;
+    }
+    .dropdown__content {
+      border-left: 2px solid $color-user;
     }
   }
 

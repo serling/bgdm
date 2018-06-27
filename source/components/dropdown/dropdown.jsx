@@ -7,9 +7,11 @@ import Button from '../../components/button';
 
 const themes = {
   default: 'default',
-  primary: 'primary',
-  secondary: 'secondary',
-  tertiary: 'tertiary'
+  system: 'system',
+  user: 'user',
+  developer: 'developer',
+  year: 'year',
+  genre: 'genre'
 };
 
 class Dropdown extends React.Component {
