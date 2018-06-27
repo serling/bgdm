@@ -1,9 +1,6 @@
 .search {
   position: relative;
 
-  &__bar {
-  }
-
   &__results {
     width: 100%;
     position: absolute;
@@ -16,6 +13,8 @@
     min-height: 200px;
   }
 
-  &__close {
+  &__toolbar {
+    display: grid;
+    justify-content: end;
   }
 }

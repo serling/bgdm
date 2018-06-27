@@ -48,7 +48,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search">
-        <div className="search__bar">
+        <div className="search__input">
           <TextInput
             onKeyDown={this.handleOnTextInputChange}
             onRef={ref => (this.inputRef = ref)}
@@ -62,12 +62,14 @@ class Search extends React.Component {
                 'search__results--in-focus': false
               })}
             >
-              <Button
-                text="close"
-                icon="X"
-                onClick={() => this.handleClickCloseButton()}
-                className="search__close"
-              />
+              <div className="search__toolbar">
+                <Button
+                  text="close"
+                  icon="X"
+                  onClick={() => this.handleClickCloseButton()}
+                  className="search__close"
+                />
+              </div>
               <DataFetcher
                 searchQuery={this.state.searchQuery}
                 numberOfItemsToFetch={10}
