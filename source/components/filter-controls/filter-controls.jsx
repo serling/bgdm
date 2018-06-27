@@ -25,6 +25,7 @@ class FilterControls extends React.Component {
         <List inline={true} className="filter-controls__filters">
           {apiFilters.filters.map(filter => (
             <Dropdown
+              key={filter.id}
               options={filter.options}
               id={filter.id}
               name={filter.name}
@@ -38,8 +39,9 @@ class FilterControls extends React.Component {
         <List inline={true} className="filter-controls__sorting">
           {apiSorting.sortings.map(sorting => (
             <Button
+              key={sorting.id}
               theme={Button.themes.filter}
-              onClick={() => this.props.onClickOrderBy(sorting.id)}
+              onClick={() => this.props.onClickOrderBy(sorting)}
               disabled={this.props.disableControls}
               text={sorting.name}
               // icon="👍"

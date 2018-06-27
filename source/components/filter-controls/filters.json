@@ -9,43 +9,43 @@
           "name": "--- Unspecified ---"
         },
         {
-          "id": 4,
+          "id": "4",
           "name": "Atari 7800"
         },
         {
-          "id": 10,
+          "id": "10",
           "name": "Game Boy"
         },
         {
-          "id": 1,
+          "id": "1",
           "name": "Game Gear"
         },
         {
-          "id": 3,
+          "id": "3",
           "name": "Master System"
         },
         {
-          "id": 6,
+          "id": "6",
           "name": "Mega Drive"
         },
         {
-          "id": 8,
+          "id": "8",
           "name": "NES"
         },
         {
-          "id": 9,
+          "id": "9",
           "name": "Neo-Geo"
         },
         {
-          "id": 2,
+          "id": "2",
           "name": "PC-Engine"
         },
         {
-          "id": 7,
+          "id": "7",
           "name": "SG-1000"
         },
         {
-          "id": 5,
+          "id": "5",
           "name": "SNES"
         }
       ]
@@ -59,51 +59,51 @@
           "name": "--- Unspecified ---"
         },
         {
-          "id": 3,
+          "id": "3",
           "name": "Andy"
         },
         {
-          "id": 9,
+          "id": "9",
           "name": "Christina"
         },
         {
-          "id": 1,
+          "id": "1",
           "name": "Espen"
         },
         {
-          "id": 10,
+          "id": "10",
           "name": "Hysing"
         },
         {
-          "id": 8,
+          "id": "8",
           "name": "Håkon"
         },
         {
-          "id": 12,
+          "id": "12",
           "name": "Karina"
         },
         {
-          "id": 7,
+          "id": "7",
           "name": "Kristian"
         },
         {
-          "id": 5,
+          "id": "5",
           "name": "Lars"
         },
         {
-          "id": 6,
+          "id": "6",
           "name": "Lawrence"
         },
         {
-          "id": 4,
+          "id": "4",
           "name": "Mattias"
         },
         {
-          "id": 11,
+          "id": "11",
           "name": "Petter"
         },
         {
-          "id": 2,
+          "id": "2",
           "name": "Thomas"
         }
       ]
@@ -117,119 +117,119 @@
           "name": "--- Unspecified ---"
         },
         {
-          "id": 25,
+          "id": "25",
           "name": "Action"
         },
         {
-          "id": 2,
+          "id": "2",
           "name": "Action-Adventure"
         },
         {
-          "id": 32,
+          "id": "32",
           "name": "Arcade"
         },
         {
-          "id": 27,
+          "id": "27",
           "name": "Arcade Puzzle"
         },
         {
-          "id": 14,
+          "id": "14",
           "name": "Brawler"
         },
         {
-          "id": 16,
+          "id": "16",
           "name": "Card Game"
         },
         {
-          "id": 3,
+          "id": "3",
           "name": "Educational"
         },
         {
-          "id": 9,
+          "id": "9",
           "name": "Fighting"
         },
         {
-          "id": 30,
+          "id": "30",
           "name": "Gambling"
         },
         {
-          "id": 12,
+          "id": "12",
           "name": "Game Collection"
         },
         {
-          "id": 18,
+          "id": "18",
           "name": "JRPG"
         },
         {
-          "id": 29,
+          "id": "29",
           "name": "Metroidvania"
         },
         {
-          "id": 26,
+          "id": "26",
           "name": "Pinball"
         },
         {
-          "id": 19,
+          "id": "19",
           "name": "Platformer"
         },
         {
-          "id": 22,
+          "id": "22",
           "name": "Point n' Click Adventure"
         },
         {
-          "id": 10,
+          "id": "10",
           "name": "Puzzle"
         },
         {
-          "id": 5,
+          "id": "5",
           "name": "RPG"
         },
         {
-          "id": 8,
+          "id": "8",
           "name": "RTS"
         },
         {
-          "id": 4,
+          "id": "4",
           "name": "Racing"
         },
         {
-          "id": 13,
+          "id": "13",
           "name": "Rail Shooter"
         },
         {
-          "id": 17,
+          "id": "17",
           "name": "Shmup"
         },
         {
-          "id": 1,
+          "id": "1",
           "name": "Shooter"
         },
         {
-          "id": 6,
+          "id": "6",
           "name": "Simulation"
         },
         {
-          "id": 7,
+          "id": "7",
           "name": "Sports"
         },
         {
-          "id": 31,
+          "id": "31",
           "name": "Strategy"
         },
         {
-          "id": 20,
+          "id": "20",
           "name": "Survival Horror"
         },
         {
-          "id": 23,
+          "id": "23",
           "name": "TBS"
         },
         {
-          "id": 28,
+          "id": "28",
           "name": "Tactical Shooter"
         },
         {
-          "id": 24,
+          "id": "24",
           "name": "Trivia"
         }
       ]
@@ -243,35 +243,35 @@
           "name": "--- Unspecified ---"
         },
         {
-          "id": 1981,
+          "id": "1981",
           "name": "1981"
         },
         {
-          "id": 1984,
+          "id": "1984",
           "name": "1984"
         },
         {
-          "id": 1986,
+          "id": "1986",
           "name": "1986"
         },
         {
-          "id": 1991,
+          "id": "1991",
           "name": "1991"
         },
         {
-          "id": 1994,
+          "id": "1994",
           "name": "1994"
         },
         {
-          "id": 1996,
+          "id": "1996",
           "name": "1996"
         },
         {
-          "id": 2001,
+          "id": "2001",
           "name": "2001"
         },
         {
-          "id": 2002,
+          "id": "2002",
           "name": "2002"
         }
       ]
