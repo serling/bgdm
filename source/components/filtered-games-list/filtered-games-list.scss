@@ -6,14 +6,6 @@
   }
 
   &__loading {
-    position: absolute;
-    left: 0;
-    top: $spacing-lg;
-    right: 0;
-    bottom: 0;
-    background-color: white;
-    opacity: 0.8;
-    z-index: 100;
   }
 
   &__message {

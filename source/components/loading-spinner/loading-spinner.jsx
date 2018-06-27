@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import VisuallyHidden from '../../components/visually-hidden';
 
 const LoadingSpinner = () => (
   <div className="loading-spinner">
-    <span>LOADING...</span>
+    <VisuallyHidden>LOADING...</VisuallyHidden>
   </div>
 );
 

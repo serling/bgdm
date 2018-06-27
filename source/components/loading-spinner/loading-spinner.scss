@@ -1,7 +1,6 @@
 .loading-spinner {
-  font-size: $text-size-hg;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  justify-content: center;
+  background: transparent url("../../mockup/assets/spinner.svg") no-repeat
+    scroll 50% 50%;
+  background-size: contain;
+  height: 8rem;
 }
