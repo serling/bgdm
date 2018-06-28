@@ -93,22 +93,27 @@ class FilteredGamesList extends React.Component {
         <div className="filtered-games-list__message">
           {this.props.numberOfResults === 0 &&
             !this.props.isFetching && <span>No matches found</span>}
-          {this.props.isFetching && <LoadingSpinner />}
         </div>
-
-        <GamesList
-          heading={this.props.heading}
-          games={this.state.filteredCollection}
-          gridColumns={this.props.gridColumns}
-        />
-        {this.props.showLoadMore && (
-          <Button
-            disabled={this.props.isFetching}
-            onClick={this.props.onClickLoadMore}
-          >
-            More
-          </Button>
-        )}
+        <div className="filtered-games-list__results">
+          {this.props.isFetching && (
+            <div className="filtered-games-list__loading">
+              <LoadingSpinner className="filtered-games-list__spinner" />
+            </div>
+          )}
+          <GamesList
+            heading={this.props.heading}
+            games={this.state.filteredCollection}
+            gridColumns={this.props.gridColumns}
+          />
+          {this.props.showLoadMore && (
+            <Button
+              disabled={this.props.isFetching}
+              onClick={this.props.onClickLoadMore}
+            >
+              More
+            </Button>
+          )}
+        </div>
       </div>
     );
   }

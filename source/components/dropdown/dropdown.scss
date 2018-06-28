@@ -68,6 +68,7 @@
     z-index: 100;
     margin-top: calc(#{$spacing-md} - 3px);
     min-width: 400px;
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.75);
   }
 
   &__list {

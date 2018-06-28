@@ -6,6 +6,22 @@
   }
 
   &__loading {
+    background-color: rgba($color-white, 0.8);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+  }
+
+  &__results {
+    position: relative;
+    min-height: 200px;
+  }
+
+  &__spinner {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
   }
 
   &__message {

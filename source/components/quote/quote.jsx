@@ -10,7 +10,7 @@ const Quote = ({ text, gameTitle, gameHref, reviewerName, reviewerHref }) => (
     <Icon
       className="quote__icon-left"
       name="quote-start"
-      size={Icon.sizes.medium}
+      size={Icon.sizes.small}
     />
     <Text className="quote__text" size={Text.sizes.large}>
       {text}
@@ -18,7 +18,7 @@ const Quote = ({ text, gameTitle, gameHref, reviewerName, reviewerHref }) => (
     <Icon
       className="quote__icon-right"
       name="quote-end"
-      size={Icon.sizes.medium}
+      size={Icon.sizes.small}
     />
     <div className="quote__source">
       <Link href={reviewerHref}>{reviewerName}</Link>{' '}
