@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import Background from '../../components/background';
+
 const paddings = {
   none: 'none',
   small: 'small',
@@ -22,14 +24,17 @@ const colors = {
   tertiary: 'tertiary'
 };
 
-const Row = ({ padding, width, backgroundColor, children }) => (
+const Row = ({ padding, width, backgroundColor, children, backgroundName }) => (
   <div
     className={cn(
       'row',
+      { 'row--has-background-image': backgroundName },
       `row--padding-${padding}`,
       `row--color-${backgroundColor}`
     )}
   >
+    <Background name={backgroundName} />
+
     <div className={cn('row__content', `row__content--width-${width}`)}>
       {children}
     </div>
@@ -43,7 +48,8 @@ Row.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
   ]).isRequired,
-  backgroundColor: PropTypes.oneOf(Object.keys(colors).map(key => colors[key]))
+  backgroundColor: PropTypes.oneOf(Object.keys(colors).map(key => colors[key])),
+  backgroundName: PropTypes.string
 };
 
 Row.defaultProps = {

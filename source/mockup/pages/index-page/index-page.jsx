@@ -16,19 +16,18 @@ const IndexPage = () => (
     <Row>
       <Hero />
     </Row>
-    <Row backgroundColor={Row.colors.secondary} padding={Row.paddings.large}>
+    <Row
+      backgroundName="background2"
+      // backgroundColor={Row.colors.secondary}
+      padding={Row.paddings.huge}
+    >
       <Quote
-        text="Et overraskende lyspunkt."
+        text="Et overraskende lyspunkt. Et overraskende lyspunkt."
         gameTitle="(Long and Convoluted Title)"
         gameHref="#superfun"
         reviewerName="Espen"
         reviewerHref="#tarjei"
       />
-    </Row>
-    <Row>
-      <div>testing backgrounds</div>
-      <div>testing backgrounds</div>
-      <div>testing backgrounds</div>
     </Row>
     <Row>
       <AllGames heading={'The whole collection'} />

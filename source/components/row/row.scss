@@ -1,4 +1,6 @@
 .row {
+  position: relative;
+
   &--padding-small {
     padding: $spacing-sm 0;
   }
@@ -36,6 +38,8 @@
     padding-right: $spacing-md;
     margin-left: auto;
     margin-right: auto;
+
+    position: relative;
 
     &--width-default {
       max-width: $base-page-width;

@@ -5,7 +5,7 @@
   grid-gap: $medium-grid-gap;
   grid-template-areas:
     "icon-left text icon-right"
-    "source source source";
+    ". source source";
 
   &__icon-left {
     grid-area: icon-left;
