@@ -19,6 +19,8 @@ class AllGames extends React.Component {
           render={state => (
             <FilteredGamesList
               {...state}
+              lead="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit
+              modi quisquam maiores consequuntur voluptates commodi?"
               heading={this.props.heading}
               showControls={true}
               showLoadMore={true}

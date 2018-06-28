@@ -1,6 +1,10 @@
 .filtered-games-list {
   position: relative;
 
+  &__header {
+    margin-bottom: $spacing-md;
+  }
+
   &__heading {
     margin-bottom: $spacing-md;
   }
