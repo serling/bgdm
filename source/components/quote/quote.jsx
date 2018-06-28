@@ -7,10 +7,19 @@ import Icon from '../../components/icon';
 
 const Quote = ({ text, gameTitle, gameHref, reviewerName, reviewerHref }) => (
   <div className="quote">
-    <Icon className="quote__icon" name="quote-start" size={Icon.sizes.large} />
+    <Icon
+      className="quote__icon-left"
+      name="quote-start"
+      size={Icon.sizes.large}
+    />
     <Text className="quote__text" size={Text.sizes.large}>
       {text}
     </Text>
+    <Icon
+      className="quote__icon-right"
+      name="quote-end"
+      size={Icon.sizes.large}
+    />
     <div className="quote__source">
       <Link href={reviewerHref}>{reviewerName}</Link>{' '}
       <Link href={gameHref}>{gameTitle}</Link>

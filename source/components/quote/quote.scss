@@ -4,11 +4,15 @@
   align-items: center;
   grid-gap: $medium-grid-gap;
   grid-template-areas:
-    "icon text text"
+    "icon-left text icon-right"
     "source source source";
 
-  &__icon {
-    grid-area: icon;
+  &__icon-left {
+    grid-area: icon-left;
+  }
+
+  &__icon-right {
+    grid-area: icon-right;
   }
 
   &__text {
@@ -17,7 +21,7 @@
 
   &__source {
     grid-area: source;
-    justify-self: end;
+    justify-self: center;
     font-size: $text-size-md;
   }
 }
