@@ -20,7 +20,6 @@ class DataFetcher extends React.Component {
   state = {
     isFetching: false,
     collection: [],
-    numberOfItemsToFetch: this.props.numberOfItemsToFetch,
     activeOrder: '-date',
     activeFilters: {},
     apiUrl: this.props.apiUrl,
@@ -29,7 +28,7 @@ class DataFetcher extends React.Component {
     numberOfResults: 0,
     onClickLoadMore: () => this.handleClickLoadMore(),
     onClickFilterBy: (key, value) => this.handleClickFilterBy(key, value),
-    onClickOrderBy: sorting => this.handleClickOrderBy(sorting)
+    onClickOrderBy: order => this.handleClickOrderBy(order)
   };
 
   fetchData(url, shouldAppend = false) {
@@ -38,7 +37,7 @@ class DataFetcher extends React.Component {
         .get(
           replaceQueryParameters(url, {
             ordering: this.state.activeOrder,
-            limit: this.state.numberOfItemsToFetch, //TODO: make LIMIT work in query
+            limit: this.props.numberOfItemsToFetch, //TODO: make LIMIT work in query
             search: this.props.searchQuery,
             ...this.state.activeFilters
           })
@@ -63,13 +62,13 @@ class DataFetcher extends React.Component {
     }
   }
 
-  handleClickOrderBy(sorting) {
+  handleClickOrderBy(order) {
     this.setState(
       previousState => ({
         activeOrder:
-          previousState.activeOrder === sorting.options.ascending
-            ? sorting.options.descending
-            : sorting.options.ascending
+          previousState.activeOrder === order.options.ascending
+            ? order.options.descending
+            : order.options.ascending
       }),
       () => this.fetchData(this.state.apiUrl)
     );
