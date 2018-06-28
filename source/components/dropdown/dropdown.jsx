@@ -4,6 +4,7 @@ import cn from 'classnames';
 
 import List from '../../components/list';
 import Button from '../../components/button';
+import Icon from '../../components/icon';
 
 const themes = {
   default: 'default',
@@ -68,32 +69,40 @@ class Dropdown extends React.Component {
           onClick={() => this.handleClickOpenMenu()}
         />
         {this.state.isOpen && (
-          <div
-            className={cn('dropdown__content', {
-              'dropdown__content--has-focus': this.state.isOpen
-            })}
-          >
-            <List className="dropdown__list">
-              {this.props.options.map(option => (
-                <div
-                  key={option.id}
-                  className={cn('dropdown__option', {
-                    'dropdown__option--active':
-                      option === this.state.activeOption
-                  })}
-                >
-                  <Button
-                    disabled={
-                      this.props.disabled || option === this.state.activeOption
-                    }
-                    theme={Button.themes.dropdown}
-                    text={option.name}
-                    onClick={() => this.handleOnClickFilter(option.id)}
-                  />
-                </div>
-              ))}
-            </List>
-          </div>
+          <React.Fragment>
+            <Icon
+              name="arrow-up"
+              className="dropdown__arrow"
+              size={Icon.sizes.tiny}
+            />
+            <div
+              className={cn('dropdown__content', {
+                'dropdown__content--has-focus': this.state.isOpen
+              })}
+            >
+              <List className="dropdown__list">
+                {this.props.options.map(option => (
+                  <div
+                    key={option.id}
+                    className={cn('dropdown__option', {
+                      'dropdown__option--active':
+                        option === this.state.activeOption
+                    })}
+                  >
+                    <Button
+                      disabled={
+                        this.props.disabled ||
+                        option === this.state.activeOption
+                      }
+                      theme={Button.themes.dropdown}
+                      text={option.name}
+                      onClick={() => this.handleOnClickFilter(option.id)}
+                    />
+                  </div>
+                ))}
+              </List>
+            </div>
+          </React.Fragment>
         )}
       </div>
     );
