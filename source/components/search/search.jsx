@@ -67,6 +67,7 @@ class Search extends React.Component {
                   text="close"
                   iconName="close"
                   onClick={() => this.handleClickCloseButton()}
+                  iconSize="tiny"
                   className="search__close"
                 />
               </div>

@@ -37,6 +37,7 @@ const FilterControls = ({
           theme={Button.themes.filter}
           onClick={() => onClickOrderBy(order)}
           disabled={disableControls}
+          isActive={order.isActive}
           text={order.name}
         />
       ))}

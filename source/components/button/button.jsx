@@ -19,6 +19,7 @@ const Button = ({
   className,
   disabled,
   isActive,
+  iconSize,
   iconName,
   iconNameActive
 }) => (
@@ -42,9 +43,15 @@ const Button = ({
     )}
     {iconNameActive &&
       isActive && (
-        <Icon className="filter-button__icon--active" name={iconNameActive} />
+        <Icon
+          className="filter-button__icon--active"
+          name={iconNameActive}
+          size={iconSize}
+        />
       )}
-    {!isActive && <Icon className="filter-button__icon" name={iconName} />}
+    {!isActive && (
+      <Icon className="filter-button__icon" name={iconName} size={iconSize} />
+    )}
   </button>
 );
 

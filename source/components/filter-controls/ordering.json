@@ -3,8 +3,8 @@
     {
       "id": "name",
       "name": "Alphabetically",
-      "iconName": "",
-      "iconNameActive": "",
+      "iconName": "alphabetical",
+      "iconNameActive": "alphabetical--active",
       "options": {
         "ascending": "-name",
         "descending": "name"
@@ -16,8 +16,8 @@
       "iconName": "thumbs-up",
       "iconNameActive": "thumbs-down",
       "options": {
-        "ascending": "-autoscore",
-        "descending": "autoscore"
+        "ascending": "autoscore",
+        "descending": "-autoscore"
       }
     },
     {
@@ -26,8 +26,8 @@
       "iconName": "calendar",
       "iconNameActive": "calendar--active",
       "options": {
-        "ascending": "-date",
-        "descending": "date"
+        "ascending": "date",
+        "descending": "-date"
       }
     }
   ]

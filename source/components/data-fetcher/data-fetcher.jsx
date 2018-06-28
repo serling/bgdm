@@ -63,6 +63,8 @@ class DataFetcher extends React.Component {
   }
 
   handleClickOrderBy(order) {
+    order.isActive = !order.isActive;
+
     this.setState(
       previousState => ({
         activeOrder:

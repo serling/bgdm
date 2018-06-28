@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 const sizes = {
+  tiny: 'tiny',
   small: 'small',
   medium: 'medium',
   large: 'large',
