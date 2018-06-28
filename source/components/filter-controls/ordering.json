@@ -6,8 +6,8 @@
       "iconName": "alphabetical",
       "iconNameActive": "alphabetical--active",
       "options": {
-        "ascending": "-name",
-        "descending": "name"
+        "ascending": "name",
+        "descending": "-name"
       }
     },
     {
@@ -16,8 +16,8 @@
       "iconName": "thumbs-up",
       "iconNameActive": "thumbs-down",
       "options": {
-        "ascending": "autoscore",
-        "descending": "-autoscore"
+        "ascending": "-autoscore",
+        "descending": "autoscore"
       }
     },
     {
