@@ -18,12 +18,12 @@ class AllGames extends React.Component {
           numberOfItemsToFetch={10}
           render={state => (
             <FilteredGamesList
+              {...state}
               heading={this.props.heading}
               showControls={true}
               showLoadMore={true}
               buttonPlacement={'center'}
               gridColumns={4}
-              {...state}
             />
           )}
         />
