@@ -9,19 +9,23 @@ class DataFetcher extends React.Component {
     render: PropTypes.func.isRequired,
     apiUrl: PropTypes.string.isRequired,
     searchQuery: PropTypes.string,
+    activeOrder: PropTypes.string,
+    activeFilters: PropTypes.array,
     numberOfItemsToFetch: PropTypes.number
   };
 
   static defaultProps = {
     numberOfItemsToFetch: 10,
-    apiUrl: 'http://n.zawiarr.com/bgdm/api/games/'
+    apiUrl: 'http://n.zawiarr.com/bgdm/api/games/',
+    activeOrder: '-date',
+    activeFilters: []
   };
 
   state = {
     isFetching: false,
     collection: [],
-    activeOrder: '-date',
-    activeFilters: {},
+    activeOrder: this.props.activeOrder,
+    activeFilters: this.props.activeFilters,
     apiUrl: this.props.apiUrl,
     nextPageUrl: '',
     previousPageUrl: '',

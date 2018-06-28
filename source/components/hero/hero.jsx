@@ -19,13 +19,14 @@ class Hero extends React.Component {
         <div className="hero__main">
           <DataFetcher
             numberOfItemsToFetch={1}
+            activeOrder="autoscore"
             render={state => (
               <FilteredGamesList
                 {...state}
                 heading={'just the one'}
                 gridColumns={1}
                 showLoadMore={false}
-                collection={state.collection.slice(0, 1)} //TODO: limit!!
+                collection={state.collection.slice(4, 5)} //TODO: limit!!
               />
             )}
           />
@@ -33,13 +34,14 @@ class Hero extends React.Component {
         <div className="hero__highlights">
           <DataFetcher
             numberOfItemsToFetch={3}
+            activeOrder="-autoscore"
             render={state => (
               <FilteredGamesList
                 {...state}
                 heading={'highlights'}
                 gridColumns={3}
                 showLoadMore={false}
-                collection={state.collection.slice(0, 3)} //TODO: limit!!
+                collection={state.collection.slice(6, 9)} //TODO: limit!!
               />
             )}
           />
