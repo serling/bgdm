@@ -55,20 +55,31 @@
   &__content {
     width: 100%;
     position: absolute;
-    top: 3.4rem;
-    left: 0;
     background-color: white;
-    border-right: 1px solid black;
     z-index: 100;
+
+    margin-top: 1rem;
+    min-width: 400px;
   }
 
   &__list {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+
+    > .list__item {
+      border-bottom: 1px solid grey;
+
+      &:nth-child(odd) {
+        border-right: 1px solid grey;
+      }
+    }
   }
 
   &__option {
-    border-bottom: 1px solid grey;
+    height: 100%;
+    // border-bottom: 1px solid grey;
 
     &--active {
     }

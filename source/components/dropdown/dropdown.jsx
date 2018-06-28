@@ -73,7 +73,7 @@ class Dropdown extends React.Component {
               'dropdown__content--has-focus': this.state.isOpen
             })}
           >
-            <List className="dropdown__list" inline={false}>
+            <List className="dropdown__list">
               {this.props.options.map(option => (
                 <div
                   key={option.id}
