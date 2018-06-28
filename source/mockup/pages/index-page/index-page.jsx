@@ -14,7 +14,7 @@ const IndexPage = () => (
       <Search />
     </Row>
     <Row>
-      <AllGames heading={'lots and lots'} />
+      <AllGames heading={'The whole collection'} />
     </Row>
     <Row backgroundColor={Row.colors.secondary} padding={Row.paddings.large}>
       <Quote

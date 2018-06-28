@@ -40,12 +40,3 @@
 @mixin remove-link-styles {
   color: inherit;
 }
-
-@mixin triangle-down($size) {
-  width: 0;
-  height: 0;
-  border-left: $size solid transparent;
-  border-right: $size solid transparent;
-  border-top: $size solid #f00;
-  @content;
-}
