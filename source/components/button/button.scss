@@ -22,7 +22,6 @@
 
   &--dropdown {
     @include remove-button-styles;
-    text-align: left;
     cursor: pointer;
     padding: $spacing-md $spacing-sm;
     width: 100%;
