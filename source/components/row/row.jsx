@@ -33,7 +33,7 @@ const Row = ({ padding, width, backgroundColor, children, backgroundName }) => (
       `row--color-${backgroundColor}`
     )}
   >
-    <Background name={backgroundName} />
+    <Background name={backgroundName} theme={Background.themes.shadow} />
 
     <div className={cn('row__content', `row__content--width-${width}`)}>
       {children}

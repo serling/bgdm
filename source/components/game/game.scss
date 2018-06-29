@@ -1,12 +1,16 @@
 .game {
   padding: $spacing-sm;
+  position: relative;
 
   &--default {
+    height: 300px;
+    border: 4px solid $color-black;
   }
 
   &--long {
   }
 
   &--flat {
+    height: 125px;
   }
 }

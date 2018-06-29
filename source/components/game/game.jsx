@@ -4,7 +4,8 @@ import cn from 'classnames';
 
 import Link from '../../components/link';
 import Heading from '../../components/heading';
-import Image from '../../components/image';
+import Background from '../../components/background';
+import VisuallyHidden from '../../components/visually-hidden';
 
 const themes = {
   default: 'default',
@@ -17,14 +18,12 @@ const staticHref = '../../mockup/assets/static.jpg';
 const Game = ({ title, href, imgSrc, theme }) => (
   <div className={cn('game', `game--${theme}`)}>
     <Link routerHref={href}>
-      <Image
-        src={imgSrc ? imgSrc : staticHref}
-        altText={title}
-        className="game__image"
-      />
-      <Heading level={3} className="game__title">
-        {title}
-      </Heading>
+      <Background className="game__image" src={imgSrc ? imgSrc : staticHref} />
+      <VisuallyHidden>
+        <Heading level={3} className="game__title">
+          {title}
+        </Heading>
+      </VisuallyHidden>
     </Link>
   </div>
 );

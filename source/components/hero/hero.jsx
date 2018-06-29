@@ -24,7 +24,7 @@ class Hero extends React.Component {
               <FilteredGamesList
                 {...state}
                 heading={'just the one'}
-                lead="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+                lead="Lorem ipsum, dolor sit amet consectetur."
                 gridColumns={1}
                 showLoadMore={false}
                 collection={state.collection.slice(4, 5)} //TODO: limit!!
