@@ -12,7 +12,7 @@ const sizes = {
 
 const Icon = ({ className, name, size }) =>
   !name ? null : (
-    <div className={cn('icon', `icon--${name}`, `icon--${size}`, className)} />
+    <span className={cn('icon', `icon--${name}`, `icon--${size}`, className)} />
   );
 
 Icon.propTypes = {
