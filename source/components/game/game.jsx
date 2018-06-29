@@ -7,7 +7,9 @@ import Heading from '../../components/heading';
 import Image from '../../components/image';
 
 const themes = {
-  default: 'default'
+  default: 'default',
+  flat: 'flat',
+  tall: 'tall'
 };
 
 const staticHref = '../../mockup/assets/static.jpg';

@@ -15,6 +15,7 @@ class FilteredGamesList extends React.Component {
     showControls: PropTypes.bool,
     showLoadMore: PropTypes.bool,
     gridColumns: PropTypes.number,
+    gameTheme: PropTypes.string,
     showNumerOfResults: PropTypes.bool,
     isFetching: PropTypes.bool,
     collection: PropTypes.array,
@@ -112,6 +113,7 @@ class FilteredGamesList extends React.Component {
             heading={this.props.heading}
             games={this.state.filteredCollection}
             gridColumns={this.props.gridColumns}
+            gameTheme={this.props.gameTheme}
           />
           {this.props.showLoadMore && (
             <Button
