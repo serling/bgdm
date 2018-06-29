@@ -2,20 +2,10 @@
   display: grid;
   grid-gap: $spacing-lg;
 
-  &--columns-1 {
-    grid-template-columns: auto;
-  }
-
-  &--columns-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  &--columns-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  &--columns-4 {
-    grid-template-columns: repeat(4, 1fr);
+  @for $i from 1 through 10 {
+    &--columns-#{$i} {
+      grid-template-columns: repeat($i, 1fr);
+    }
   }
 
   &__item {
