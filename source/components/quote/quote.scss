@@ -2,7 +2,7 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-gap: $medium-grid-gap;
+  grid-gap: $spacing-md;
   grid-template-areas:
     "icon-left text icon-right"
     "source source source";

@@ -2,7 +2,7 @@
   display: grid;
   align-content: start;
   align-items: center;
-  grid-column-gap: $default-grid-gap;
+  grid-column-gap: $spacing-lg;
 
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;

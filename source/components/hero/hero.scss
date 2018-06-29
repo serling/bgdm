@@ -1,7 +1,6 @@
 .hero {
   display: grid;
-  grid-row-gap: $default-grid-gap;
-  grid-column-gap: $default-grid-gap;
+  grid-gap: $spacing-lg;
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: "large large small small small";

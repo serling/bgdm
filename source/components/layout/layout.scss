@@ -2,6 +2,6 @@
   display: grid;
   align-content: start;
   grid-template-rows: repeat(3, auto);
-  grid-row-gap: $default-grid-gap;
+  grid-row-gap: $spacing-hg;
   align-content: space-between;
 }

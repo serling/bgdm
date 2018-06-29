@@ -1,7 +1,6 @@
 .grid {
   display: grid;
-  grid-column-gap: $default-grid-gap;
-  grid-row-gap: $default-grid-gap;
+  grid-gap: $spacing-lg;
 
   &--columns-1 {
     grid-template-columns: auto;
