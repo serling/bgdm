@@ -1,14 +1,19 @@
 .text {
-  &--size-small {
+  &--small {
     font-size: $text-size-sm;
   }
-  &--size-medium {
+  &--medium {
     font-size: $text-size-md;
   }
-  &--size-large {
+  &--large {
     font-size: $text-size-lg;
   }
-  &--size-huge {
+  &--huge {
     font-size: $text-size-hg;
+  }
+
+  &--background {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: $spacing-sm $spacing-md;
   }
 }

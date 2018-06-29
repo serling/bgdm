@@ -30,7 +30,7 @@ Heading.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
   ]),
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   level: PropTypes.number.isRequired,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };

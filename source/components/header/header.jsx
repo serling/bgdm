@@ -9,7 +9,7 @@ import Button from '../../components/button';
 class Header extends React.Component {
   static propTypes = {
     isMenuOpen: PropTypes.bool,
-    className: PropTypes.string,
+    className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     linkSections: PropTypes.array
   };
 

@@ -13,7 +13,7 @@ const LoadingSpinner = ({ className }) => (
 );
 
 LoadingSpinner.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
 };
 
 export default LoadingSpinner;

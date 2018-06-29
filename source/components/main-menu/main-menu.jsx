@@ -7,7 +7,7 @@ import LinkList from '../../components/link-list';
 
 class MainMenu extends React.Component {
   static propTypes = {
-    className: PropTypes.string,
+    className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     linkSections: PropTypes.array
   };
 

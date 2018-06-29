@@ -85,7 +85,11 @@ class FilteredGamesList extends React.Component {
               <span> ({this.props.numberOfResults})</span>
             )}
           </Heading>
-          <Text size={Text.sizes.medium} text={this.props.lead} />
+          <Text
+            size={Text.sizes.medium}
+            text={this.props.lead}
+            className="filtered-games-list__lead"
+          />
         </div>
         {this.props.showControls && (
           <FilterControls

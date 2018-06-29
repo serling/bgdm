@@ -8,7 +8,7 @@ const Image = ({ src, altText, className }) => (
 
 Image.propTypes = {
   src: PropTypes.string.isRequired,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   altText: PropTypes.string.isRequired
 };
 export default Image;

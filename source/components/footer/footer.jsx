@@ -14,7 +14,7 @@ const Footer = ({ className }) => (
 );
 
 Footer.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
 };
 
 export default Footer;

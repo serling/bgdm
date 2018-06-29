@@ -9,6 +9,10 @@
     margin-bottom: $spacing-md;
   }
 
+  &__lead {
+    text-align: center;
+  }
+
   &__loading {
     background-color: rgba($color-white, 0.8);
     width: 100%;

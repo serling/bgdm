@@ -7,7 +7,7 @@ class TextInput extends React.Component {
     placeholder: PropTypes.string,
     onKeyDown: PropTypes.func,
     onRef: PropTypes.func,
-    className: PropTypes.string
+    className: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
   };
 
   state = {

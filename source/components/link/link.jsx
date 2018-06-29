@@ -22,7 +22,7 @@ const Link = ({ text, href, children, theme, routerHref, className }) =>
 Link.propTypes = {
   text: PropTypes.string,
   href: PropTypes.string,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   routerHref: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.node,

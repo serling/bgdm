@@ -58,7 +58,7 @@ const Button = ({
 Button.propTypes = {
   text: PropTypes.string,
   onClick: PropTypes.func.isRequired,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   isActive: PropTypes.bool,
   iconName: PropTypes.string,
   iconSize: PropTypes.string,

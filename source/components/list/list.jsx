@@ -17,7 +17,7 @@ const List = ({ inline, ordered, className, children }) =>
 List.propTypes = {
   inline: PropTypes.bool,
   ordered: PropTypes.bool,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)

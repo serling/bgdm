@@ -5,14 +5,18 @@
   grid-gap: $medium-grid-gap;
   grid-template-areas:
     "icon-left text icon-right"
-    ". source source";
+    "source source source";
 
   &__icon-left {
     grid-area: icon-left;
+    margin-right: $spacing-sm;
+    vertical-align: top;
   }
 
   &__icon-right {
     grid-area: icon-right;
+    margin-left: $spacing-sm;
+    vertical-align: bottom;
   }
 
   &__text {
@@ -21,7 +25,14 @@
 
   &__source {
     grid-area: source;
-    justify-self: center;
+    justify-self: end;
     font-size: $text-size-md;
+  }
+
+  &__user {
+    margin-right: $spacing-sm;
+  }
+
+  &__game {
   }
 }
