@@ -26,12 +26,10 @@ const colors = {
 
 const Row = ({ padding, width, backgroundColor, children, backgroundName }) => (
   <div
-    className={cn(
-      'row',
-      { 'row--has-background-image': backgroundName },
-      `row--padding-${padding}`,
-      `row--color-${backgroundColor}`
-    )}
+    className={cn('row', `row--padding-${padding}`, {
+      'row--has-background-image': backgroundName,
+      [`row--color-${backgroundColor}`]: backgroundColor
+    })}
   >
     <Background name={backgroundName} theme={Background.themes.shadow} />
 
