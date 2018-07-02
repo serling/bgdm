@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import anyToKebab from '@creuna/utils/any-to-kebab';
 
 import Heading from '../../components/heading';
 import GamesList from '../../components/games-list';
@@ -7,6 +8,10 @@ import Button from '../../components/button';
 import LoadingSpinner from '../../components/loading-spinner';
 import FilterControls from '../../components/filter-controls';
 import Text from '../../components/text';
+
+const systemIcons = {
+  megadrive: 'Mega Drive'
+};
 
 class FilteredGamesList extends React.Component {
   static propTypes = {
@@ -52,7 +57,9 @@ class FilteredGamesList extends React.Component {
             href: `/games/${game.id}`,
             score: game.autoscore,
             title: game.name,
-            system: game.system.name,
+            systemIconName: anyToKebab(
+              game.system.name.replace(/\s+/g, '-').toLowerCase()
+            ),
             tagline: game.tagline,
             imgSrc: this.getIndexImage(game.images)[0].image
           }

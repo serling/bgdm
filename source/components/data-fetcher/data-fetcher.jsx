@@ -11,7 +11,8 @@ class DataFetcher extends React.Component {
     searchQuery: PropTypes.string,
     activeOrder: PropTypes.string,
     activeFilters: PropTypes.array,
-    numberOfItemsToFetch: PropTypes.number
+    numberOfItemsToFetch: PropTypes.number,
+    gameId: PropTypes.string
   };
 
   static defaultProps = {
@@ -26,6 +27,7 @@ class DataFetcher extends React.Component {
     collection: [],
     activeOrder: this.props.activeOrder,
     activeFilters: this.props.activeFilters,
+    activeGameId: this.props.gameId,
     apiUrl: this.props.apiUrl,
     nextPageUrl: '',
     previousPageUrl: '',
@@ -36,27 +38,46 @@ class DataFetcher extends React.Component {
   };
 
   fetchData(url, shouldAppend = false) {
+    if (this.state.activeGameId) {
+      this.fetchSingle(`${url}${this.state.activeGameId}`);
+    } else {
+      this.fetchCollection(url, shouldAppend);
+    }
+  }
+
+  parseUrl(url) {
+    return replaceQueryParameters(url, {
+      ordering: this.state.activeOrder,
+      limit: this.props.numberOfItemsToFetch, //TODO: make LIMIT work in query
+      search: this.props.searchQuery,
+      ...this.state.activeFilters
+    });
+  }
+
+  fetchCollection(url, shouldAppend) {
     this.setState({ isFetching: true }, () => {
-      api
-        .get(
-          replaceQueryParameters(url, {
-            ordering: this.state.activeOrder,
-            limit: this.props.numberOfItemsToFetch, //TODO: make LIMIT work in query
-            search: this.props.searchQuery,
-            ...this.state.activeFilters
-          })
-        )
-        .then(payload => {
-          this.setState(previousState => ({
-            nextPageUrl: payload.next,
-            previousPageUrl: payload.previous,
-            numberOfResults: payload.count,
-            collection: shouldAppend
-              ? [...previousState.collection, ...payload.results]
-              : payload.results,
-            isFetching: false
-          }));
+      api.get(this.parseUrl(url)).then(payload => {
+        this.setState(previousState => ({
+          nextPageUrl: payload.next,
+          previousPageUrl: payload.previous,
+          numberOfResults: payload.count,
+          collection: shouldAppend
+            ? [...previousState.collection, ...payload.results]
+            : payload.results,
+          isFetching: false
+        }));
+      });
+    });
+  }
+
+  fetchSingle(url) {
+    this.setState({ isFetching: true }, () => {
+      api.get(url).then(payload => {
+        this.setState({
+          game: payload,
+          isFetching: false
         });
+      });
     });
   }
 

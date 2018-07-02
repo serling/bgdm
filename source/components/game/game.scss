@@ -1,16 +1,44 @@
 .game {
-  padding: $spacing-sm;
+  // padding: $spacing-sm;
   position: relative;
 
+  &__image {
+    border: 3px solid black;
+    height: 150px;
+    width: 100%;
+    position: relative;
+    z-index: -1;
+  }
+
+  &__data {
+  }
+
+  &__title {
+    position: relative;
+    background-color: white;
+    margin-top: -1.5rem;
+    margin-left: 1rem;
+    padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+    border: 2px solid black;
+    display: inline-block;
+    width: 80%;
+  }
+
+  &__genre {
+    position: absolute;
+    bottom: 0.2rem;
+    right: 0.2rem;
+    // margin: 1rem;
+    opacity: 0.2;
+    transform: rotate(6deg);
+  }
+
   &--default {
-    height: 300px;
-    border: 4px solid $color-black;
   }
 
   &--long {
   }
 
   &--flat {
-    height: 125px;
   }
 }

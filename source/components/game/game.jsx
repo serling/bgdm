@@ -5,7 +5,8 @@ import cn from 'classnames';
 import Link from '../../components/link';
 import Heading from '../../components/heading';
 import Background from '../../components/background';
-import VisuallyHidden from '../../components/visually-hidden';
+import Icon from '../../components/icon';
+// import VisuallyHidden from '../../components/visually-hidden';
 
 const themes = {
   default: 'default',
@@ -15,16 +16,22 @@ const themes = {
 
 const staticHref = '../../mockup/assets/static.jpg';
 
-const Game = ({ title, href, imgSrc, theme }) => (
+const Game = ({ title, href, imgSrc, theme, systemIconName, tagline }) => (
   <div className={cn('game', `game--${theme}`)}>
-    <Link routerHref={href}>
-      <Background className="game__image" src={imgSrc ? imgSrc : staticHref} />
-      <VisuallyHidden>
-        <Heading level={3} className="game__title">
-          {title}
-        </Heading>
-      </VisuallyHidden>
-    </Link>
+    <div className="game__image">
+      <Background src={imgSrc ? imgSrc : staticHref} />
+    </div>
+    <div className="game__data">
+      <div className="game__title">
+        <Heading level={3}>{title}</Heading>
+        <p>{tagline}</p>
+        <Icon
+          className="game__genre"
+          name={systemIconName}
+          size={Icon.sizes.small}
+        />
+      </div>
+    </div>
   </div>
 );
 
