@@ -9,10 +9,6 @@ import LoadingSpinner from '../../components/loading-spinner';
 import FilterControls from '../../components/filter-controls';
 import Text from '../../components/text';
 
-const systemIcons = {
-  megadrive: 'Mega Drive'
-};
-
 class FilteredGamesList extends React.Component {
   static propTypes = {
     heading: PropTypes.string,

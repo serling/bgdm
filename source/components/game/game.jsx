@@ -10,17 +10,16 @@ import Icon from '../../components/icon';
 
 const themes = {
   default: 'default',
-  flat: 'flat',
-  tall: 'tall'
+  wide: 'wide'
 };
 
 const staticHref = '../../mockup/assets/static.jpg';
 
 const Game = ({ title, href, imgSrc, theme, systemIconName, tagline }) => (
   <div className={cn('game', `game--${theme}`)}>
-    <div className="game__image">
+    <Link className="game__image" href={href}>
       <Background src={imgSrc ? imgSrc : staticHref} />
-    </div>
+    </Link>
     {/* <div className="game__data"> */}
     <div className="game__info">
       <Link href={href} className="game__title">
@@ -41,7 +40,9 @@ Game.propTypes = {
   title: PropTypes.string,
   href: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
-  theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
+  systemIconName: PropTypes.string,
+  theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key])),
+  tagline: PropTypes.string
 };
 
 Game.defaultProps = {

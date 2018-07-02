@@ -7,40 +7,37 @@
     height: 150px;
     width: 100%;
     position: relative;
-    z-index: -1;
-  }
-
-  &__info {
-    position: relative;
-    background-color: white;
-    margin-top: -1.5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding: 0.5rem 2.5rem 0.5rem 0.5rem;
-    border: 2px solid black;
-    display: inline-block;
-    min-width: 80%;
-  }
-
-  &__title {
-    margin-bottom: 0.4rem;
-  }
-
-  &__genre {
-    position: absolute;
-    bottom: 0.2rem;
-    right: 0.2rem;
-    // margin: 1rem;
-    opacity: 0.2;
-    transform: rotate(6deg);
   }
 
   &--default {
+    .game__info {
+      position: relative;
+      background-color: white;
+      margin-top: -1.5rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+      border: 2px solid black;
+      display: inline-block;
+      min-width: 80%;
+    }
+
+    .game__title {
+      margin-bottom: 0.4rem;
+    }
+
+    .game__genre {
+      position: absolute;
+      bottom: 0.2rem;
+      right: 0.2rem;
+      opacity: 0.2;
+      transform: rotate(6deg);
+    }
   }
 
-  &--long {
-  }
-
-  &--flat {
+  &--wide {
+    .game__info {
+      display: none;
+    }
   }
 }

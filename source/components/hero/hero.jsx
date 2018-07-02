@@ -41,9 +41,10 @@ class Hero extends React.Component {
                 {...state}
                 heading={'highlights'}
                 lead="Lorem ipsum, dolor sit amet consectetur adipisicing elit. "
-                gridColumns={3}
+                gridColumns={1}
                 showLoadMore={false}
                 collection={state.collection.slice(6, 9)} //TODO: limit!!
+                gameTheme={'wide'}
               />
             )}
           />

@@ -5,11 +5,11 @@
   position: absolute;
   top: 0;
   left: 0;
-  // opacity: 0.5;
 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: $color-black;
 
   @each $name, $value in $backgrounds {
     &--#{$name} {

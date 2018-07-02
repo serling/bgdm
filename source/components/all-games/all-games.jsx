@@ -26,7 +26,6 @@ class AllGames extends React.Component {
               showLoadMore={true}
               buttonPlacement={'center'}
               gridColumns={3}
-              gameTheme={'flat'}
             />
           )}
         />
