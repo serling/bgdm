@@ -10,18 +10,20 @@
     z-index: -1;
   }
 
-  &__data {
-  }
-
-  &__title {
+  &__info {
     position: relative;
     background-color: white;
     margin-top: -1.5rem;
     margin-left: 1rem;
+    margin-right: 1rem;
     padding: 0.5rem 2.5rem 0.5rem 0.5rem;
     border: 2px solid black;
     display: inline-block;
-    width: 80%;
+    min-width: 80%;
+  }
+
+  &__title {
+    margin-bottom: 0.4rem;
   }
 
   &__genre {

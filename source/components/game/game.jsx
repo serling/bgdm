@@ -21,17 +21,19 @@ const Game = ({ title, href, imgSrc, theme, systemIconName, tagline }) => (
     <div className="game__image">
       <Background src={imgSrc ? imgSrc : staticHref} />
     </div>
-    <div className="game__data">
-      <div className="game__title">
+    {/* <div className="game__data"> */}
+    <div className="game__info">
+      <Link href={href} className="game__title">
         <Heading level={3}>{title}</Heading>
-        <p>{tagline}</p>
-        <Icon
-          className="game__genre"
-          name={systemIconName}
-          size={Icon.sizes.small}
-        />
-      </div>
+      </Link>
+      <p>{tagline}</p>
+      <Icon
+        className="game__genre"
+        name={systemIconName}
+        size={Icon.sizes.small}
+      />
     </div>
+    {/* </div> */}
   </div>
 );
 
