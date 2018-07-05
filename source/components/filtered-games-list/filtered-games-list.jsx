@@ -35,14 +35,6 @@ class FilteredGamesList extends React.Component {
     filteredCollection: []
   };
 
-  getIndexImage(arrayOfImages) {
-    return arrayOfImages.filter(image => image.index);
-  }
-
-  getTitleImage(arrayOfImages) {
-    return arrayOfImages.filter(image => image.title);
-  }
-
   filterCollection() {
     this.setState({
       filteredCollection: this.props.collection.map(game => {
@@ -57,7 +49,8 @@ class FilteredGamesList extends React.Component {
               game.system.name.replace(/\s+/g, '-').toLowerCase()
             ),
             tagline: game.tagline,
-            imgSrc: this.getIndexImage(game.images)[0].image
+            indexImgSrc: game.images.filter(image => image.index)[0].image,
+            titleImgSrc: game.images.filter(image => image.title)[0].image
           }
         );
       })
