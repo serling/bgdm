@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import Image from '../../components/image';
-import Backgrounds from './backgrounds';
+import Backgrounds from '../../mockup/assets/backgrounds/backgrounds';
 
 const Background = ({ className, name }) => (
   <div className={cn('background', className)}>
