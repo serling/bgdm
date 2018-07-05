@@ -1,8 +1,4 @@
 .link {
   @include remove-link-styles;
   display: inline-block;
-
-  &__content {
-    display: block;
-  }
 }

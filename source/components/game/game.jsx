@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import Link from '../../components/link';
 import Heading from '../../components/heading';
-import Background from '../../components/background';
+import Image from '../../components/image';
 import Icon from '../../components/icon';
 import PlaceholderImageSrc from '../../mockup/assets/images/static.jpg';
 // import VisuallyHidden from '../../components/visually-hidden';
@@ -28,7 +28,7 @@ const Game = ({
   return (
     <div className={cn('game', `game--${theme}`, `game--score-${score}`)}>
       <Link className="game__image" href={href}>
-        <Background src={imageSrc} />
+        <Image src={imageSrc} />
       </Link>
       <div className="game__info">
         <Link href={href} className="game__title">

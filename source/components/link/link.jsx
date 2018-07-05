@@ -16,7 +16,7 @@ const Link = ({ text, href, children, theme, routerHref, className }) =>
       to: routerHref,
       href: routerHref ? undefined : href
     },
-    <span className="link__content">{text || children}</span>
+    text || children
   );
 
 Link.propTypes = {

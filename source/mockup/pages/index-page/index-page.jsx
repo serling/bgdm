@@ -3,7 +3,7 @@ import React from 'react';
 
 import Layout from '../../../components/layout';
 import Row from '../../../components/row';
-import Hero from '../../../components/hero';
+// import Hero from '../../../components/hero';
 import Quote from '../../../components/quote';
 import AllGames from '../../../components/all-games';
 import Search from '../../../components/search';
@@ -13,9 +13,9 @@ const IndexPage = () => (
     <Row>
       <Search />
     </Row>
-    <Row>
+    {/* <Row>
       <Hero />
-    </Row>
+    </Row> */}
     <Row backgroundName="background2" padding={Row.paddings.huge}>
       <Quote
         text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet porro magnam molestias quidem impedit, cumque, nihil necessitatibus perspiciatis adipisci sit assumenda in cupiditate quaerat accusamus dolor dolores quo voluptas deserunt."

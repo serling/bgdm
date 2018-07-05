@@ -2,30 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-const themes = {
-  shadow: 'shadow'
-};
+import Image from '../../components/image';
+import Backgrounds from './backgrounds';
 
-const Background = ({ className, name, theme, src }) =>
-  !name && !src ? null : (
-    <div
-      style={{ backgroundImage: src ? `url(${src})` : undefined }}
-      className={cn(
-        'background',
-        { [`background--${name}`]: name },
-        `background--${theme}`,
-        className
-      )}
-    />
-  );
+const Background = ({ className, name }) => (
+  <div className={cn('background', className)}>
+    <Image src={Backgrounds[name]} />
+  </div>
+);
 
 Background.propTypes = {
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  name: PropTypes.string,
-  src: PropTypes.string,
-  theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
+  name: PropTypes.oneOf(Object.keys(Backgrounds))
 };
-
-Background.themes = themes;
 
 export default Background;

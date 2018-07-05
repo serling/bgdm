@@ -1,1 +1,38 @@
-.image {}
+.image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+
+  &__overlay {
+    height: 100%;
+    width: 100%;
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &--red {
+      &:after {
+        background-color: rgba(255, 0, 0, 0.3);
+      }
+    }
+
+    &--blue {
+      &:after {
+        background-color: rgba(0, 0, 255, 0.3);
+      }
+    }
+  }
+
+  &--grayscale {
+    filter: grayscale(100%);
+  }
+}

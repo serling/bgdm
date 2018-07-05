@@ -24,7 +24,6 @@ class AllGames extends React.Component {
               heading={this.props.heading}
               showControls={true}
               showLoadMore={true}
-              buttonPlacement={'center'}
               gridColumns={3}
             />
           )}
