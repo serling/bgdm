@@ -43,7 +43,7 @@ class FilteredGamesList extends React.Component {
           {
             id: game.id,
             href: `/games/${game.id}`,
-            score: game.autoscore,
+            score: game.autoscore.toString(),
             title: game.name,
             systemIconName: anyToKebab(
               game.system.name.replace(/\s+/g, '-').toLowerCase()

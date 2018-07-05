@@ -15,6 +15,7 @@ const themes = {
 };
 
 const Game = ({
+  score,
   title,
   href,
   indexImgSrc,
@@ -25,7 +26,7 @@ const Game = ({
 }) => {
   const imageSrc = indexImgSrc || titleImgSrc || PlaceholderImageSrc;
   return (
-    <div className={cn('game', `game--${theme}`)}>
+    <div className={cn('game', `game--${theme}`, `game--score-${score}`)}>
       <Link className="game__image" href={href}>
         <Background src={imageSrc} />
       </Link>
@@ -46,6 +47,7 @@ const Game = ({
 
 Game.propTypes = {
   title: PropTypes.string,
+  score: PropTypes.string,
   href: PropTypes.string.isRequired,
   indexImgSrc: PropTypes.string.isRequired,
   titleImgSrc: PropTypes.string.isRequired,

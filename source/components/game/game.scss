@@ -1,13 +1,5 @@
 .game {
-  // padding: $spacing-sm;
   position: relative;
-
-  &__image {
-    border: 3px solid black;
-    height: 150px;
-    width: 100%;
-    position: relative;
-  }
 
   &__tagline {
     &::first-letter {
@@ -16,6 +8,12 @@
   }
 
   &--default {
+    .game__image {
+      border: 3px solid black;
+      height: 150px;
+      width: 100%;
+      position: relative;
+    }
     .game__info {
       position: relative;
       background-color: white;
@@ -38,12 +36,6 @@
       right: 0.2rem;
       opacity: 0.5;
       transform: rotate(6deg);
-    }
-  }
-
-  &--wide {
-    .game__info {
-      display: none;
     }
   }
 }
