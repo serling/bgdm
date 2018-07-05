@@ -21,18 +21,24 @@
 
     &--red {
       &:after {
-        background-color: rgba(255, 0, 0, 0.3);
+        background-color: rgba(255, 0, 85, 0.3);
+      }
+    }
+
+    &--cyan {
+      &:after {
+        background-color: rgba(0, 255, 255, 0.3);
       }
     }
 
     &--blue {
       &:after {
-        background-color: rgba(0, 0, 255, 0.3);
+        background-color: rgba(0, 140, 255, 0.3);
       }
     }
   }
 
   &--grayscale {
-    filter: grayscale(100%);
+    filter: grayscale(100%) contrast(120%);
   }
 }

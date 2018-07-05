@@ -16,7 +16,7 @@ const IndexPage = () => (
     {/* <Row>
       <Hero />
     </Row> */}
-    <Row backgroundName="background2" padding={Row.paddings.huge}>
+    <Row backgroundName="background19" padding={Row.paddings.huge}>
       <Quote
         text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet porro magnam molestias quidem impedit, cumque, nihil necessitatibus perspiciatis adipisci sit assumenda in cupiditate quaerat accusamus dolor dolores quo voluptas deserunt."
         gameTitle="This is a Title 3"

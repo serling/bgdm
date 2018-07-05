@@ -8,7 +8,8 @@ const themes = {
 
 const colors = {
   red: 'red',
-  blue: 'blue'
+  blue: 'blue',
+  cyan: 'cyan'
 };
 
 const Image = ({ src, className, theme, color }) => (
