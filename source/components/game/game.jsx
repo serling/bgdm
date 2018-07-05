@@ -25,7 +25,7 @@ const Game = ({ title, href, imgSrc, theme, systemIconName, tagline }) => (
       <Link href={href} className="game__title">
         <Heading level={3}>{title}</Heading>
       </Link>
-      <p>{tagline}</p>
+      <p className="game__tagline">{tagline}</p>
       <Icon
         className="game__genre"
         name={systemIconName}

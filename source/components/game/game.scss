@@ -9,6 +9,12 @@
     position: relative;
   }
 
+  &__tagline {
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
   &--default {
     .game__info {
       position: relative;
@@ -28,9 +34,9 @@
 
     .game__genre {
       position: absolute;
-      bottom: 0.2rem;
+      top: 0.2rem;
       right: 0.2rem;
-      opacity: 0.2;
+      opacity: 0.5;
       transform: rotate(6deg);
     }
   }
