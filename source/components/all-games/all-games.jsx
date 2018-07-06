@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import FilteredGamesList from '../../components/filtered-games-list';
 import DataFetcher from '../../components/data-fetcher';
+import Modal from '../../components/modal';
 
 class AllGames extends React.Component {
   static propTypes = { heading: PropTypes.string };
@@ -28,6 +29,9 @@ class AllGames extends React.Component {
             />
           )}
         />
+        <Modal onCloseClick={() => {}}>
+          <div>hello, there</div>
+        </Modal>
       </div>
     );
   }
