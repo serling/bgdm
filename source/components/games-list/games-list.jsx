@@ -7,9 +7,7 @@ import Game from '../../components/game';
 const GamesList = ({ games, gridColumns, gameTheme }) => (
   <div className="games-list">
     <Grid columns={gridColumns}>
-      {games.map((game, index) => (
-        <Game key={index} {...game} theme={gameTheme} />
-      ))}
+      {games.map(game => <Game key={game.id} {...game} theme={gameTheme} />)}
     </Grid>
   </div>
 );

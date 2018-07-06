@@ -7,7 +7,6 @@ import Heading from '../../components/heading';
 import Image from '../../components/image';
 import Icon from '../../components/icon';
 import PlaceholderImageSrc from '../../mockup/assets/images/static.jpg';
-// import VisuallyHidden from '../../components/visually-hidden';
 
 const themes = {
   default: 'default',
@@ -15,8 +14,8 @@ const themes = {
 };
 
 const Game = ({
-  score,
-  title,
+  autoscore,
+  name,
   href,
   indexImgSrc,
   titleImgSrc,
@@ -26,13 +25,19 @@ const Game = ({
 }) => {
   const imageSrc = indexImgSrc || titleImgSrc || PlaceholderImageSrc;
   return (
-    <div className={cn('game', `game--${theme}`, `game--score-${score}`)}>
+    <div
+      className={cn(
+        'game',
+        `game--${theme}`,
+        ([`game--autoscore-${autoscore}`]: autoscore)
+      )}
+    >
       <Link className="game__image" href={href}>
         <Image src={imageSrc} />
       </Link>
       <div className="game__info">
-        <Link href={href} className="game__title">
-          <Heading level={3}>{title}</Heading>
+        <Link href={href} className="game__name">
+          <Heading level={3}>{name}</Heading>
         </Link>
         <p className="game__tagline">{tagline}</p>
         <Icon
@@ -46,8 +51,8 @@ const Game = ({
 };
 
 Game.propTypes = {
-  title: PropTypes.string,
-  score: PropTypes.string,
+  name: PropTypes.string,
+  autoscore: PropTypes.string,
   href: PropTypes.string.isRequired,
   indexImgSrc: PropTypes.string.isRequired,
   titleImgSrc: PropTypes.string.isRequired,

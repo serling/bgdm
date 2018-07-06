@@ -52,10 +52,10 @@ class DataFetcher extends React.Component {
       return Object.assign(
         {},
         {
-          id: game.id,
+          id: `${game.id}`,
           href: `/games/${game.id}`,
-          score: `${game.autoscore}`,
-          title: game.name,
+          autoscore: `${game.autoscore}`,
+          name: game.name,
           systemIconName: anyToKebab(
             game.system.name.replace(/\s+/g, '-').toLowerCase()
           ),
