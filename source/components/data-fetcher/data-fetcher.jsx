@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import replaceQueryParameters from '@creuna/utils/replace-query-parameters';
+import anyToKebab from '@creuna/utils/any-to-kebab';
 
 import api from '../../js/api-helper';
 
@@ -16,7 +17,7 @@ class DataFetcher extends React.Component {
   };
 
   static defaultProps = {
-    numberOfItemsToFetch: 10,
+    numberOfItemsToFetch: 12,
     apiUrl: 'http://n.zawiarr.com/bgdm/api/games/',
     activeOrder: '-date',
     activeFilters: []
@@ -37,14 +38,6 @@ class DataFetcher extends React.Component {
     onClickOrderBy: order => this.handleClickOrderBy(order)
   };
 
-  fetchData(url, shouldAppend = false) {
-    if (this.state.activeGameId) {
-      this.fetchSingle(`${url}${this.state.activeGameId}`);
-    } else {
-      this.fetchCollection(url, shouldAppend);
-    }
-  }
-
   parseUrl(url) {
     return replaceQueryParameters(url, {
       ordering: this.state.activeOrder,
@@ -54,7 +47,27 @@ class DataFetcher extends React.Component {
     });
   }
 
-  fetchCollection(url, shouldAppend) {
+  pickGameAttributes(games) {
+    return games.map(game => {
+      return Object.assign(
+        {},
+        {
+          id: game.id,
+          href: `/games/${game.id}`,
+          score: `${game.autoscore}`,
+          title: game.name,
+          systemIconName: anyToKebab(
+            game.system.name.replace(/\s+/g, '-').toLowerCase()
+          ),
+          tagline: game.tagline,
+          indexImgSrc: game.images.filter(image => image.index)[0].image,
+          titleImgSrc: game.images.filter(image => image.title)[0].image
+        }
+      );
+    });
+  }
+
+  getGames(url, shouldAppend) {
     this.setState({ isFetching: true }, () => {
       api.get(this.parseUrl(url)).then(payload => {
         this.setState(previousState => ({
@@ -62,28 +75,20 @@ class DataFetcher extends React.Component {
           previousPageUrl: payload.previous,
           numberOfResults: payload.count,
           collection: shouldAppend
-            ? [...previousState.collection, ...payload.results]
-            : payload.results,
+            ? [
+                ...previousState.collection,
+                ...this.pickGameAttributes(payload.results)
+              ]
+            : [...this.pickGameAttributes(payload.results)],
           isFetching: false
         }));
       });
     });
   }
 
-  fetchSingle(url) {
-    this.setState({ isFetching: true }, () => {
-      api.get(url).then(payload => {
-        this.setState({
-          game: payload,
-          isFetching: false
-        });
-      });
-    });
-  }
-
   handleClickLoadMore() {
     if (this.state.nextPageUrl) {
-      this.fetchData(this.state.nextPageUrl, true);
+      this.getGames(this.state.nextPageUrl, true);
     }
   }
 
@@ -97,7 +102,7 @@ class DataFetcher extends React.Component {
             ? order.options.descending
             : order.options.ascending
       }),
-      () => this.fetchData(this.state.apiUrl)
+      () => this.getGames(this.state.apiUrl)
     );
   }
 
@@ -109,21 +114,21 @@ class DataFetcher extends React.Component {
       {
         activeFilters: Object.assign({}, this.state.activeFilters, filter)
       },
-      () => this.fetchData(this.state.apiUrl)
+      () => this.getGames(this.state.apiUrl)
     );
   }
 
   componentDidMount() {
-    this.fetchData(this.state.apiUrl);
+    this.getGames(this.state.apiUrl);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.apiUrl !== prevProps.apiUrl) {
-      this.fetchData(this.state.apiUrl);
+      this.getGames(this.state.apiUrl);
     }
 
     if (this.props.searchQuery !== prevProps.searchQuery) {
-      this.fetchData(this.state.apiUrl);
+      this.getGames(this.state.apiUrl);
     }
   }
 

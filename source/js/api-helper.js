@@ -2,6 +2,7 @@
 import analytics from './analytics';
 import getData from '@creuna/utils/get-data';
 import messenger from './messenger';
+// import anyToKebab from '@creuna/utils/any-to-kebab';
 
 const defaultFetchOptions = {
   headers: {
@@ -48,7 +49,7 @@ function handleNotOk({ json, response }) {
 }
 
 function handleResponse({ json }) {
-  return json.payload || json;
+  return json.results ? json : Object.assign({}, { results: [json] });
 }
 
 function handleFetchError(error) {

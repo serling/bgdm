@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import anyToKebab from '@creuna/utils/any-to-kebab';
 
 import Heading from '../../components/heading';
 import GamesList from '../../components/games-list';
@@ -35,36 +34,18 @@ class FilteredGamesList extends React.Component {
     filteredCollection: []
   };
 
-  filterCollection() {
-    this.setState({
-      filteredCollection: this.props.collection.map(game => {
-        return Object.assign(
-          {},
-          {
-            id: game.id,
-            href: `/games/${game.id}`,
-            score: game.autoscore.toString(),
-            title: game.name,
-            systemIconName: anyToKebab(
-              game.system.name.replace(/\s+/g, '-').toLowerCase()
-            ),
-            tagline: game.tagline,
-            indexImgSrc: game.images.filter(image => image.index)[0].image,
-            titleImgSrc: game.images.filter(image => image.title)[0].image
-          }
-        );
-      })
-    });
-  }
-
   componentDidMount() {
-    this.filterCollection();
+    this.setState({
+      filteredCollection: this.props.collection
+    });
   }
 
   //TODO: smarter comparison?
   componentDidUpdate(prevProps) {
     if (this.props.collection !== prevProps.collection) {
-      this.filterCollection();
+      this.setState({
+        filteredCollection: this.props.collection
+      });
     }
   }
 
