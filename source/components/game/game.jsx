@@ -32,11 +32,11 @@ const Game = ({
         ([`game--autoscore-${autoscore}`]: autoscore)
       )}
     >
-      <Link className="game__image" href={href}>
+      <Link className="game__image" routerHref={href}>
         <Image src={imageSrc} />
       </Link>
       <div className="game__info">
-        <Link href={href} className="game__name">
+        <Link routerHref={href} className="game__name">
           <Heading level={3}>{name}</Heading>
         </Link>
         <p className="game__tagline">{tagline}</p>

@@ -30,24 +30,7 @@ class FilteredGamesList extends React.Component {
     collection: []
   };
 
-  state = {
-    filteredCollection: []
-  };
-
-  componentDidMount() {
-    this.setState({
-      filteredCollection: this.props.collection
-    });
-  }
-
-  //TODO: smarter comparison?
-  componentDidUpdate(prevProps) {
-    if (this.props.collection !== prevProps.collection) {
-      this.setState({
-        filteredCollection: this.props.collection
-      });
-    }
-  }
+  state = {};
 
   render() {
     return (
@@ -88,7 +71,7 @@ class FilteredGamesList extends React.Component {
           )}
           <GamesList
             heading={this.props.heading}
-            games={this.state.filteredCollection}
+            games={this.props.collection}
             gridColumns={this.props.gridColumns}
             gameTheme={this.props.gameTheme}
           />

@@ -36,7 +36,6 @@ function handleAnalytics({ json, response }) {
 }
 
 function handleNotOk({ json, response }) {
-  // NOTE: `response.ok` is true when the returned status is in the inclusive range 200-299.
   if (!response.ok && !json.messageToUser) {
     const error = new Error(response.statusText);
 

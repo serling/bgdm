@@ -19,7 +19,7 @@ class DataFetcher extends React.Component {
   static defaultProps = {
     numberOfItemsToFetch: 12,
     apiUrl: 'http://n.zawiarr.com/bgdm/api/games/',
-    activeOrder: '-date',
+    activeOrder: 'date',
     activeFilters: []
   };
 
@@ -53,7 +53,7 @@ class DataFetcher extends React.Component {
         {},
         {
           id: `${game.id}`,
-          href: `/games/${game.id}`,
+          href: `/games/${game.id}/`,
           autoscore: `${game.autoscore}`,
           name: game.name,
           systemIconName: anyToKebab(
